@@ -50,20 +50,90 @@ export default function Make() {
     }];
 
     const skillArr = [{
-        skill: "Grooming",
-        stat: "ATTR",
+        skill: "Acting",
+        stat: "EMP",
         defJob: [],
-        description: "Maximize attractivness and increase your chances to form a bond or strike a deal."
+        description: "Move hearts of your audiance or convince them you are someone (or something) else entirely."
+    }, {
+        skill: "Endurance",
+        stat: "BODY",
+        defJob: [],
+        description: "Endure pain and hardship with your pure body power over a period of time. Also knowladge on how best to conserve energy, stay awake or resist dehidration."
+    }, {
+        skill: "Etiquette",
+        stat: "EMP",
+        defJob: [],
+        description: "When social circumstances expect you to behave certain way, like proper posture, language, gestures or table manners. Know what is expected from you, so even when you choose to go against expectations you might do so with flare expected from someone of your statue instead of simply shaming yourself."
     }, {
         skill: "Fashion",
         stat: "ATTR",
         defJob: [],
         description: "To know what to wear, to know what not to wear and to know how to wear it. You have a taste and you make other people know it. It can help if you also have a decently sized and well stocked wardrobe."
     }, {
-        skill: "Endurance",
-        stat: "BODY",
+        skill: "Grooming",
+        stat: "ATTR",
         defJob: [],
-        description: "Endure pain and hardship with your pure body power over a period of time. Also knowladge on how best to conserve energy, stay awake or resist dehidration."
+        description: "Maximize attractivness and increase your chances to form a bond or strike a deal."
+    }, {
+        skill: "Interrogation",
+        stat: "COOL",
+        defJob: [],
+        description: "When you ask someone question, trick him into telling you what you want to know easy way or hard way. Also useful to figure out if someone is lying to you."
+    }, {
+        skill: "Interview",
+        stat: "EMP",
+        defJob: [],
+        description: "When you ask someone question, trick him into telling you what you want to know without alerting them. Also useful to figure out when someone is lying to you."
+    }, {
+        skill: "Intimidation",
+        stat: "COOL",
+        defJob: [],
+        description: "Scare people into doing whatever you demand from them."
+    }, {
+        skill: "Ledership",
+        stat: "EMP",
+        defJob: [],
+        description: "Ability to lead and or command respect from people around you. Incite action, raise spirits or make cooler heads prevail."
+    }, {
+        skill: "Oratory",
+        stat: "COOL",
+        defJob: [],
+        description: "When you speak to the public or perform a speach, how likely do you touch their hearts and minds. Do they listen to you or do they ignore you, fall asleep or even feel insulted by your lacking words and gestures."
+    }, {
+        skill: "Perform",
+        stat: "EMP",
+        defJob: [],
+        description: "Your ability to make something ordinary into something memorable or to convince someone to find meaning in your art."
+    }, {
+        skill: "Persuasion",
+        stat: "EMP",
+        defJob: [],
+        description: "Convince someone into seeing the world the way you want them to see it or to do something they are reluctant about if not openly opposed."
+    }, {
+        skill: "Resist",
+        stat: "COOL",
+        defJob: [],
+        description: "Resist pain and hardship with your willpower over a period of time. Also knowladge on how best to keep going when your body is starting to fail."
+    }, {
+        skill: "Seduction",
+        stat: "EMP",
+        defJob: [],
+        description: "Form (and maintain) romantic relationship. Be erotic instead of obscene. Know not only how to love, but to make love. Flirt away Romeo!"
+    }, {
+        skill: "Singing",
+        stat: "EMP",
+        defJob: [],
+        description: "Use your voice to amaze those around you. It also helps to make sure you are not the only one who is enjoying your casual singing. It also helps if you want to be lauder or have a nice casual voice."
+    }, {
+        skill: "Social Awareness",
+        stat: "EMP",
+        defJob: [],
+        description: "Notice honesty, lie, evasion, mood, opportunity and other social cues."
+    }, {
+        skill: "Street Survival",
+        stat: "EMP",
+        defJob: [],
+        description: "Know where it is safe and which streets are better to avoid, what not to ever ever do, where to get legal and illegal stuff or services and who to call when you need something."
     }, {
         skill: "Strength",
         stat: "BODY",
@@ -74,76 +144,6 @@ export default function Make() {
         stat: "BODY",
         defJob: [],
         description: "Do not drown. Swim. Swim faster, deeper, longer."
-    }, {
-        skill: "Interrogation",
-        stat: "COOL",
-        defJob: [],
-        description: "When you ask someone question, trick him into telling you what you want to know easy way or hard way. Also useful to figure out if someone is lying to you."
-    }, {
-        skill: "Intimidation",
-        stat: "COOL",
-        defJob: [],
-        description: "Scare people into doing whatever you demand from them."
-    }, {
-        skill: "Oratory",
-        stat: "COOL",
-        defJob: [],
-        description: "When you speak to the public or perform a speach, how likely do you touch their hearts and minds. Do they listen to you or do they ignore you, fall asleep or even feel insulted by your lacking words and gestures."
-    }, {
-        skill: "Resist",
-        stat: "EMP",
-        defJob: [],
-        description: "Resist pain and hardship with your willpower over a period of time. Also knowladge on how best to keep going when your body is starting to fail."
-    }, {
-        skill: "Street Survival",
-        stat: "EMP",
-        defJob: [],
-        description: "Know where it is safe and which streets are better to avoid, what not to ever ever do, where to get legal and illegal stuff or services and who to call when you need something."
-    }, {
-        skill: "Social Perception",
-        stat: "EMP",
-        defJob: [],
-        description: "Notice honesty, lie, evasion, mood, opportunity and other social cues."
-    }, {
-        skill: "Interview",
-        stat: "EMP",
-        defJob: [],
-        description: "When you ask someone question, trick him into telling you what you want to know without alerting them. Also useful to figure out when someone is lying to you."
-    }, {
-        skill: "Ledership",
-        stat: "EMP",
-        defJob: [],
-        description: "Ability to lead and or command respect from people around you. Incite action, raise spirits or make cooler heads prevail."
-    }, {
-        skill: "Seduction",
-        stat: "EMP",
-        defJob: [],
-        description: "Form (and maintain) romantic relationship. Be erotic instead of obscene. Know not only how to love, but to make love. Flirt away Romeo!"
-    }, {
-        skill: "Etiquette",
-        stat: "EMP",
-        defJob: [],
-        description: "When social circumstances expect you to behave certain way, like proper posture, language, gestures or table manners. Know what is expected from you, so even when you choose to go against expectations you might do so with flare expected from someone of your statue instead of simply shaming yourself."
-    }, {
-        skill: "Persuasion",
-        stat: "EMP",
-        defJob: [],
-        description: "Convince someone into seeing the world the way you want them to see it or to do something they are reluctant about if not openly opposed."
-    }, {
-        skill: "Perform",
-        stat: "EMP",
-        defJob: [],
-        description: "Your ability to make something ordinary into something memorable or to convince someone to find meaning in your art."
-    }, {
-        skill: "Acting",
-        stat: "EMP",
-        defJob: [],
-        description: "Move hearts of your audiance or convince them you are someone (or something) else entirely."
-    }, {
-        skill: "Singing",
-        stat: "EMP",
-        defJob: [],
-        description: "Use your voice to amaze those around you. It also helps to make sure you are not the only one who is enjoying your casual singing. It also helps if you want to be lauder or have a nice casual voice."
     }, {
         skill: "Accounting",
         stat: "INT",
@@ -176,11 +176,6 @@ export default function Make() {
         description: ""
     }, {
         skill: "Medicine",
-        stat: "INT",
-        defJob: [],
-        description: ""
-    }, {
-        skill: "Toxins",
         stat: "INT",
         defJob: [],
         description: ""
@@ -558,17 +553,23 @@ export default function Make() {
                 {selected === "Edit / Create" ?
                     <>
                         {skillArr.map(e => {
-                            return (<Checkbox
-                                checkId={e.skill + "SkillId"}
-                                checkClass="jobSkill"
-                                afterText={e.skill}
-                                preChecked={false}
-                                limit={{
-                                    current: jobSkillsChecked,
-                                    setCurrent: setJobSkillsChecked,
-                                    max: 3
-                                }}
-                                key={e.skill + "SkillKey"} />)
+                            return (
+                                <div key={e.skill + "SkillKey"}>
+                                    <Checkbox
+                                        checkId={e.skill.replace(" ", "") + "Skill"}
+                                        checkClass={"jobSkill"}
+                                        afterText={e.skill}
+                                        afterChildClass={`skillStat ${"skillStat" + e.stat}`}
+                                        preChecked={false}
+                                        limit={{
+                                            current: jobSkillsChecked,
+                                            setCurrent: setJobSkillsChecked,
+                                            max: 3
+                                        }}>
+                                        <span>({e.stat})</span>
+                                    </Checkbox>
+                                </div>
+                            )
                         })}
                     </> :
                     <></>}

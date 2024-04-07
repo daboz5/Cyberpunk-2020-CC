@@ -3,7 +3,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 export default function Checkbox(
-    { checkId, checkClass, preChecked, beforeText, afterText, limit }:
+    { checkId, checkClass, preChecked, beforeText, afterText, limit, beforeChildClass, afterChildClass, children }:
         {
             checkId: string,
             checkClass: string,
@@ -14,7 +14,10 @@ export default function Checkbox(
                 current: number,
                 setCurrent(newState: number): void,
                 max: number
-            }
+            },
+            beforeChildClass?: string,
+            afterChildClass?: string,
+            children?: JSX.Element | JSX.Element[]
         }
 ) {
 
@@ -88,9 +91,19 @@ export default function Checkbox(
         <label
             className={`${checkClass} defMouse flex alignFlex`} >
 
+            {beforeChildClass &&
+                <span
+                    id={"beforeChild" + checkId}
+                    className={`actMouse ${beforeChildClass}`}
+                    onClick={() => setChecked(!checked)}
+                    onMouseOver={() => handleEnter()}
+                    onMouseLeave={() => handleLeave()}>
+                    {children}
+                </span>}
+
             {beforeText ?
                 <p
-                    id={checkId + "Pre"}
+                    id={"before" + checkId}
                     className="actMouse"
                     onClick={() => setChecked(!checked)}
                     onMouseOver={() => handleEnter()}
@@ -114,7 +127,7 @@ export default function Checkbox(
 
             {afterText ?
                 <p
-                    id={checkId + "Post"}
+                    id={"after" + checkId}
                     className="actMouse"
                     onClick={() => setChecked(!checked)}
                     onMouseOver={() => handleEnter()}
@@ -122,6 +135,16 @@ export default function Checkbox(
                     {afterText}
                 </p> :
                 <></>}
+
+            {afterChildClass &&
+                <span
+                    id={"afterChild" + checkId}
+                    className={`actMouse ${afterChildClass}`}
+                    onClick={() => setChecked(!checked)}
+                    onMouseOver={() => handleEnter()}
+                    onMouseLeave={() => handleLeave()}>
+                    {children}
+                </span>}
 
         </label>
     )
