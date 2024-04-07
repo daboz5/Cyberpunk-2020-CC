@@ -134,6 +134,10 @@
     transition: 0.3s;
 }
 
+.jobSkill p {
+    margin: 0;
+}
+
 .jobSkillCheckbox {
     height: 25px;
     width: 25px;

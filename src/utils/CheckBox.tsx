@@ -19,9 +19,11 @@ export default function Checkbox(
 ) {
 
     const [checked, setChecked] = useState(preChecked ? true : false)
-    const onColor = "red";
-    const offColor = "white";
-    const disColor = "grey"
+    const color = {
+        on: "red",
+        off: "white",
+        disable: "grey"
+    }
 
     const handleClick = () => {
         if (limit) {
@@ -47,15 +49,15 @@ export default function Checkbox(
             if (newNum < limit.max) {
                 for (let i = 0; i < els.length; i++) {
                     const elColor = els[i].style.backgroundColor;
-                    if (elColor === disColor) {
-                        els[i].style.backgroundColor = offColor;
+                    if (elColor === color.disable) {
+                        els[i].style.backgroundColor = color.off;
                     }
                 }
             } else if (newNum >= limit.max) {
                 for (let i = 0; i < els.length; i++) {
                     const elColor = els[i].style.backgroundColor;
-                    if (elColor === offColor) {
-                        els[i].style.backgroundColor = disColor
+                    if (elColor === color.off) {
+                        els[i].style.backgroundColor = color.disable
                     }
                 }
             }
@@ -102,8 +104,8 @@ export default function Checkbox(
                 className={`${checkClass + "Checkbox"} actMouse`}
                 style={{
                     backgroundColor: checked ?
-                        onColor :
-                        offColor
+                        color.on :
+                        color.off
                 }}
                 onClick={() => handleClick()}
                 onMouseOver={() => handleEnter()}

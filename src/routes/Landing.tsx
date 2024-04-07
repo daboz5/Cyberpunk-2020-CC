@@ -10,17 +10,29 @@ export default function Landing() {
                     Create & Handle<br />
                     Character
                 </h2>
-                <nav className="flex alignFlex">
-                    <Link
-                        to="/make">
-                        <button className="navBtn">
-                            Make
-                        </button>
-                    </Link>
+                <nav className="flex colFlex alignFlex">
+                    <div className="flex">
+                        <Link
+                            to="/make">
+                            <button className="navBtn">
+                                Make
+                            </button>
+                        </Link>
+                        <Link
+                            to="/play">
+                            <button className="navBtn">
+                                Play
+                            </button>
+                        </Link>
+                    </div>
+                    <p>
+                        *some parts of the book were altered<br />
+                        for more easy, balanced (and fun) experience*
+                    </p>
                     <Link
                         to="/play">
                         <button className="navBtn">
-                            Play
+                            Rules
                         </button>
                     </Link>
                 </nav>
