@@ -5,7 +5,7 @@ export default function SelectRadio(
     { describe, selected, setSelected, selection }: {
         describe: string,
         selected: string,
-        setSelected(newState: string): void,
+        setSelected(newState: unknown): void,
         selection: string[],
     }
 ) {
@@ -44,6 +44,7 @@ export default function SelectRadio(
 
                 {/*TA ELEMENT UNIČI DEFAULT SELECT BUG*/}
                 <input
+                    name={"falseRadio" + describe}
                     disabled={true}
                     type={"radio"}
                     style={{ display: "none" }}>
@@ -52,7 +53,8 @@ export default function SelectRadio(
                 {/*DEJANSKI SPUSTNI MENI*/}
                 <label className={"option block"}>
                     <input
-                        disabled={open}
+                        name={"dropdown" + describe + "Description"}
+                        disabled={!open}
                         type={"radio"}
                         value={""}
                         onClick={() => {
@@ -77,6 +79,7 @@ export default function SelectRadio(
                                 }
                             }}>
                             <input
+                                name={"dropdownOption" + selected}
                                 type={"radio"}
                                 value={option}
                                 onClick={() => {

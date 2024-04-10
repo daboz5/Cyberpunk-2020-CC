@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function Checkbox(
@@ -21,7 +21,10 @@ export default function Checkbox(
         }
 ) {
 
-    const [checked, setChecked] = useState(preChecked ? true : false)
+    const [checked, setChecked] = useState(false);
+
+    useEffect(() => { setChecked(preChecked ? true : false) }, [preChecked]);
+
     const color = {
         on: "red",
         off: "white",

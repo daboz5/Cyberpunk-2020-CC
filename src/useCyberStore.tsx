@@ -8,7 +8,7 @@ type Action = {
     setJobSkillsChecked(newState: number): void,
 }
 
-const useCPStore = create<State & Action>(set => ({
+const useCyberStore = create<State & Action>(set => ({
 
     jobSkillsChecked: 0,
     setJobSkillsChecked: (newState) => set(() => ({
@@ -17,4 +17,4 @@ const useCPStore = create<State & Action>(set => ({
 
 }))
 
-export default useCPStore;
+export default useCyberStore;

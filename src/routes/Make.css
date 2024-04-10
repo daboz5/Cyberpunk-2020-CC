@@ -151,10 +151,6 @@
     font-weight: 700;
 }
 
-.skillStatATTR {
-    color: rgb(216, 0, 0);
-}
-
 .skillStatBODY {
     color: rgb(0, 145, 0);
 }
@@ -180,5 +176,5 @@
 }
 
 .skillStatTECH {
-    color: rgb(224, 146, 0);
+    color: rgb(224, 60, 0);
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import useCPStore from "../utils/useCPStore";
+import { Role } from "../types";
+import useCyberStore from "../useCyberStore";
 import useDatabase from "../utils/useDatabase";
 import SelectRadio from "../utils/SelectRadio";
 import Checkbox from "../utils/CheckBox";
@@ -8,13 +9,33 @@ import "./Make.css"
 
 export default function Make() {
 
-    const { jobSkillsChecked, setJobSkillsChecked } = useCPStore();
-    const { rolesArr, skillArr } = useDatabase();
+    const {
+        jobSkillsChecked,
+        setJobSkillsChecked
+    } = useCyberStore();
+    const { roleArr, skillArr } = useDatabase();
 
-    const [selected, setSelected] = useState("");
+    const [role, setRole] = useState<Role | undefined>(undefined);
 
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+    }
+
+    const changeRole = (name: string) => {
+        console.log(name)
+
+        const filterRole = roleArr.filter(e => e.job === name)[0];
+        if (filterRole) {
+            setRole(filterRole ? filterRole : undefined);
+        } else if (name === "Create a Role") {
+            setRole({
+                skill: "",
+                job: "Create a Role",
+                description: "",
+                defSkill: [],
+                oridinalOrFortressDescription: ""
+            })
+        }
     }
 
     return (
@@ -38,6 +59,7 @@ export default function Make() {
                 className={"colFlex"}
                 onSubmit={(e) => submit(e)}>
 
+                {/*IZBERI HANDLE*/}
                 <label className={"formInput colFlex"}>
                     <span className={"formInputTitle"}>
                         Handle (Nickname)
@@ -52,6 +74,7 @@ export default function Make() {
                     </input>
                 </label>
 
+                {/* IZBERI AGE */}
                 <label className={"formInput colFlex"}>
                     <span className={"formInputTitle"}>
                         Age
@@ -68,41 +91,39 @@ export default function Make() {
                     </input>
                 </label>
 
+
+                {/* IZBIRA VLOGE */}
                 <label className={"formInput colFlex"}>
                     <span className={"formInputTitle"}>
                         Pick, Edit or Create a Role
                     </span>
                     <SelectRadio
                         describe="Pick a role"
-                        selected={selected}
-                        setSelected={setSelected}
-                        selection={rolesArr.map(role => role.job).concat("Edit / Create")}
+                        selected={role ? role.job : ""}
+                        setSelected={changeRole}
+                        selection={roleArr.map(role => role.job).concat("Create a Role")}
                     />
                 </label>
-
-                {/*IZDELAVA NOVE VLOGE*/}
-                {selected === "Edit / Create" ?
-                    <>
-                        {skillArr.map(e => {
-                            return (
-                                <div key={e.skill + "SkillKey"}>
-                                    <Checkbox
-                                        checkId={e.skill.replace(" ", "") + "Skill"}
-                                        checkClass={"jobSkill"}
-                                        afterText={e.skill}
-                                        afterChildClass={`skillStat ${"skillStat" + e.stat}`}
-                                        preChecked={false}
-                                        limit={{
-                                            current: jobSkillsChecked,
-                                            setCurrent: setJobSkillsChecked,
-                                            max: 9
-                                        }}>
-                                        <span>({e.stat})</span>
-                                    </Checkbox>
-                                </div>
-                            )
-                        })}
-                    </> :
+                {role ?
+                    <>{skillArr.map(e => {
+                        return (
+                            <div key={e.skill + "SkillKey"}>
+                                <Checkbox
+                                    checkId={e.skill.replace(" ", "") + "Skill"}
+                                    checkClass={"jobSkill"}
+                                    afterText={e.skill}
+                                    afterChildClass={`skillStat ${"skillStat" + e.stat}`}
+                                    preChecked={role.defSkill.includes(e.skill)}
+                                    limit={{
+                                        current: jobSkillsChecked,
+                                        setCurrent: setJobSkillsChecked,
+                                        max: 9
+                                    }}>
+                                    <span>({e.stat})</span>
+                                </Checkbox>
+                            </div>
+                        )
+                    })}</> :
                     <></>}
 
                 {/*GUMBI ZA FORM*/}
@@ -113,7 +134,7 @@ export default function Make() {
                         <button
                             className={"formBtn colFlex"}
                             type={"reset"}
-                            onClick={() => setSelected("")}>
+                            onClick={() => setRole(undefined)}>
                             Reset
                         </button>
                         <button
