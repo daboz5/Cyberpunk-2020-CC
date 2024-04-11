@@ -13,4 +13,10 @@ type Skill = {
     oridinalOrFortressDescription: string
 }
 
-export { Role, Skill }
+interface BasicRole {
+    handle: string,
+    age: string,
+    skills: string[]
+}
+
+export { Role, Skill, BasicRole }

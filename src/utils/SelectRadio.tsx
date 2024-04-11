@@ -58,7 +58,7 @@ export default function SelectRadio(
                         type={"radio"}
                         value={""}
                         onClick={() => {
-                            setSelected("")
+                            setSelected(undefined)
                             disableTillClicked();
                         }}>
                     </input>

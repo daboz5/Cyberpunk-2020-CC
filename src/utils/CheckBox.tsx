@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function Checkbox(
-    { checkId, checkClass, preChecked, beforeText, afterText, limit, beforeChildClass, afterChildClass, children }:
+    {
+        checkId, checkClass, preChecked, beforeText,
+        afterText, limit, beforeChildClass, afterChildClass,
+        onChange, children }:
         {
             checkId: string,
             checkClass: string,
@@ -17,13 +20,30 @@ export default function Checkbox(
             },
             beforeChildClass?: string,
             afterChildClass?: string,
+            onChange?(newState: {
+                add: boolean,
+                content: string
+            }): void,
             children?: JSX.Element | JSX.Element[]
         }
 ) {
 
     const [checked, setChecked] = useState(false);
 
-    useEffect(() => { setChecked(preChecked ? true : false) }, [preChecked]);
+    useEffect(() => {
+        setChecked(preChecked ? true : false);
+        if (onChange && preChecked) {
+            onChange({
+                add: true,
+                content: checkId
+            });
+        } else if (onChange && !preChecked) {
+            onChange({
+                add: false,
+                content: checkId
+            });
+        }
+    }, [preChecked]);
 
     const color = {
         on: "red",
@@ -59,6 +79,12 @@ export default function Checkbox(
                         els[i].style.backgroundColor = color.off;
                     }
                 }
+                if (onChange) {
+                    onChange({
+                        add: !checked,
+                        content: checkId
+                    });
+                }
             } else if (newNum >= limit.max) {
                 for (let i = 0; i < els.length; i++) {
                     const elColor = els[i].style.backgroundColor;
@@ -66,13 +92,19 @@ export default function Checkbox(
                         els[i].style.backgroundColor = color.disable
                     }
                 }
+                if (onChange) {
+                    onChange({
+                        add: !checked,
+                        content: checkId
+                    });
+                }
             }
         }
     }
 
     const handleEnter = () => {
         const el = document.getElementById(checkId);
-        const scale = "scale(105%)"
+        const scale = "scale(110%)"
         const shadow = "inset 0 0 3px 1px black, inset 0 0 1px 1px black"
         if (el) {
             el.style.transform = scale
@@ -121,7 +153,9 @@ export default function Checkbox(
                 style={{
                     backgroundColor: checked ?
                         color.on :
-                        color.off
+                        color.off && limit?.current !== limit?.max ?
+                            color.off :
+                            color.disable
                 }}
                 onClick={() => handleClick()}
                 onMouseOver={() => handleEnter()}

@@ -178,3 +178,24 @@
 .skillStatTECH {
     color: rgb(224, 60, 0);
 }
+
+.upBtn {
+    position: fixed;
+    right: 20px;
+    bottom: 15px;
+    opacity: 0;
+    color: #1a1a1a;
+    font-weight: 800;
+    border: 5px solid #1a1a1a;
+    border-radius: 15px;
+    padding: 10px 15px;
+    background-color: rgb(255, 196, 0);
+}
+
+.upBtn:hover {
+    border-color: #424242;
+}
+
+.upBtn:active {
+    transform: scale(100%);
+}
