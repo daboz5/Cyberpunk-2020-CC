@@ -1,23 +1,47 @@
 import { useState } from "react";
-import { BasicRole, Role } from "../types";
+import { BasicRole, Role, Skill } from "../types";
 import useDatabase from "./useDatabase";
+import toast from "react-hot-toast";
 
 export default function useMake() {
 
-    const { roleArr } = useDatabase();
+    const { roleArr, skillArr } = useDatabase();
 
+    const [skills, setSkills] = useState<Skill[]>(skillArr);
     const [role, setRole] = useState<Role | undefined>(undefined);
     const [formData, setFormData] = useState<BasicRole>({
         handle: "",
         age: "",
-        skills: []
+        skills: [],
+        role: "",
+        roleSkill: "",
+        roleInfo: "",
+        filter: ""
     });
 
-    {/*CHANGE ROLE*/ }
+    { /*SCROLL*/ }
+    const scrollFunction = () => {
+        const btn = document.getElementById("upBtnRole");
+        if (btn && role) {
+            if (document.body.scrollTop > 450 || document.documentElement.scrollTop > 450) {
+                btn.style.opacity = "1";
+            } else {
+                btn.style.opacity = "0";
+            }
+        }
+    }
+
+    { /*CHANGE ROLE*/ }
     const changeRole = (name: string | undefined) => {
         const filterRole = roleArr.filter(e => e.job === name)[0];
         if (filterRole) {
-            setRole(filterRole ? filterRole : undefined);
+            setRole(filterRole);
+            setFormData(prevData => ({
+                ...prevData,
+                role: filterRole.job,
+                roleSkill: filterRole.skill,
+                roleInfo: filterRole.description
+            }));
         } else if (name === "Create a Role") {
             setRole({
                 skill: "",
@@ -26,18 +50,30 @@ export default function useMake() {
                 defSkill: [],
                 oridinalOrFortressDescription: ""
             })
+            setFormData(prevData => ({
+                ...prevData,
+                role: "",
+                roleSkill: "",
+                roleInfo: ""
+            }));
         } else {
             setRole(undefined)
+            setFormData(prevData => ({
+                ...prevData,
+                role: "",
+                roleSkill: "",
+                roleInfo: ""
+            }));
         }
     }
 
-    {/*HANDLE AND AGE INPUT*/ }
+    { /*HANDLE, AGE AND ROLE INPUT*/ }
     const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData(prevData => ({ ...prevData, [name]: value }));
     }
 
-    {/*CHECKBOXES*/ }
+    { /*CHECKBOXES*/ }
     const handleCheckboxChange = (
         { add, content }: { add: boolean, content: string }
     ) => {
@@ -54,22 +90,31 @@ export default function useMake() {
         }
     }
 
-    {/*SCROLL*/ }
-    const scrollFunction = () => {
-        const btn = document.getElementById("upBtnRole");
-        if (btn && role) {
-            if (document.body.scrollTop > 450 || document.documentElement.scrollTop > 450) {
-                btn.style.opacity = "1";
-            } else {
-                btn.style.opacity = "0";
-            }
-        }
+    { /*FILTER SKILLS*/ }
+    const skillFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
+        const filteredSkills = skillArr.filter(skill => {
+            const stringedSkill = `${skill.stat} ${skill.skill} ${skill.description} ${skill.oridinalOrFortressDescription}`
+            if (stringedSkill.includes(value)) { return skill }
+        });
+
+        setFormData(prevData => ({ ...prevData, filter: value }));
+        if (formData.filter) { setSkills(filteredSkills) }
+        else { setSkills(skillArr) }
     }
 
     {/*SUBMIT*/ }
     const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(formData)
+
+        if (formData.skills.length === 9) {
+            console.log(formData)
+        } else {
+            toast.error(
+                `To continue you need to pick 9 skills.
+                If you can not find an appropriate skill, you can create or delete them later.`
+            )
+        }
     }
 
     return {
@@ -80,6 +125,8 @@ export default function useMake() {
         setFormData,
         handleFormChange,
         handleCheckboxChange,
+        skills,
+        skillFilter,
         scrollFunction,
         handleSubmit,
     }

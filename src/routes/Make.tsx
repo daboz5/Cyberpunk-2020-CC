@@ -4,7 +4,7 @@ import useDatabase from "../utils/useDatabase";
 import useMake from "../utils/useMake";
 import SelectRadio from "../utils/SelectRadio";
 import Checkbox from "../utils/CheckBox";
-import "./Make.css"
+import "./routesCSS/Make.css"
 
 export default function Make() {
 
@@ -16,11 +16,13 @@ export default function Make() {
         setFormData,
         handleFormChange,
         handleCheckboxChange,
+        skills,
+        skillFilter,
         scrollFunction,
         handleSubmit
     } = useMake();
 
-    const { roleArr, skillArr } = useDatabase();
+    const { roleArr } = useDatabase();
 
     useEffect(() => { window.onscroll = function () { scrollFunction() } }, []);
     useEffect(() => {
@@ -61,9 +63,8 @@ export default function Make() {
                         placeholder={"Example: Silver"}
                         autoComplete={"off"}
                         onChange={handleFormChange}
-                        // value={formData.handle}
-                        value="Silver"
-                        maxLength={25}
+                        value={formData.handle}
+                        maxLength={20}
                         required>
                     </input>
                 </label>
@@ -81,8 +82,7 @@ export default function Make() {
                         autoComplete={"off"}
                         min={16}
                         max={120}
-                        // value={formData.age}
-                        value="20"
+                        value={formData.age}
                         onChange={handleFormChange}
                         required>
                     </input>
@@ -101,26 +101,94 @@ export default function Make() {
                         selection={roleArr.map(role => role.job).concat("Create a Role")}
                     />
                 </label>
+                {role?.job === "Create a Role" ?
+                    <>
+                        {/* IZDELAJ ROLE */}
+                        <label className={"formInput colFlex"}>
+                            <span className={"formInputTitle"}>
+                                Role
+                            </span>
+                            <input
+                                name="role"
+                                type={"text"}
+                                className={"formInputField "}
+                                placeholder={"Example: Detective"}
+                                autoComplete={"off"}
+                                onChange={handleFormChange}
+                                value={formData.role}
+                                maxLength={20}
+                                required>
+                            </input>
+                        </label>
+                        <label className={"formInput colFlex"}>
+                            <span className={"formInputTitle"}>
+                                Role
+                            </span>
+                            <input
+                                name="roleSkill"
+                                type={"text"}
+                                className={"formInputField "}
+                                placeholder={"Example: Cluecomotive"}
+                                autoComplete={"off"}
+                                onChange={handleFormChange}
+                                value={formData.roleSkill}
+                                maxLength={20}
+                                required>
+                            </input>
+                        </label>
+                        <label className={"formInput colFlex"}>
+                            <span className={"formInputTitle"}>
+                                Role
+                            </span>
+                            <input
+                                name="roleInfo"
+                                type={"text"}
+                                className={"formInputField "}
+                                placeholder={"Example: Informative description ..."}
+                                autoComplete={"off"}
+                                onChange={handleFormChange}
+                                value={formData.roleInfo}
+                                minLength={3}
+                                maxLength={100}
+                                required>
+                            </input>
+                        </label>
+                    </> :
+                    <></>}
                 {role ?
-                    <>{skillArr.map(e => {
-                        return (
-                            <div key={e.skill + "SkillKey"}>
-                                <Checkbox
-                                    checkId={e.skill.replace(" ", "") + "Skill"}
-                                    checkClass={"jobSkill"}
-                                    afterText={e.skill}
-                                    afterChildClass={`skillStat ${"skillStat" + e.stat}`}
-                                    preChecked={formData.skills.includes(e.skill)}
-                                    onChange={handleCheckboxChange}
-                                    limit={{
-                                        current: formData.skills.length,
-                                        max: 9
-                                    }}>
-                                    <span>({e.stat})</span>
-                                </Checkbox>
-                            </div>
-                        )
-                    })}</> :
+                    <>
+                        {/* FILTER SKILLS */}
+                        <input
+                            name="filter"
+                            type={"text"}
+                            className={"formInputField roleSkillFilter"}
+                            placeholder={"Filter: Acting / art / EMP"}
+                            autoComplete={"off"}
+                            onChange={skillFilter}
+                            value={formData.filter}
+                            maxLength={20}>
+                        </input>
+                        {/* IZBERI SKILLE VLOGE */}
+                        {skills.map(e => {
+                            return (
+                                <div key={e.skill + "SkillKey"}>
+                                    <Checkbox
+                                        checkId={e.skill.replace(" ", "") + "Skill"}
+                                        checkClass={"jobSkill"}
+                                        afterText={e.skill}
+                                        afterChildClass={`skillStat ${"skillStat" + e.stat}`}
+                                        preChecked={formData.skills.includes(e.skill)}
+                                        onChange={handleCheckboxChange}
+                                        limit={{
+                                            current: formData.skills.length,
+                                            max: 9
+                                        }}>
+                                        <span>({e.stat})</span>
+                                    </Checkbox>
+                                </div>
+                            )
+                        })}
+                    </> :
                     <></>}
 
                 <button

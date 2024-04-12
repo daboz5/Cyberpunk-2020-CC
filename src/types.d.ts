@@ -16,7 +16,11 @@ type Skill = {
 interface BasicRole {
     handle: string,
     age: string,
-    skills: string[]
+    skills: string[],
+    role: string,
+    roleSkill: string,
+    roleInfo: string,
+    filter: string
 }
 
 export { Role, Skill, BasicRole }

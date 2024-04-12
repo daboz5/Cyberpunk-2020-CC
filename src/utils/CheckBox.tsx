@@ -120,7 +120,7 @@ export default function Checkbox(
     }
 
     return (
-        <label
+        <div
             className={`${checkClass} defMouse flex alignFlex`} >
 
             {beforeChildClass &&
@@ -180,6 +180,6 @@ export default function Checkbox(
                     {children}
                 </span>}
 
-        </label>
+        </div>
     )
 }

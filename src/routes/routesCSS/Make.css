@@ -128,6 +128,22 @@
     color: rgb(225, 225, 225);
 }
 
+/*FILTER*/
+
+.roleSkillFilter {
+    border-bottom: 4px solid rgba(255, 165, 0, 0.5);
+    padding: 0 0 0.5em;
+    transition: 0.3s;
+}
+
+.roleSkillFilter:hover {
+    border-bottom: 4px solid rgba(255, 165, 0, 1);
+}
+
+.roleSkillFilter:focus {
+    border-bottom: 4px solid rgba(255, 165, 0, 1);
+}
+
 /*CHECKBOXES*/
 
 .jobSkill {
