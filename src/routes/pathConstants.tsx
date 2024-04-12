@@ -6,6 +6,9 @@ const PathConstants = {
     PLAY: {
         DEF: "play",
     },
+    RULES: {
+        DEF: "rules",
+    },
 }
 
 export default PathConstants
