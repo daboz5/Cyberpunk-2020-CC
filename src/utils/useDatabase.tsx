@@ -122,7 +122,7 @@ export default function useDatabase() {
     }, {
         skill: "Brawling",
         stat: "REF",
-        description: "Brawling is not an martial art you learned from your betters, but instead a skill that you got fighting on the strees or debating your next or last fighting experience. It is a bit chaotic, but as long as it get's the job done, you won't complain.",
+        description: "Brawling is not an martial art you learned from your betters, but instead a skill that you got fighting on the strees or debating your next or last fighting experience. It is a bit chaotic, but as long as it get's the job done, you won't complain. It is also the only skill that can be used for a 'mass (unleathal) combat'.",
         oridinalOrFortressDescription: "Brawling is the skill of fighting man to man with fist, feet and other parts of the body, it also covers Melee which is the ability to use knives, axes, clubs and other hand to hand weapons in combat. Brawling is not a trained skill - it is the basic skill of defending oneself. Unlike Martial Arts, there are no specialized attacks and no damage bonus per level. It does allow for all the same maneuvers as a Martial art, but provides no bonus to any of them. If the character has the Savage Role, he may add +1 per level of Rampage to Brawl/Melee damage.",
     }, {
         skill: "Burglary",

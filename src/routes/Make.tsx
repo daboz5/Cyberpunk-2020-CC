@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
-import { BasicRole, Role } from "../types";
-import useCyberStore from "../useCyberStore";
+import { useEffect } from "react";
 import useDatabase from "../utils/useDatabase";
+import useMake from "../utils/useMake";
 import SelectRadio from "../utils/SelectRadio";
 import Checkbox from "../utils/CheckBox";
 import "./Make.css"
@@ -10,87 +9,26 @@ import "./Make.css"
 export default function Make() {
 
     const {
-        jobSkillsChecked,
-        setJobSkillsChecked,
-    } = useCyberStore();
+        role,
+        setRole,
+        changeRole,
+        formData,
+        setFormData,
+        handleFormChange,
+        handleCheckboxChange,
+        scrollFunction,
+        handleSubmit
+    } = useMake();
     const { roleArr, skillArr } = useDatabase();
-
-    const [role, setRole] = useState<Role | undefined>(undefined);
-    const [formData, setFormData] = useState<BasicRole>({
-        handle: "",
-        age: "",
-        skills: []
-    });
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData(prevData => ({ ...prevData, [name]: value }));
-    }
-
-
-    const handleCheckChange = useCallback((
-        { add, content }: { add: boolean, content: string }
-    ) => {
-        const extract = content.slice(0, content.length - 5);
-
-        if (add && !formData.skills.includes(extract)) {
-            const arr = formData.skills;
-            arr.push(extract);
-            setFormData(prevData => ({ ...prevData, skills: arr }));
-        }
-
-        else if (!add && formData.skills.includes(extract)) {
-            const arr = formData.skills.filter(e => e !== extract);
-            setFormData(prevData => ({ ...prevData, skills: arr }));
-        }
-    }, [formData.skills])
-
-
-    const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log(formData)
-    }
 
     useEffect(() => { window.onscroll = function () { scrollFunction() } }, []);
     useEffect(() => {
         window.onscroll = function () { scrollFunction() }
-        if (role) { setFormData(prevData => ({ ...prevData, skills: role.defSkill })) }
+        if (role) {
+            setFormData(prevData => ({ ...prevData, skills: role.defSkill }))
+            console.log(formData)
+        }
     }, [role]);
-
-    const scrollFunction = () => {
-        const btn = document.getElementById("upBtnRole");
-        if (btn && role) {
-            if (document.body.scrollTop > 450 || document.documentElement.scrollTop > 450) {
-                btn.style.opacity = "1";
-            } else {
-                btn.style.opacity = "0";
-            }
-        }
-    }
-
-    const moveToTop = () => {
-        document.body.scrollTop = 350;
-        document.documentElement.scrollTop = 350;
-    }
-
-    const changeRole = (name: string | undefined) => {
-        const filterRole = roleArr.filter(e => e.job === name)[0];
-        if (filterRole) {
-            setJobSkillsChecked(9);
-            setRole(filterRole ? filterRole : undefined);
-        } else if (name === "Create a Role") {
-            setJobSkillsChecked(0);
-            setRole({
-                skill: "",
-                job: "Create a Role",
-                description: "",
-                defSkill: [],
-                oridinalOrFortressDescription: ""
-            })
-        } else {
-            setRole(undefined)
-        }
-    }
 
     return (
         <>
@@ -143,8 +81,9 @@ export default function Make() {
                         className={"formInputField "}
                         placeholder={"Example: Silver"}
                         autoComplete={"off"}
-                        onChange={handleChange}
-                        value={formData.handle}
+                        onChange={handleFormChange}
+                        // value={formData.handle}
+                        value="Silver"
                         maxLength={25}
                         required>
                     </input>
@@ -163,8 +102,9 @@ export default function Make() {
                         autoComplete={"off"}
                         min={16}
                         max={120}
-                        value={formData.age}
-                        onChange={handleChange}
+                        // value={formData.age}
+                        value="20"
+                        onChange={handleFormChange}
                         required>
                     </input>
                 </label>
@@ -191,11 +131,10 @@ export default function Make() {
                                     checkClass={"jobSkill"}
                                     afterText={e.skill}
                                     afterChildClass={`skillStat ${"skillStat" + e.stat}`}
-                                    preChecked={role.defSkill.includes(e.skill)}
-                                    onChange={handleCheckChange}
+                                    preChecked={formData.skills.includes(e.skill)}
+                                    onChange={handleCheckboxChange}
                                     limit={{
-                                        current: jobSkillsChecked,
-                                        setCurrent: setJobSkillsChecked,
+                                        current: formData.skills.length,
                                         max: 9
                                     }}>
                                     <span>({e.stat})</span>
@@ -209,7 +148,10 @@ export default function Make() {
                     id="upBtnRole"
                     className="upBtn"
                     type={"button"}
-                    onClick={() => moveToTop()}>
+                    onClick={() => {
+                        document.body.scrollTop = 350;
+                        document.documentElement.scrollTop = 350;
+                    }}>
                     Back Up
                 </button>
 

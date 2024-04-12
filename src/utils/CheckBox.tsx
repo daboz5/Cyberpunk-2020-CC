@@ -15,7 +15,6 @@ export default function Checkbox(
             afterText?: string,
             limit?: {
                 current: number,
-                setCurrent(newState: number): void,
                 max: number
             },
             beforeChildClass?: string,
@@ -28,6 +27,7 @@ export default function Checkbox(
         }
 ) {
 
+
     const [checked, setChecked] = useState(false);
 
     useEffect(() => {
@@ -35,12 +35,12 @@ export default function Checkbox(
         if (onChange && preChecked) {
             onChange({
                 add: true,
-                content: checkId
+                content: afterText ? afterText : beforeText ? beforeText : ""
             });
         } else if (onChange && !preChecked) {
             onChange({
                 add: false,
-                content: checkId
+                content: afterText ? afterText : beforeText ? beforeText : ""
             });
         }
     }, [preChecked]);
@@ -52,14 +52,7 @@ export default function Checkbox(
     }
 
     const handleClick = () => {
-        if (limit) {
-            handleLimit()
-        } else {
-            setChecked(!checked);
-        }
-    }
 
-    const handleLimit = () => {
         if (limit) {
             const els: any = document.getElementsByClassName(checkClass + "Checkbox");
             const oldNum = limit.current;
@@ -67,7 +60,6 @@ export default function Checkbox(
 
             if (newNum <= limit.max) {
                 setChecked(!checked);
-                limit.setCurrent(newNum)
             } else {
                 toast.error(`Max ${limit.max} skill${limit.max === 1 ? "" : "s"} can be picked.`)
             }
@@ -82,9 +74,10 @@ export default function Checkbox(
                 if (onChange) {
                     onChange({
                         add: !checked,
-                        content: checkId
+                        content: afterText ? afterText : beforeText ? beforeText : ""
                     });
                 }
+
             } else if (newNum >= limit.max) {
                 for (let i = 0; i < els.length; i++) {
                     const elColor = els[i].style.backgroundColor;
@@ -92,13 +85,17 @@ export default function Checkbox(
                         els[i].style.backgroundColor = color.disable
                     }
                 }
-                if (onChange) {
+                if (onChange && newNum === limit.max) {
                     onChange({
                         add: !checked,
-                        content: checkId
+                        content: afterText ? afterText : beforeText ? beforeText : ""
                     });
                 }
             }
+        }
+
+        else {
+            setChecked(!checked);
         }
     }
 
@@ -130,7 +127,7 @@ export default function Checkbox(
                 <span
                     id={"beforeChild" + checkId}
                     className={`actMouse ${beforeChildClass}`}
-                    onClick={() => setChecked(!checked)}
+                    onClick={() => handleClick()}
                     onMouseOver={() => handleEnter()}
                     onMouseLeave={() => handleLeave()}>
                     {children}
@@ -140,7 +137,7 @@ export default function Checkbox(
                 <p
                     id={"before" + checkId}
                     className="actMouse"
-                    onClick={() => setChecked(!checked)}
+                    onClick={() => handleClick()}
                     onMouseOver={() => handleEnter()}
                     onMouseLeave={() => handleLeave()}>
                     {beforeText}
@@ -166,7 +163,7 @@ export default function Checkbox(
                 <p
                     id={"after" + checkId}
                     className="actMouse"
-                    onClick={() => setChecked(!checked)}
+                    onClick={() => handleClick()}
                     onMouseOver={() => handleEnter()}
                     onMouseLeave={() => handleLeave()}>
                     {afterText}
@@ -177,7 +174,7 @@ export default function Checkbox(
                 <span
                     id={"afterChild" + checkId}
                     className={`actMouse ${afterChildClass}`}
-                    onClick={() => setChecked(!checked)}
+                    onClick={() => handleClick()}
                     onMouseOver={() => handleEnter()}
                     onMouseLeave={() => handleLeave()}>
                     {children}
