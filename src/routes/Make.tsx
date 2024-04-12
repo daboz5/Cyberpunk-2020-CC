@@ -19,15 +19,13 @@ export default function Make() {
         scrollFunction,
         handleSubmit
     } = useMake();
+
     const { roleArr, skillArr } = useDatabase();
 
     useEffect(() => { window.onscroll = function () { scrollFunction() } }, []);
     useEffect(() => {
         window.onscroll = function () { scrollFunction() }
-        if (role) {
-            setFormData(prevData => ({ ...prevData, skills: role.defSkill }))
-            console.log(formData)
-        }
+        if (role) { setFormData(prevData => ({ ...prevData, skills: role.defSkill })) }
     }, [role]);
 
     return (
@@ -50,25 +48,6 @@ export default function Make() {
                 id="form"
                 className={"colFlex"}
                 onSubmit={handleSubmit}>
-
-                {/*GUMBI ZA FORM*/}
-                <div
-                    id="formBtnBox"
-                    className={"colFlex"}>
-                    <div>
-                        <button
-                            className={"formBtn colFlex"}
-                            type={"reset"}
-                            onClick={() => setRole(undefined)}>
-                            Reset
-                        </button>
-                        <button
-                            className={"formBtn colFlex"}
-                            type={"submit"}>
-                            Confirm
-                        </button>
-                    </div>
-                </div>
 
                 {/*IZBERI HANDLE*/}
                 <label className={"formInput colFlex"}>
@@ -155,7 +134,24 @@ export default function Make() {
                     Back Up
                 </button>
 
-
+                {/*GUMBI ZA FORM*/}
+                <div
+                    id="formBtnBox"
+                    className={"colFlex"}>
+                    <div>
+                        <button
+                            className={"formBtn colFlex"}
+                            type={"reset"}
+                            onClick={() => setRole(undefined)}>
+                            Reset
+                        </button>
+                        <button
+                            className={"formBtn colFlex"}
+                            type={"submit"}>
+                            Confirm
+                        </button>
+                    </div>
+                </div>
 
             </form>
         </>

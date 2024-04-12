@@ -42,7 +42,6 @@ export default function useMake() {
         { add, content }: { add: boolean, content: string }
     ) => {
 
-        // console.log(add, content, formData.skills)
         if (add && !formData.skills.includes(content)) {
             const arr = formData.skills;
             arr.push(content);
