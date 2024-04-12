@@ -101,7 +101,7 @@ export default function Make() {
                         selection={roleArr.map(role => role.job).concat("Create a Role")}
                     />
                 </label>
-                {role?.job === "Create a Role" ?
+                {role?.job === "Create a Role" &&
                     <>
                         {/* IZDELAJ ROLE */}
                         <label className={"formInput colFlex"}>
@@ -122,7 +122,7 @@ export default function Make() {
                         </label>
                         <label className={"formInput colFlex"}>
                             <span className={"formInputTitle"}>
-                                Role
+                                Special Ability
                             </span>
                             <input
                                 name="roleSkill"
@@ -138,7 +138,7 @@ export default function Make() {
                         </label>
                         <label className={"formInput colFlex"}>
                             <span className={"formInputTitle"}>
-                                Role
+                                Special Ability Description
                             </span>
                             <input
                                 name="roleInfo"
@@ -153,9 +153,8 @@ export default function Make() {
                                 required>
                             </input>
                         </label>
-                    </> :
-                    <></>}
-                {role ?
+                    </>}
+                {role &&
                     <>
                         {/* FILTER SKILLS */}
                         <input
@@ -188,9 +187,9 @@ export default function Make() {
                                 </div>
                             )
                         })}
-                    </> :
-                    <></>}
+                    </>}
 
+                {/*FAST UP BTN*/}
                 <button
                     id="upBtnRole"
                     className="upBtn"
