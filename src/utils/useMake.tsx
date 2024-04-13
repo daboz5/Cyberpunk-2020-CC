@@ -1,23 +1,28 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { BasicRole, Role, Skill } from "../types";
-import useDatabase from "./useDatabase";
 import toast from "react-hot-toast";
+import useDatabase from "./useDatabase";
+import useCyberStore from "../useCyberStore";
 
 export default function useMake() {
 
+    const navigate = useNavigate();
+    const { setBasicInfo } = useCyberStore();
     const { roleArr, skillArr } = useDatabase();
 
     const [skills, setSkills] = useState<Skill[]>(skillArr);
     const [role, setRole] = useState<Role | undefined>(undefined);
     const [formData, setFormData] = useState<BasicRole>({
         handle: "",
-        age: "",
+        age: 16,
         skills: [],
         role: "",
         roleSkill: "",
         roleInfo: "",
         filter: ""
     });
+
 
     { /*SCROLL*/ }
     const scrollFunction = () => {
@@ -29,6 +34,16 @@ export default function useMake() {
                 btn.style.opacity = "0";
             }
         }
+    }
+
+    const scrollToBottom = () => {
+        const body = document.body
+        const html = document.documentElement;
+        const height = Math.max(
+            body.scrollHeight, body.offsetHeight,
+            html.clientHeight, html.scrollHeight, html.offsetHeight);
+        document.body.scrollTop = height;
+        document.documentElement.scrollTop = height;
     }
 
     { /*CHANGE ROLE*/ }
@@ -108,7 +123,10 @@ export default function useMake() {
         e.preventDefault();
 
         if (formData.skills.length === 9) {
-            console.log(formData)
+            const result = formData;
+            delete result.filter;
+            setBasicInfo(result);
+            navigate("/make/stats");
         } else {
             toast.error(
                 `To continue you need to pick 9 skills.
@@ -128,6 +146,7 @@ export default function useMake() {
         skills,
         skillFilter,
         scrollFunction,
+        scrollToBottom,
         handleSubmit,
     }
 }

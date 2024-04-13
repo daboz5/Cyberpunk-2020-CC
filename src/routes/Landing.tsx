@@ -13,7 +13,7 @@ export default function Landing() {
                 <nav className="flex colFlex alignFlex">
                     <div className="flex">
                         <Link
-                            to="/make">
+                            to="/make/basic">
                             <button className="navBtn">
                                 Make
                             </button>

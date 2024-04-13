@@ -1,20 +1,28 @@
-// import { create } from 'zustand';
+import { create } from 'zustand';
+import { BasicRole } from './types';
 
-// type State = {
-//     jobSkillsChecked: number
-// }
+type State = {
+    basicInfo: BasicRole
+}
 
-// type Action = {
-//     setJobSkillsChecked(newState: number): void,
-// }
+type Action = {
+    setBasicInfo(newState: BasicRole): void,
+}
 
-// const useCyberStore = create<State & Action>(set => ({
+const useCyberStore = create<State & Action>(set => ({
 
-//     jobSkillsChecked: 0,
-//     setJobSkillsChecked: (newState) => set(() => ({
-//         jobSkillsChecked: newState
-//     })),
+    basicInfo: {
+        handle: "",
+        age: 0,
+        skills: [],
+        role: "",
+        roleSkill: "",
+        roleInfo: "",
+    },
+    setBasicInfo: (newState) => set(() => ({
+        basicInfo: newState
+    })),
 
-// }))
+}))
 
-// export default useCyberStore;
+export default useCyberStore;
