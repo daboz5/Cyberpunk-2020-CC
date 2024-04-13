@@ -27,7 +27,7 @@ export default function Make() {
                         </button>
                     </Link>
                     <Link
-                        className="flex growFlex blockMouse"
+                        className={`flex growFlex ${!basicInfo.role && "blockMouse"}`}
                         to="/make/stats"
                         style={{
                             filter: `brightness(${basicInfo.role ? "100%" : "50%"})`
@@ -37,7 +37,7 @@ export default function Make() {
                         </button>
                     </Link>
                     <Link
-                        className="flex growFlex blockMouse"
+                        className={`flex growFlex ${!basicInfo.role && "blockMouse"}`}
                         to="/make/skills"
                         style={{
                             filter: `brightness(${basicInfo.role ? "100%" : "30%"})`

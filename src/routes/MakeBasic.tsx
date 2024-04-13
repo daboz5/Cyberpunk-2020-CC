@@ -3,6 +3,7 @@ import useDatabase from "../utils/useDatabase";
 import useMake from "../utils/useMake";
 import SelectRadio from "../utils/SelectRadio";
 import Checkbox from "../utils/CheckBox";
+import useDice from "../utils/useDice";
 
 export default function MakeBasic() {
 
@@ -12,7 +13,7 @@ export default function MakeBasic() {
         changeRole,
         formData,
         setFormData,
-        handleFormChange,
+        handleBasicFormChange,
         handleCheckboxChange,
         skills,
         skillFilter,
@@ -22,6 +23,8 @@ export default function MakeBasic() {
     } = useMake();
 
     const { roleArr } = useDatabase();
+
+    const { dSix, sumArr } = useDice();
 
     useEffect(() => { window.onscroll = function () { scrollFunction() } }, []);
     useEffect(() => {
@@ -37,8 +40,7 @@ export default function MakeBasic() {
                 (basic)
             </h3>
             <form
-                id="form"
-                className={"colFlex"}
+                className={"form colFlex"}
                 onSubmit={handleSubmit}>
 
                 {/*IZBERI HANDLE*/}
@@ -52,7 +54,7 @@ export default function MakeBasic() {
                         className={"formInputField "}
                         placeholder={"Example: Silver"}
                         autoComplete={"off"}
-                        onChange={handleFormChange}
+                        onChange={handleBasicFormChange}
                         value={formData.handle}
                         maxLength={20}
                         required>
@@ -73,9 +75,17 @@ export default function MakeBasic() {
                         min={16}
                         max={120}
                         value={formData.age}
-                        onChange={handleFormChange}
+                        onChange={handleBasicFormChange}
                         required>
                     </input>
+                    <button
+                        className={"formBtn colFlex"}
+                        type={"button"}
+                        onClick={() => {
+                            setFormData(prevData => ({ ...prevData, age: (16 + sumArr(dSix(2))) }))
+                        }}>
+                        Roll for age ( 16 + 2d6 )
+                    </button>
                 </label>
 
 
@@ -105,7 +115,7 @@ export default function MakeBasic() {
                                 className={"formInputField "}
                                 placeholder={"Example: Detective"}
                                 autoComplete={"off"}
-                                onChange={handleFormChange}
+                                onChange={handleBasicFormChange}
                                 value={formData.role}
                                 maxLength={20}
                                 required>
@@ -121,7 +131,7 @@ export default function MakeBasic() {
                                 className={"formInputField "}
                                 placeholder={"Example: Cluecomotive"}
                                 autoComplete={"off"}
-                                onChange={handleFormChange}
+                                onChange={handleBasicFormChange}
                                 value={formData.roleSkill}
                                 maxLength={20}
                                 required>
@@ -137,7 +147,7 @@ export default function MakeBasic() {
                                 className={"formInputField "}
                                 placeholder={"Example: Informative description ..."}
                                 autoComplete={"off"}
-                                onChange={handleFormChange}
+                                onChange={handleBasicFormChange}
                                 value={formData.roleInfo}
                                 minLength={3}
                                 maxLength={100}
@@ -193,16 +203,15 @@ export default function MakeBasic() {
                     className="upBtn"
                     type={"button"}
                     onClick={() => {
-                        document.body.scrollTop = 350;
-                        document.documentElement.scrollTop = 350;
+                        document.body.scrollTop = 500;
+                        document.documentElement.scrollTop = 500;
                     }}>
                     Back Up
                 </button>
 
                 {/*GUMBI ZA FORM*/}
                 <div
-                    id="formBtnBox"
-                    className={"colFlex"}>
+                    className={"formBtnBox colFlex"}>
                     <span className="formNav">
                         <button
                             className={"formBtn colFlex"}

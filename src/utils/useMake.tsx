@@ -83,7 +83,7 @@ export default function useMake() {
     }
 
     { /*HANDLE, AGE AND ROLE INPUT*/ }
-    const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleBasicFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData(prevData => ({ ...prevData, [name]: value }));
     }
@@ -141,7 +141,7 @@ export default function useMake() {
         changeRole,
         formData,
         setFormData,
-        handleFormChange,
+        handleBasicFormChange,
         handleCheckboxChange,
         skills,
         skillFilter,
