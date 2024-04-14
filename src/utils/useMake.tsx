@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { BasicRole, Role, Skill } from "../types";
-import toast from "react-hot-toast";
+import { BasicRole, BasicStats, Role, Skill } from "../types";
 import useDatabase from "./useDatabase";
 import useCyberStore from "../useCyberStore";
+import useDice from "./useDice";
+import toast from "react-hot-toast";
 
 export default function useMake() {
 
     const navigate = useNavigate();
-    const { setBasicInfo } = useCyberStore();
+    const { setBasicInfo, setStatsInfo } = useCyberStore();
     const { roleArr, skillArr } = useDatabase();
+    const { dTen } = useDice();
 
     const [skills, setSkills] = useState<Skill[]>(skillArr);
     const [role, setRole] = useState<Role | undefined>(undefined);
@@ -23,8 +25,20 @@ export default function useMake() {
         filter: ""
     });
 
+    const [assignType, setAssignType] = useState<0 | 1 | 2>(0);
+    const [numsRolled, setNumsRolled] = useState<number[]>([]);
+    const [numToAssign, setNumToAssign] = useState<number | undefined>(undefined);
+    const [statsForm, setStatsForm] = useState({
+        body: 0,
+        cool: 0,
+        emp: 0,
+        int: 0,
+        luck: 0,
+        ref: 0,
+        tech: 0,
+    });
 
-    { /*SCROLL*/ }
+    { /*SCROLLING*/ }
     const scrollFunction = () => {
         const btn = document.getElementById("upBtnRole");
         if (btn && role) {
@@ -44,6 +58,12 @@ export default function useMake() {
             html.clientHeight, html.scrollHeight, html.offsetHeight);
         document.body.scrollTop = height;
         document.documentElement.scrollTop = height;
+    }
+
+    { /*WHEN SCROLLING PREVENT NUMBER CHANGE*/ }
+    const numberInputOnWheelPreventChange = (e: React.WheelEvent<HTMLInputElement>) => {
+        e.currentTarget.blur()
+        e.stopPropagation()
     }
 
     { /*CHANGE ROLE*/ }
@@ -80,6 +100,25 @@ export default function useMake() {
                 roleInfo: ""
             }));
         }
+    }
+
+    { /*CORE STATS RELATED FUNCTIONS*/ }
+    const rollForStats = (num: number) => {
+        const rollArr: number[] = [];
+        for (let i = 0; i < num; i++) {
+            const roll = dTen()[0];
+            roll > 2 ? rollArr.push(roll) : i--;
+        }
+        setNumsRolled(rollArr.sort((a, b) => a - b));
+    };
+
+    const sumStats = (info: BasicStats) => {
+        return (info.body + info.cool + info.emp + info.int + info.luck + info.ref + info.tech)
+    }
+
+    const handleStatsFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setStatsForm(prevData => ({ ...prevData, [name]: value ? Number(value) : 0 }));
     }
 
     { /*HANDLE, AGE AND ROLE INPUT*/ }
@@ -119,9 +158,8 @@ export default function useMake() {
     }
 
     {/*SUBMIT*/ }
-    const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
+    const handleBasicSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         if (formData.skills.length === 9) {
             const result = formData;
             delete result.filter;
@@ -135,7 +173,25 @@ export default function useMake() {
         }
     }
 
+    const handleStatsSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        if (sumStats(statsForm) >= 20) {
+            setStatsInfo(statsForm);
+            navigate("/make/skills");
+        } else {
+            toast.error(`To continue you need to assign at least 20 stat points.`)
+        }
+    }
+
     return {
+        statsForm,
+        setStatsForm,
+        setNumsRolled,
+        numsRolled,
+        numToAssign,
+        setNumToAssign,
+        assignType,
+        setAssignType,
         role,
         setRole,
         changeRole,
@@ -147,6 +203,11 @@ export default function useMake() {
         skillFilter,
         scrollFunction,
         scrollToBottom,
-        handleSubmit,
+        handleBasicSubmit,
+        handleStatsSubmit,
+        sumStats,
+        numberInputOnWheelPreventChange,
+        handleStatsFormChange,
+        rollForStats
     }
 }

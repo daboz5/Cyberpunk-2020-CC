@@ -215,6 +215,18 @@
     color: rgb(224, 60, 0);
 }
 
+/*STAT PICK*/
+
+.statInputFieldBox {
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.statInputField {
+    width: 100px;
+}
+
 /*GUMB ZA NAGEL PREMIK NAVZGOR*/
 
 .upBtn {

@@ -11,7 +11,12 @@ import MakeStats from "./routes/MakeStats.tsx";
 import MakeSkills from "./routes/MakeSkills.tsx";
 
 import Play from "./routes/Play.tsx";
+
 import Rules from "./routes/Rules.tsx";
+import RulesBasics from "./routes/RulesBasics.tsx";
+import RulesAdvanced from "./routes/RulesAdvanced.tsx";
+import RulesStore from "./routes/RulesStore.tsx";
+import RulesWorld from "./routes/RulesWorld.tsx";
 
 import './index.css';
 
@@ -40,6 +45,19 @@ const router = createBrowserRouter([{
   }, {
     path: PathConstants.RULES.DEF,
     element: <Rules />,
+    children: [{
+      path: PathConstants.RULES.BASICS,
+      element: <RulesBasics />,
+    }, {
+      path: PathConstants.RULES.ADVANCED,
+      element: <RulesAdvanced />,
+    }, {
+      path: PathConstants.RULES.STORE,
+      element: <RulesStore />,
+    }, {
+      path: PathConstants.RULES.WORLD,
+      element: <RulesWorld />,
+    },]
   }]
 }]);
 

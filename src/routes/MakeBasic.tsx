@@ -1,12 +1,16 @@
 import { useEffect } from "react";
 import useDatabase from "../utils/useDatabase";
 import useMake from "../utils/useMake";
+import useDice from "../utils/useDice";
 import SelectRadio from "../utils/SelectRadio";
 import Checkbox from "../utils/CheckBox";
-import useDice from "../utils/useDice";
+import useCyberStore from "../useCyberStore";
 
 export default function MakeBasic() {
 
+    const { basicInfo } = useCyberStore();
+    const { roleArr } = useDatabase();
+    const { dSix, sumArr } = useDice();
     const {
         role,
         setRole,
@@ -19,14 +23,17 @@ export default function MakeBasic() {
         skillFilter,
         scrollFunction,
         scrollToBottom,
-        handleSubmit
+        handleBasicSubmit,
+        numberInputOnWheelPreventChange
     } = useMake();
 
-    const { roleArr } = useDatabase();
-
-    const { dSix, sumArr } = useDice();
-
-    useEffect(() => { window.onscroll = function () { scrollFunction() } }, []);
+    useEffect(() => {
+        window.onscroll = function () { scrollFunction() }
+        if (basicInfo.role !== "") {
+            setFormData(basicInfo)
+            changeRole(basicInfo.role)
+        }
+    }, []);
     useEffect(() => {
         window.onscroll = function () { scrollFunction() }
         if (role) { setFormData(prevData => ({ ...prevData, skills: role.defSkill })) }
@@ -41,7 +48,7 @@ export default function MakeBasic() {
             </h3>
             <form
                 className={"form colFlex"}
-                onSubmit={handleSubmit}>
+                onSubmit={handleBasicSubmit}>
 
                 {/*IZBERI HANDLE*/}
                 <label className={"formInput colFlex"}>
@@ -76,6 +83,7 @@ export default function MakeBasic() {
                         max={120}
                         value={formData.age}
                         onChange={handleBasicFormChange}
+                        onWheel={numberInputOnWheelPreventChange}
                         required>
                     </input>
                     <button

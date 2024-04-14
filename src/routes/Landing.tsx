@@ -30,7 +30,7 @@ export default function Landing() {
                         for more easy, balanced (and fun) experience*
                     </p>
                     <Link
-                        to="/play">
+                        to="/rules">
                         <button className="navBtn">
                             Rules
                         </button>

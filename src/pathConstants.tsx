@@ -11,6 +11,10 @@ const PathConstants = {
     },
     RULES: {
         DEF: "rules",
+        BASICS: "basics",
+        ADVANCED: "advanced",
+        STORE: "store",
+        WORLD: "world"
     },
 }
 

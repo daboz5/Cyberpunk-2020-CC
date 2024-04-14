@@ -13,7 +13,7 @@ type Skill = {
     oridinalOrFortressDescription: string
 }
 
-interface BasicRole {
+type BasicRole = {
     handle: string,
     age: number,
     skills: string[],
@@ -23,4 +23,19 @@ interface BasicRole {
     filter?: string
 }
 
-export { Role, Skill, BasicRole }
+type BasicStats = {
+    body: number;
+    cool: number;
+    emp: number;
+    int: number;
+    luck: number;
+    ref: number;
+    tech: number;
+}
+
+export {
+    Role,
+    Skill,
+    BasicRole,
+    BasicStats
+}
