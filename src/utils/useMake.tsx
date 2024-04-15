@@ -148,7 +148,7 @@ export default function useMake() {
     const skillFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
         const filteredSkills = skillArr.filter(skill => {
-            const stringedSkill = `${skill.stat} ${skill.skill} ${skill.description} ${skill.oridinalOrFortressDescription}`
+            const stringedSkill = `${skill.stat} ${skill.skill} ${skill.description} ${skill.oridinalOrFortressDescription} ${skill.skill.toLowerCase()}`
             if (stringedSkill.includes(value)) { return skill }
         });
 

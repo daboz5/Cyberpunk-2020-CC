@@ -1,4 +1,4 @@
-const PathConstants = {
+const pathConstants = {
     LANDING: "/",
     MAKE: {
         DEF: "make",
@@ -18,4 +18,4 @@ const PathConstants = {
     },
 }
 
-export default PathConstants
+export default pathConstants

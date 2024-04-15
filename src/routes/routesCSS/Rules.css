@@ -6,7 +6,7 @@
 
 .navRulesBtn {
     flex-grow: 1;
-    font-size: 1.3em;
+    font-size: 1.4em;
     border-radius: 0px;
     box-shadow: inset 0 0 2px 3px orange;
     padding: 0.3em 0 0.5em;
@@ -15,4 +15,41 @@
 
 .navRulesBtn:hover {
     border-color: orange;
+}
+
+.red {
+    color: orangered;
+}
+
+/*BASICS*/
+
+#basicsContentBox {
+    padding: 1rem 1.3rem 1.6rem;
+}
+
+#basicsContentTitle {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+#basicsContentStat {
+    font-size: 1.3rem;
+    margin: 0.5rem auto 0;
+}
+
+#basicsContent {
+    font-size: 1.3em;
+    margin: 0.7rem auto 0;
+}
+
+#basicRulesFilter {
+    font-size: 1.3rem;
+}
+
+.basicsBtnBox {
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
 }

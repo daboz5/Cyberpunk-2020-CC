@@ -46,3 +46,35 @@ nav div {
     border-width: 1px;
     padding: 0.1em 0 0.3em;
 }
+
+.skillStat {
+    font-weight: 700;
+}
+
+.skillStatBODY {
+    color: rgb(0, 145, 0);
+}
+
+.skillStatCOOL {
+    color: rgb(0, 70, 220);
+}
+
+.skillStatEMP {
+    color: rgb(175, 0, 175);
+}
+
+.skillStatINT {
+    color: rgb(55, 205, 255);
+}
+
+.skillStatLUCK {
+    color: rgb(255, 95, 204);
+}
+
+.skillStatREF {
+    color: rgb(221, 221, 0);
+}
+
+.skillStatTECH {
+    color: rgb(224, 60, 0);
+}

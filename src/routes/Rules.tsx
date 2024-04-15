@@ -1,7 +1,19 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import pathConstants from "../pathConstants.tsx";
 import "./routesCSS/Rules.css"
 
 export default function Rules() {
+
+    const location = useLocation();
+    const [open, setOpen] = useState(true);
+
+    useEffect(() => {
+        location.pathname === ("/" + pathConstants.RULES.DEF) ? setOpen(true) : setOpen(false)
+    }, [location]);
+
+    const boldRed = (content: string) => { return <b className="red">{content}</b> }
+
     return (
         <>
             <nav className="colFlex">
@@ -15,34 +27,51 @@ export default function Rules() {
             </nav>
 
             <span id="navRulesBtnBox" className="colFlex">
-                <Link
-                    className="flex growFlex"
-                    to="/rules/basics">
-                    <button className="navRulesBtn ">
-                        Stats & Skills & Roles
+                {open ?
+                    <>
+                        <Link
+                            className="flex growFlex"
+                            to="/rules/basics">
+                            <button
+                                className="navRulesBtn "
+                                onClick={() => setOpen(!open)}>
+                                {boldRed("Stats")}&nbsp;&&nbsp;{boldRed("Skills")}&nbsp;&&nbsp;{boldRed("Roles")}
+                            </button>
+                        </Link>
+                        <Link
+                            className="flex growFlex"
+                            to="/rules/advanced">
+                            <button
+                                className="navRulesBtn "
+                                onClick={() => setOpen(!open)}>
+                                {boldRed("Fight")}&nbsp;&&nbsp;{boldRed("Heal")}&nbsp;&&nbsp;{boldRed("Learn")}
+                            </button>
+                        </Link>
+                        <Link
+                            className="flex growFlex"
+                            to="/rules/store">
+                            <button
+                                className="navRulesBtn "
+                                onClick={() => setOpen(!open)}>
+                                {boldRed("Items")}&nbsp;&&nbsp;{boldRed("Upgrades")}&nbsp;&&nbsp;{boldRed("Drugs")}
+                            </button>
+                        </Link>
+                        <Link
+                            className="flex growFlex"
+                            to="/rules/world">
+                            <button
+                                className="navRulesBtn "
+                                onClick={() => setOpen(!open)}>
+                                {boldRed("World")}&nbsp;&&nbsp;{boldRed("Timeline")}&nbsp;&&nbsp;{boldRed("Corps")}
+                            </button>
+                        </Link>
+                    </> :
+                    <button
+                        className="navRulesBtn "
+                        onClick={() => setOpen(!open)}>
+                        <b>Rules Menu</b>
                     </button>
-                </Link>
-                <Link
-                    className="flex growFlex"
-                    to="/rules/advanced">
-                    <button className="navRulesBtn ">
-                        Fight & Heal & Work
-                    </button>
-                </Link>
-                <Link
-                    className="flex growFlex"
-                    to="/rules/store">
-                    <button className="navRulesBtn ">
-                        Items & Upgrades & Drugs
-                    </button>
-                </Link>
-                <Link
-                    className="flex growFlex"
-                    to="/rules/world">
-                    <button className="navRulesBtn ">
-                        World & Timeline & Corps
-                    </button>
-                </Link>
+                }
             </span>
 
             <Outlet />

@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import PathConstants from "./pathConstants.tsx";
+import pathConstants from "./pathConstants.tsx";
 
 import App from "./App.tsx";
 import Landing from "./routes/Landing.tsx";
@@ -24,38 +24,38 @@ const router = createBrowserRouter([{
   path: "/",
   element: <App />,
   children: [{
-    path: PathConstants.LANDING,
+    path: pathConstants.LANDING,
     element: <Landing />,
   }, {
-    path: PathConstants.MAKE.DEF,
+    path: pathConstants.MAKE.DEF,
     element: <Make />,
     children: [{
-      path: PathConstants.MAKE.BASIC,
+      path: pathConstants.MAKE.BASIC,
       element: <MakeBasic />,
     }, {
-      path: PathConstants.MAKE.STATS,
+      path: pathConstants.MAKE.STATS,
       element: <MakeStats />,
     }, {
-      path: PathConstants.MAKE.SKILLS,
+      path: pathConstants.MAKE.SKILLS,
       element: <MakeSkills />,
     }]
   }, {
-    path: PathConstants.PLAY.DEF,
+    path: pathConstants.PLAY.DEF,
     element: <Play />,
   }, {
-    path: PathConstants.RULES.DEF,
+    path: pathConstants.RULES.DEF,
     element: <Rules />,
     children: [{
-      path: PathConstants.RULES.BASICS,
+      path: pathConstants.RULES.BASICS,
       element: <RulesBasics />,
     }, {
-      path: PathConstants.RULES.ADVANCED,
+      path: pathConstants.RULES.ADVANCED,
       element: <RulesAdvanced />,
     }, {
-      path: PathConstants.RULES.STORE,
+      path: pathConstants.RULES.STORE,
       element: <RulesStore />,
     }, {
-      path: PathConstants.RULES.WORLD,
+      path: pathConstants.RULES.WORLD,
       element: <RulesWorld />,
     },]
   }]
