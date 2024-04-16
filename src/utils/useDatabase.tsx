@@ -1,67 +1,42 @@
-import { Role, Skill } from "../types";
+import { Role, Skill, Stat } from "../types";
 
 export default function useDatabase() {
 
-    const roleArr: Role[] = [{
-        job: "Cop",
-        skill: "Authority",
-        defSkill: ["Athletics", "Awareness", "Brawling", "Education", "Handguns", "Interrogation", "Melee Weapons", "Social Awareness", "Street Survival"],
-        description: "Gives bonus to COOL stat when appropriate. Interogate, arrest, search, confiscate, intimidate (and get away with it). You might still want proper documentation, but you are more able to convince people around you that your actions are backed by higher authority.",
-        oridinalOrFortressDescription: "This special ability is added to Interrogate and Intimidate. You uphold the law, you have the authority to arrest lawbreakers, question anything you find suspicious, and use force to protect yourself and others.",
+    const statArr: Stat[] = [{
+        stat: "Body Type",
+        short: "BODY",
+        description: "Body Type determines how much damage you can take in wounds, how much you can lift or carry, how far you can throw, how well you recover from shock, and how much additional damage you cause with physical attacks. Are you more of a fragile computer nerd or do your warehouse-worker's muscles have their own muscles? You are safe to carry up to 10x BODY in kg and safely lift up to 40x BODY in kg.",
+        oridinalOrFortressDescription: "Strenght, Endurance, Constitution are all based on the character's Body Type. Body Type determines how much damage you can take in wounds, how much you can lift or carry, how far you can throw, how well you recover from shock, and how much additional damage you cause with physical attacks. Body Tyype is important to all character types, but to Solos, Rockerboys and Nomads most of all. You may carry up to 10x your Body Type in kg. You may also dead lift 40 times your Body Type in kg."
     }, {
-        job: "Corporate",
-        skill: "Resources",
-        defSkill: ["Awareness", "Education", "Etiquette", "Grooming", "Persuasion", "Search Database", "Social Awareness", "Stock Market", "Style"],
-        description: "Gives bonus to INT when appropriate. Command corporate resources, test how much is corporation willing to risk on your operations. It also determines your rank, from a new Employee to the CEO.",
-        oridinalOrFortressDescription: "This Special Ability adds to Networking and Business Sense. You are a company man, you are an expert at promoting and utilizing the resources your employer or business allows you. You are the Power Broker, the CEO, the VIP.",
+        stat: "Coolness",
+        short: "COOL",
+        description: "How well the character stands up to stress, fear, pressure, physical pain and/or torture, but also how good they are looking while doing it or how put together they feel in general. This stat was merged with CP 2020 Attractiveness stat.",
+        oridinalOrFortressDescription: "This index measures how well the character stands up to stress, fear, pressure, physical pain and/or torture. Determining your willingless to fight on despite wounds or your fighting ability under fire, Cool (CL) is essential. It is also the measure of how 'together' your character is and how tough he appears to others. Rockerboys and Fixers should always have a high Cool with Solos and Nomads having the highest of all."
     }, {
-        job: "Fixer",
-        skill: "Streetdeal",
-        defSkill: ["Awareness", "Brawling", "Burglary", "Forgery", "Handguns", "Intimidation", "Melee Weapons", "Persuasion", "Stealing"],
-        description: "Gives bonus to COOL stat when appropriate.",
-        oridinalOrFortressDescription: "This Special Ability adds to both Streetwise and Persuasion/Fast Talk. You can get what people need, and you can get rid of it when they don't want it anymore. You are the go to guy, some do it legally, some don't, but regardless if someone wants something hard to find, they go to a Fixer to get it.",
+        stat: "Empathy",
+        short: "EMP",
+        description: "Your charisma and sympatheric emotions. In a world of alienated, future-shocked survivors, the ability to be 'human' can no longer be taken for granted and can be critical when leading, convincing, seducing or perceiving emotional undercurrents. Empathy also represents how close a person is to the line between a social beast and a cyberpsycho.",
+        oridinalOrFortressDescription: "This Stat represents how well you relate to other living things - a measure of charisma and sympatheric emotions. In a world of alienated, future-shocked survivors, the ability to be 'human' can no longer be taken for granted. Empathy (EM) is critical when leading, convincing, seducing or perceiving emotional undercurrents. Empathy is also a measure of how close he/she is to the line between feeling human being and cold blooded cyber-monster."
     }, {
-        job: "Med Tech",
-        skill: "Medical Tech",
-        defSkill: ["Awareness", "Cryotank", "Education", "First Aid", "Medicine", "Repairman", "Search Database", "Social Awareness", "Zoology"],
-        description: "Gives bonus to TECH stat when appropriate. Anyone can 'try' to help when bodyparts dislocate, but you have a know-how on how to prevent it ... or make it worse. It is a cyber world and your expertiese is not so much on biology as technology that is interacting with it.",
-        oridinalOrFortressDescription: "This special ability is added to First Aid and one other chosen Med Skill. You have devoted your life to healing others; the secrets of flesh and blood are open to you.",
+        stat: "Intelligence",
+        short: "INT",
+        description: "Your problem solving ability; figuring out problems, noticing things, remembering information. How fast do you learn, how abstract and theoretical the topic can be ... or just how nerdy you are. Those sci-fi solarpunk books won't read themselves!",
+        oridinalOrFortressDescription: "This is a measure of your problem solving ability; figuring out problems, noticing things, remembering information. Almost every character type will need a high Intelligence, with Netrunners and Corporates requiring the highest of all."
     }, {
-        job: "Medias",
-        skill: "Credibility",
-        defSkill: ["Awareness", "Creativity", "Education", "Etiquette", "Film", "Interview", "Persuasion", "Social Awareness", "Street Survival"],
-        description: "Gives bonus to EMP stat when approptiate. Convince people into believing you, no matter if you are telling the truth. Higher level might make it easyer to convince more people, experts or authority figures to see the world the way you are presenting it.",
-        oridinalOrFortressDescription: "This special ability is representative of your credentials and reputation for honesty and integrity. It is added to the Medias Interview, and Composition. However, it is a tenuous skill that must be maintained through honesty and non-bias. For every serious case of bias, dishonesty, or false presentation of facts you committed made public, your Credibility will drop by a point of Skill. However, with individuals who hold the same political or social bias, your credibility will retain its full value. You find the facts and report them; your audience knows and respects you for your ability to tell them what is going on in the community and the world.",
+        stat: "Luck",
+        short: "LUCK",
+        description: "Events just happen to sometimes turn in your favor or against you. Or maybe it is just karma. Whatever it is, your luck represents how many points you may use each game to influence the outcome of events. Use points of luck and add them to your chosen rolls. Luck is restored at the end of a long rest (once per day) or a session, depending on GM's descression.",
+        oridinalOrFortressDescription: "This is the intangible 'something' that throws balance of events into your favor. Your luck represents how many points you may use each game to influence the outcome of a critical event. To use luck a character has to a critical die roll (declaring your intention to use Luck before the roll is made) until all of your Luck stat is used up. Luck is always restored at the end of each game session."
     }, {
-        job: "Netrunner",
-        skill: "Interface",
-        defSkill: ["Awareness", "Cyber Tech", "Education", "Electronic Tech", "Hacking", "NET Knowledge", "Programming", "Repairman", "Search Database"],
-        description: "Can use REF or INT for hacking and can replace Programming with Interface when using it. When connected, rolls have an advantage. Do not use a computer, become a computer with all advantages and disadvantages that brings with it.",
-        oridinalOrFortressDescription: "Netrunners may add this to their Programming, and System Knowledge, as they pertain to computers and communications. You have mastered computers and communications, you use them to infiltrate secure information, take over other machines, and cruise the hidden alleys and portals of the vast information highway.",
+        stat: "Reflexes",
+        short: "REF",
+        description: "Your basic dexterity, but your ability of coordination and tool-use, like when shooting or driving. It also represents how high or far you can jump and how fast you can move. This stat was merged with CP 2020 Movement Allowance stat.",
+        oridinalOrFortressDescription: "This is a combined index, covering not only your basic dexterity, but also how your level of physical coordination will effect feats of driving, piloting, fighting and athletics. Characters who intend to engage in a great deal of combat (such as Solos, Nomads or Rockerboys) should always invest in the highest possible Reflex."
     }, {
-        job: "Nomad",
-        skill: "Family",
-        defSkill: ["Athletics", "Awareness", "Brawling", "Driving", "Endurance", "Melee Weapons", "Nature Survival", "Repairman", "Rifles"],
-        description: "Gives bonus to EMP stat when appropriate. Ask for help from your 'family' and you might get it. It also determines your rank, from a New Face to Leader of the Pack.",
-        oridinalOrFortressDescription: "The Family special ability is added to your Networking and Survival. You are a member of an extended family, always on the move. You are one of your people, you live and die for them, and they for you. They are your strength and your weakness; the family and its needs always come first.",
-    }, {
-        job: "Rocker",
-        skill: "Fandom",
-        defSkill: ["Awareness", "Brawling", "Creativity", "Instrument (Type)", "Perform", "Persuasion", "Seduction", "Street Survival", "Style"],
-        description: "Gives bonus to EMP stat when approptiate. Charm, incite, control up to '200 * skill' fans with your performance. They want to change the world? Point the way!",
-        oridinalOrFortressDescription: "This special ability is added to Oratory and Leadership. However this skill, similar to a Medias Credibility, is tenuous and if the rocker is perceived as betraying his own words or following a different agenda, his special ability will drop accordingly as he loses influence. You are a leader of the people. They listen to you and follow your leadership. You hold sway the hearts and minds of your followers, and attempt to convert those to your way of thinking everywhere you go. You hold influence, and you know how to use it.",
-    }, {
-        job: "Solo",
-        skill: "Combat Sense",
-        defSkill: ["Athletics", "Awareness", "Handguns", "Martial Arts (Type)", "Melee Weapons", "Rifles", "Stealth", "Submachineguns", "Weaponsmith (Type)"],
-        description: "Gives bonus to Awareness and Initiative skills. Danger sense, notice traps, you are a profesional killer, act fast - hit the body-bag last.",
-        oridinalOrFortressDescription: "Adds to both Awareness and Initiative. This is the basic combat dedicated career; you make your living being the toughest, baddest guy around.",
-    }, {
-        job: "Techie",
-        skill: "Jury Rig",
-        defSkill: ["Awareness", "Cyber Tech", "Education", "Electronic Tech", "Repairman", "Smart Security", "Teaching"],
-        description: "Hot-fix or temporary disable something for '1d6 * skill' turns. When breaking, target must not oppose (be alert) towards your meddling.",
-        oridinalOrFortressDescription: "This special ability is added to your Jury Rig skill and one single Tech skill of your choice. Brilliant with all things mechanical in nature, you are more than a handyman, you are what keeps the gear functioning as well as building and creating the equipment necessary for any situation.",
+        stat: "Technical Ability",
+        short: "TECH",
+        description: "How quickly you understand and operate technically oriented tasks and will be used when fixing, repairing and attempting to use unfamiliar tech. It is also useful when making something from scratch or when your muscle memory and the feel of whatever you have in front of you is more important than how well you recall what an perfect example from your 'For Dummies' eBook would tell you about it. Bombs explode in theory, only real ones will cost you an arm.",
+        oridinalOrFortressDescription: "This is an index of how well you relate to hardware and other technically oriented things. In Cyberpunk, the ability to use and repair technology is of paramount importance - TECH will be the Stat used when fixing, repairing and attempting to use unfamiliar tech. While all characters should have a decent Tech Stat, potential Techies should always opt for the highest possible score in this area."
     }];
 
     const skillArr: Skill[] = [{
@@ -556,8 +531,71 @@ export default function useDatabase() {
         oridinalOrFortressDescription: "Knowledge of lifeforms, biological proecsses and their relation to the environment. At +2, you know most common animals. At +5, you know not only well known animals, but also about many exotics and endangered species. At +8, you are knowledgable on almost all animals, know their habits well, and have a +1 advantage to any Wilderness Survival Skills (you know whhere to find the game).",
     }];
 
+    const roleArr: Role[] = [{
+        job: "Cop",
+        skill: "Authority",
+        defSkill: ["Athletics", "Awareness", "Brawling", "Education", "Handguns", "Interrogation", "Melee Weapons", "Social Awareness", "Street Survival"],
+        description: "Gives bonus to COOL stat when appropriate. Interogate, arrest, search, confiscate, intimidate (and get away with it). You might still want proper documentation, but you are more able to convince people around you that your actions are backed by higher authority.",
+        oridinalOrFortressDescription: "This special ability is added to Interrogate and Intimidate. You uphold the law, you have the authority to arrest lawbreakers, question anything you find suspicious, and use force to protect yourself and others.",
+    }, {
+        job: "Corporate",
+        skill: "Resources",
+        defSkill: ["Awareness", "Education", "Etiquette", "Grooming", "Persuasion", "Search Database", "Social Awareness", "Stock Market", "Style"],
+        description: "Gives bonus to INT when appropriate. Command corporate resources, test how much is corporation willing to risk on your operations. It also determines your rank, from a new Employee to the CEO.",
+        oridinalOrFortressDescription: "This Special Ability adds to Networking and Business Sense. You are a company man, you are an expert at promoting and utilizing the resources your employer or business allows you. You are the Power Broker, the CEO, the VIP.",
+    }, {
+        job: "Fixer",
+        skill: "Streetdeal",
+        defSkill: ["Awareness", "Brawling", "Burglary", "Forgery", "Handguns", "Intimidation", "Melee Weapons", "Persuasion", "Stealing"],
+        description: "Gives bonus to COOL stat when appropriate.",
+        oridinalOrFortressDescription: "This Special Ability adds to both Streetwise and Persuasion/Fast Talk. You can get what people need, and you can get rid of it when they don't want it anymore. You are the go to guy, some do it legally, some don't, but regardless if someone wants something hard to find, they go to a Fixer to get it.",
+    }, {
+        job: "Med Tech",
+        skill: "Medical Tech",
+        defSkill: ["Awareness", "Cryotank", "Education", "First Aid", "Medicine", "Repairman", "Search Database", "Social Awareness", "Zoology"],
+        description: "Gives bonus to TECH stat when appropriate. Anyone can 'try' to help when bodyparts dislocate, but you have a know-how on how to prevent it ... or make it worse. It is a cyber world and your expertiese is not so much on biology as technology that is interacting with it.",
+        oridinalOrFortressDescription: "This special ability is added to First Aid and one other chosen Med Skill. You have devoted your life to healing others; the secrets of flesh and blood are open to you.",
+    }, {
+        job: "Medias",
+        skill: "Credibility",
+        defSkill: ["Awareness", "Creativity", "Education", "Etiquette", "Film", "Interview", "Persuasion", "Social Awareness", "Street Survival"],
+        description: "Gives bonus to EMP stat when approptiate. Convince people into believing you, no matter if you are telling the truth. Higher level might make it easyer to convince more people, experts or authority figures to see the world the way you are presenting it.",
+        oridinalOrFortressDescription: "This special ability is representative of your credentials and reputation for honesty and integrity. It is added to the Medias Interview, and Composition. However, it is a tenuous skill that must be maintained through honesty and non-bias. For every serious case of bias, dishonesty, or false presentation of facts you committed made public, your Credibility will drop by a point of Skill. However, with individuals who hold the same political or social bias, your credibility will retain its full value. You find the facts and report them; your audience knows and respects you for your ability to tell them what is going on in the community and the world.",
+    }, {
+        job: "Netrunner",
+        skill: "Interface",
+        defSkill: ["Awareness", "Cyber Tech", "Education", "Electronic Tech", "Hacking", "NET Knowledge", "Programming", "Repairman", "Search Database"],
+        description: "Can use REF or INT for hacking and can replace Programming with Interface when using it. When connected, rolls have an advantage. Do not use a computer, become a computer with all advantages and disadvantages that brings with it.",
+        oridinalOrFortressDescription: "Netrunners may add this to their Programming, and System Knowledge, as they pertain to computers and communications. You have mastered computers and communications, you use them to infiltrate secure information, take over other machines, and cruise the hidden alleys and portals of the vast information highway.",
+    }, {
+        job: "Nomad",
+        skill: "Family",
+        defSkill: ["Athletics", "Awareness", "Brawling", "Driving", "Endurance", "Melee Weapons", "Nature Survival", "Repairman", "Rifles"],
+        description: "Gives bonus to EMP stat when appropriate. Ask for help from your 'family' and you might get it. It also determines your rank, from a New Face to Leader of the Pack.",
+        oridinalOrFortressDescription: "The Family special ability is added to your Networking and Survival. You are a member of an extended family, always on the move. You are one of your people, you live and die for them, and they for you. They are your strength and your weakness; the family and its needs always come first.",
+    }, {
+        job: "Rocker",
+        skill: "Fandom",
+        defSkill: ["Awareness", "Brawling", "Creativity", "Instrument (Type)", "Perform", "Persuasion", "Seduction", "Street Survival", "Style"],
+        description: "Gives bonus to EMP stat when approptiate. Charm, incite, control up to '200 * skill' fans with your performance. They want to change the world? Point the way!",
+        oridinalOrFortressDescription: "This special ability is added to Oratory and Leadership. However this skill, similar to a Medias Credibility, is tenuous and if the rocker is perceived as betraying his own words or following a different agenda, his special ability will drop accordingly as he loses influence. You are a leader of the people. They listen to you and follow your leadership. You hold sway the hearts and minds of your followers, and attempt to convert those to your way of thinking everywhere you go. You hold influence, and you know how to use it.",
+    }, {
+        job: "Solo",
+        skill: "Combat Sense",
+        defSkill: ["Athletics", "Awareness", "Handguns", "Martial Arts (Type)", "Melee Weapons", "Rifles", "Stealth", "Submachineguns", "Weaponsmith (Type)"],
+        description: "Gives bonus to Awareness and Initiative skills. Danger sense, notice traps, you are a profesional killer, act fast - hit the body-bag last.",
+        oridinalOrFortressDescription: "Adds to both Awareness and Initiative. This is the basic combat dedicated career; you make your living being the toughest, baddest guy around.",
+    }, {
+        job: "Techie",
+        skill: "Jury Rig",
+        defSkill: ["Awareness", "Cyber Tech", "Education", "Electronic Tech", "Repairman", "Smart Security", "Teaching"],
+        description: "Hot-fix or temporary disable something for '1d6 * skill' turns. When breaking, target must not oppose (be alert) towards your meddling.",
+        oridinalOrFortressDescription: "This special ability is added to your Jury Rig skill and one single Tech skill of your choice. Brilliant with all things mechanical in nature, you are more than a handyman, you are what keeps the gear functioning as well as building and creating the equipment necessary for any situation.",
+    }];
+
     return {
+        statArr,
+        skillArr,
         roleArr,
-        skillArr
     }
 }

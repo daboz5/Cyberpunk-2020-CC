@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { Role, Skill } from "../types";
+import { Role, Skill, Stat } from "../types";
 import useDatabase from "../utils/useDatabase"
 
 export default function RulesBasics() {
 
-    const { roleArr, skillArr } = useDatabase();
+    const { statArr, skillArr, roleArr } = useDatabase();
 
+    const [stats, setStats] = useState(statArr);
     const [skills, setSkills] = useState(skillArr);
     const [roles, setRoles] = useState(roleArr);
+    const [examineStat, setExamineStat] = useState<Stat | undefined>(undefined);
     const [examineSkill, setExamineSkill] = useState<Skill | undefined>(undefined);
     const [examineRole, setExamineRole] = useState<Role | undefined>(undefined);
     const [filterData, setFilterData] = useState("");
@@ -16,6 +18,11 @@ export default function RulesBasics() {
         const { value } = e.target;
         setFilterData(value);
 
+        const filteredStats = statArr.filter(stat => {
+            const stringedSkill = `${stat.stat} ${stat.short} ${stat.description} ${stat.oridinalOrFortressDescription} ${stat.stat.toLowerCase()}`
+            if (stringedSkill.includes(value)) { return stat }
+        });
+        setStats(filteredStats);
         const filteredSkills = skillArr.filter(skill => {
             const stringedSkill = `${skill.stat} ${skill.skill} ${skill.description} ${skill.oridinalOrFortressDescription} ${skill.skill.toLowerCase()}`
             if (stringedSkill.includes(value)) { return skill }
@@ -35,7 +42,8 @@ export default function RulesBasics() {
                 id="basicsContentBox"
                 className="colFlex">
                 <p id="basicsContentTitle">
-                    {examineSkill?.skill}{examineRole?.skill}
+                    {examineStat?.stat}{examineSkill?.skill}{examineRole?.skill}
+                    {!examineStat && !examineSkill && !examineRole && "Pick something."}
                 </p>
                 {examineSkill &&
                     <p
@@ -46,15 +54,17 @@ export default function RulesBasics() {
                 {examineRole &&
                     <p
                         id="basicsContentStat"
-                        className={`skillStat${examineRole.job}`}>
+                        className={`skillStat`}>
                         <b>- {examineRole.job} -</b>
                     </p>}
-                {!examineSkill && !examineRole &&
-                    <p id="basicsContentStat">
-                        <b>- Pick something -</b>
+                {examineStat &&
+                    <p
+                        id="basicsContentStat"
+                        className={`skillStat${examineStat.short}`}>
+                        <b>- {examineStat.short} -</b>
                     </p>}
                 <p id="basicsContent">
-                    {examineSkill?.description}{examineRole?.description}
+                    {examineStat?.description}{examineSkill?.description}{examineRole?.description}
                 </p>
             </span>
 
@@ -71,16 +81,30 @@ export default function RulesBasics() {
                 maxLength={20}>
             </input>
             <span className="basicFilterBtns flex alignFlex">
-                <button>
+                <button
+                    className="basicStatBtn"
+                    onClick={() => {
+                        if (skills.length > 0 || roles.length > 0) {
+                            setStats(statArr)
+                            setSkills([])
+                            setRoles([])
+                        } else {
+                            setStats(statArr)
+                            setSkills(skillArr)
+                            setRoles(roleArr)
+                        }
+                    }}>
                     Only Stats
                 </button>
                 <button
                     className="basicSkillBtn"
                     onClick={() => {
-                        if (roles.length > 0) {
+                        if (roles.length > 0 || stats.length > 0) {
+                            setStats([])
                             setSkills(skillArr)
                             setRoles([])
                         } else {
+                            setStats(statArr)
                             setSkills(skillArr)
                             setRoles(roleArr)
                         }
@@ -90,12 +114,14 @@ export default function RulesBasics() {
                 <button
                     className="basicRoleBtn"
                     onClick={() => {
-                        if (skills.length > 0) {
-                            setRoles(roleArr)
+                        if (skills.length > 0 || stats.length > 0) {
+                            setStats([])
                             setSkills([])
-                        } else {
                             setRoles(roleArr)
+                        } else {
+                            setStats(statArr)
                             setSkills(skillArr)
+                            setRoles(roleArr)
                         }
                     }}>
                     Only Roles
@@ -104,15 +130,35 @@ export default function RulesBasics() {
 
             {/* PICK CONTENT BUTTONS */}
             <div className="flex basicsBtnBox">
+                {stats.map(
+                    (stat) => {
+                        return (
+                            <button
+                                className="basicStatBtn"
+                                onClick={() => {
+                                    if (examineStat && examineStat.stat === stat.stat) {
+                                        setExamineStat(undefined)
+                                    } else {
+                                        setExamineStat(stat)
+                                        setExamineSkill(undefined)
+                                        setExamineRole(undefined)
+                                    }
+                                }}
+                                key={stat.stat + "Key"}>
+                                {stat.stat}
+                            </button>
+                        )
+                    })}
                 {skills.map(
                     (skill) => {
                         return (
                             <button
                                 className="basicSkillBtn"
                                 onClick={() => {
-                                    if (examineSkill && examineSkill?.skill === examineSkill?.skill) {
+                                    if (examineSkill && examineSkill.skill === skill.skill) {
                                         setExamineSkill(undefined)
                                     } else {
+                                        setExamineStat(undefined)
                                         setExamineSkill(skill)
                                         setExamineRole(undefined)
                                     }
@@ -128,11 +174,12 @@ export default function RulesBasics() {
                             <button
                                 className="basicRoleBtn"
                                 onClick={() => {
-                                    if (examineRole && examineRole?.job === examineRole?.job) {
+                                    if (examineRole && examineRole.job === role.job) {
                                         setExamineRole(undefined)
                                     } else {
-                                        setExamineRole(role)
+                                        setExamineStat(undefined)
                                         setExamineSkill(undefined)
+                                        setExamineRole(role)
                                     }
                                 }}
                                 key={role.job + "Key"}>

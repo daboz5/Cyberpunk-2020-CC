@@ -1,26 +1,26 @@
+type StatFull = "Body Type" | "Coolness" | "Empathy" | "Intelligence" | "Luck" | "Reflexes" | "Technical" | "Technical Ability";
+type StatShort = "BODY" | "COOL" | "EMP" | "INT" | "LUCK" | "REF" | "TECH";
+
+type Stat = {
+    stat: StatFull,
+    short: StatShort,
+    description: string,
+    oridinalOrFortressDescription: string
+}
+
+type Skill = {
+    skill: string,
+    stat: StatShort,
+    description: string,
+    oridinalOrFortressDescription: string
+}
+
 type Role = {
     skill: string,
     job: string,
     description: string,
     defSkill: string[],
     oridinalOrFortressDescription: string
-}
-
-type Skill = {
-    skill: string,
-    stat: "BODY" | "COOL" | "EMP" | "INT" | "REF" | "TECH" | "LUCK",
-    description: string,
-    oridinalOrFortressDescription: string
-}
-
-type BasicRole = {
-    handle: string,
-    age: number,
-    skills: string[],
-    role: string,
-    roleSkill: string,
-    roleInfo: string,
-    filter?: string
 }
 
 type BasicStats = {
@@ -33,9 +33,20 @@ type BasicStats = {
     tech: number;
 }
 
+type BasicRole = {
+    handle: string,
+    age: number,
+    skills: string[],
+    role: string,
+    roleSkill: string,
+    roleInfo: string,
+    filter?: string
+}
+
 export {
-    Role,
+    Stat,
     Skill,
+    Role,
     BasicRole,
     BasicStats
 }
