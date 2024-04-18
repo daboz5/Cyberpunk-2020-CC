@@ -1,14 +1,14 @@
 import { create } from 'zustand';
-import { BasicRole, BasicStats } from './types';
+import { StatsForm, RoleForm, StatsStore } from './types';
 
 type State = {
-    basicInfo: BasicRole,
-    statsInfo: BasicStats
+    basicInfo: RoleForm,
+    statsInfo: StatsStore
 }
 
 type Action = {
-    setBasicInfo(newState: BasicRole): void,
-    setStatsInfo(newState: BasicStats): void,
+    setBasicInfo(newState: RoleForm): void,
+    setStatsInfo(newState: StatsForm): void,
 }
 
 const useCyberStore = create<State & Action>(set => ({
@@ -35,7 +35,15 @@ const useCyberStore = create<State & Action>(set => ({
         tech: 0,
     },
     setStatsInfo: (newState) => set(() => ({
-        statsInfo: newState
+        statsInfo: {
+            body: newState.body ? newState.body : 0,
+            cool: newState.cool ? newState.cool : 0,
+            emp: newState.emp ? newState.emp : 0,
+            int: newState.int ? newState.int : 0,
+            luck: newState.luck ? newState.luck : 0,
+            ref: newState.ref ? newState.ref : 0,
+            tech: newState.tech ? newState.tech : 0,
+        }
     })),
 
 }))

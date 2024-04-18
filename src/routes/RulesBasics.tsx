@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { Role, Skill, Stat } from "../types";
+import { Ability, Role, Skill, Stat } from "../types";
 import useDatabase from "../utils/useDatabase"
 
 export default function RulesBasics() {
 
-    const { statArr, skillArr, roleArr } = useDatabase();
+    const { statArr, skillArr, roleArr, abilityArr } = useDatabase();
 
     const [stats, setStats] = useState(statArr);
+    const [abilities, setAbilities] = useState(abilityArr);
     const [skills, setSkills] = useState(skillArr);
     const [roles, setRoles] = useState(roleArr);
     const [examineStat, setExamineStat] = useState<Stat | undefined>(undefined);
+    const [examineAbility, setExamineAbility] = useState<Ability | undefined>(undefined);
     const [examineSkill, setExamineSkill] = useState<Skill | undefined>(undefined);
     const [examineRole, setExamineRole] = useState<Role | undefined>(undefined);
     const [filterData, setFilterData] = useState("");
@@ -23,6 +25,11 @@ export default function RulesBasics() {
             if (stringedSkill.includes(value)) { return stat }
         });
         setStats(filteredStats);
+        const filteredAbilities = abilityArr.filter(ability => {
+            const stringedSkill = `${ability.ability} ${ability.stat} ${ability.description} ${ability.oridinalOrFortressDescription} ${ability.stat.toLowerCase()}`
+            if (stringedSkill.includes(value)) { return ability }
+        });
+        setAbilities(filteredAbilities);
         const filteredSkills = skillArr.filter(skill => {
             const stringedSkill = `${skill.stat} ${skill.skill} ${skill.description} ${skill.oridinalOrFortressDescription} ${skill.skill.toLowerCase()}`
             if (stringedSkill.includes(value)) { return skill }
@@ -42,29 +49,35 @@ export default function RulesBasics() {
                 id="basicsContentBox"
                 className="colFlex">
                 <p id="basicsContentTitle">
-                    {examineStat?.stat}{examineSkill?.skill}{examineRole?.skill}
-                    {!examineStat && !examineSkill && !examineRole && "Pick something."}
+                    {examineStat?.stat}{examineAbility?.ability}{examineSkill?.skill}{examineRole?.job}
+                    {!examineStat && !examineAbility && !examineSkill && !examineRole && "Pick something."}
                 </p>
                 {examineSkill &&
                     <p
-                        id="basicsContentStat"
+                        id="basicsContentSubtitle"
                         className={`skillStat${examineSkill.stat}`}>
                         <b>- {examineSkill.stat} -</b>
                     </p>}
+                {examineAbility &&
+                    <p
+                        id="basicsContentSubtitle"
+                        className={`skillStat${examineAbility.ability}`}>
+                        <b>- {examineAbility.stat} -</b>
+                    </p>}
                 {examineRole &&
                     <p
-                        id="basicsContentStat"
+                        id="basicsContentSubtitle"
                         className={`skillStat`}>
                         <b>- {examineRole.job} -</b>
                     </p>}
                 {examineStat &&
                     <p
-                        id="basicsContentStat"
+                        id="basicsContentSubtitle"
                         className={`skillStat${examineStat.short}`}>
                         <b>- {examineStat.short} -</b>
                     </p>}
                 <p id="basicsContent">
-                    {examineStat?.description}{examineSkill?.description}{examineRole?.description}
+                    {examineStat?.description}{examineAbility?.description}{examineSkill?.description}{examineRole?.description}
                 </p>
             </span>
 
@@ -84,12 +97,14 @@ export default function RulesBasics() {
                 <button
                     className="basicStatBtn"
                     onClick={() => {
-                        if (skills.length > 0 || roles.length > 0) {
+                        if (skills.length > 0 || abilities.length > 0 || roles.length > 0) {
                             setStats(statArr)
+                            setAbilities([])
                             setSkills([])
                             setRoles([])
                         } else {
                             setStats(statArr)
+                            setAbilities(abilityArr)
                             setSkills(skillArr)
                             setRoles(roleArr)
                         }
@@ -97,14 +112,33 @@ export default function RulesBasics() {
                     Only Stats
                 </button>
                 <button
+                    className="basicAbilityBtn"
+                    onClick={() => {
+                        if (roles.length > 0 || skills.length > 0 || stats.length > 0) {
+                            setStats([])
+                            setAbilities(abilityArr)
+                            setSkills([])
+                            setRoles([])
+                        } else {
+                            setStats(statArr)
+                            setAbilities(abilityArr)
+                            setSkills(skillArr)
+                            setRoles(roleArr)
+                        }
+                    }}>
+                    Only Abilities
+                </button>
+                <button
                     className="basicSkillBtn"
                     onClick={() => {
-                        if (roles.length > 0 || stats.length > 0) {
+                        if (roles.length > 0 || abilities.length > 0 || stats.length > 0) {
                             setStats([])
+                            setAbilities([])
                             setSkills(skillArr)
                             setRoles([])
                         } else {
                             setStats(statArr)
+                            setAbilities(abilityArr)
                             setSkills(skillArr)
                             setRoles(roleArr)
                         }
@@ -114,12 +148,14 @@ export default function RulesBasics() {
                 <button
                     className="basicRoleBtn"
                     onClick={() => {
-                        if (skills.length > 0 || stats.length > 0) {
+                        if (skills.length > 0 || abilities.length > 0 || stats.length > 0) {
                             setStats([])
+                            setAbilities([])
                             setSkills([])
                             setRoles(roleArr)
                         } else {
                             setStats(statArr)
+                            setAbilities(abilityArr)
                             setSkills(skillArr)
                             setRoles(roleArr)
                         }
@@ -140,12 +176,33 @@ export default function RulesBasics() {
                                         setExamineStat(undefined)
                                     } else {
                                         setExamineStat(stat)
+                                        setExamineAbility(undefined)
                                         setExamineSkill(undefined)
                                         setExamineRole(undefined)
                                     }
                                 }}
                                 key={stat.stat + "Key"}>
                                 {stat.stat}
+                            </button>
+                        )
+                    })}
+                {abilities.map(
+                    (ability) => {
+                        return (
+                            <button
+                                className="basicAbilityBtn"
+                                onClick={() => {
+                                    if (examineAbility && examineAbility.ability === ability.ability) {
+                                        setExamineAbility(undefined)
+                                    } else {
+                                        setExamineStat(undefined)
+                                        setExamineAbility(ability)
+                                        setExamineSkill(undefined)
+                                        setExamineRole(undefined)
+                                    }
+                                }}
+                                key={ability.ability + "Key"}>
+                                {ability.ability}
                             </button>
                         )
                     })}
@@ -159,6 +216,7 @@ export default function RulesBasics() {
                                         setExamineSkill(undefined)
                                     } else {
                                         setExamineStat(undefined)
+                                        setExamineAbility(undefined)
                                         setExamineSkill(skill)
                                         setExamineRole(undefined)
                                     }
@@ -178,6 +236,7 @@ export default function RulesBasics() {
                                         setExamineRole(undefined)
                                     } else {
                                         setExamineStat(undefined)
+                                        setExamineAbility(undefined)
                                         setExamineSkill(undefined)
                                         setExamineRole(role)
                                     }

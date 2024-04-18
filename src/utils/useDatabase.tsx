@@ -1,4 +1,4 @@
-import { Role, Skill, Stat } from "../types";
+import { Ability, Role, Skill, Stat } from "../types";
 
 export default function useDatabase() {
 
@@ -531,71 +531,125 @@ export default function useDatabase() {
         oridinalOrFortressDescription: "Knowledge of lifeforms, biological proecsses and their relation to the environment. At +2, you know most common animals. At +5, you know not only well known animals, but also about many exotics and endangered species. At +8, you are knowledgable on almost all animals, know their habits well, and have a +1 advantage to any Wilderness Survival Skills (you know whhere to find the game).",
     }];
 
+    const abilityArr: Ability[] = [{
+        ability: "Authority",
+        stat: "COOL",
+        description: "Gives bonus to COOL stat when appropriate. Interogate, arrest, search, confiscate, intimidate (and get away with it). You might still want proper documentation, but you are more able to convince people around you that your actions are backed by higher authority.",
+        oridinalOrFortressDescription: "This special ability is added to Interrogate and Intimidate. You uphold the law, you have the authority to arrest lawbreakers, question anything you find suspicious, and use force to protect yourself and others.",
+    }, {
+        ability: "Resources",
+        stat: "INT",
+        description: "Gives bonus to INT when appropriate. Command corporate resources, test how much is corporation willing to risk on your operations. It also determines your rank, from a new Employee to the CEO.",
+        oridinalOrFortressDescription: "This Special Ability adds to Networking and Business Sense. You are a company man, you are an expert at promoting and utilizing the resources your employer or business allows you. You are the Power Broker, the CEO, the VIP.",
+    }, {
+        ability: "Streetdeal",
+        stat: "COOL",
+        description: "Gives bonus to COOL when appropriate. FIX THIS PART!",
+        oridinalOrFortressDescription: "This Special Ability adds to both Streetwise and Persuasion/Fast Talk. You can get what people need, and you can get rid of it when they don't want it anymore. You are the go to guy, some do it legally, some don't, but regardless if someone wants something hard to find, they go to a Fixer to get it.",
+    }, {
+        ability: "Medical Tech",
+        stat: "TECH",
+        description: "Gives bonus to TECH when appropriate. Anyone can 'try' to help when bodyparts dislocate, but you have a know-how on how to prevent it ... or make it worse. It is a cyber world and your expertiese is not so much on biology as technology that is interacting with it.",
+        oridinalOrFortressDescription: "This special ability is added to First Aid and one other chosen Med Skill. You have devoted your life to healing others; the secrets of flesh and blood are open to you.",
+    }, {
+        ability: "Credibility",
+        stat: "EMP",
+        description: "Gives bonus to EMP when approptiate. Convince people into believing you, no matter if you are telling the truth. Higher level might make it easyer to convince more people, experts or authority figures to see the world the way you are presenting it.",
+        oridinalOrFortressDescription: "This special ability is representative of your credentials and reputation for honesty and integrity. It is added to the Medias Interview, and Composition. However, it is a tenuous skill that must be maintained through honesty and non-bias. For every serious case of bias, dishonesty, or false presentation of facts you committed made public, your Credibility will drop by a point of Skill. However, with individuals who hold the same political or social bias, your credibility will retain its full value. You find the facts and report them; your audience knows and respects you for your ability to tell them what is going on in the community and the world.",
+    }, {
+        ability: "Interface",
+        stat: "TECH",
+        description: "Gives bonus to INT when appropriate. Can use REF or INT for hacking and can replace Programming with Interface when using it. When connected, rolls have an advantage. Do not use a computer, become a computer with all advantages and disadvantages that brings with it.",
+        oridinalOrFortressDescription: "Netrunners may add this to their Programming, and System Knowledge, as they pertain to computers and communications. You have mastered computers and communications, you use them to infiltrate secure information, take over other machines, and cruise the hidden alleys and portals of the vast information highway.",
+    }, {
+        ability: "Family",
+        stat: "EMP",
+        description: "Gives bonus to EMP stat when appropriate. Ask for help from your 'family' and you might get it. It also determines your rank, from a New Face to Leader of the Pack.",
+        oridinalOrFortressDescription: "The Family special ability is added to your Networking and Survival. You are a member of an extended family, always on the move. You are one of your people, you live and die for them, and they for you. They are your strength and your weakness; the family and its needs always come first.",
+    }, {
+        ability: "Fandom",
+        stat: "EMP",
+        description: "Gives bonus to EMP stat when approptiate. Charm, incite, control up to '200 * skill' fans with your performance. They want to change the world? Point the way!",
+        oridinalOrFortressDescription: "This special ability is added to Oratory and Leadership. However this skill, similar to a Medias Credibility, is tenuous and if the rocker is perceived as betraying his own words or following a different agenda, his special ability will drop accordingly as he loses influence. You are a leader of the people. They listen to you and follow your leadership. You hold sway the hearts and minds of your followers, and attempt to convert those to your way of thinking everywhere you go. You hold influence, and you know how to use it.",
+    }, {
+        ability: "Combat Sense",
+        stat: "REF",
+        description: "Gives bonus to REF when approptiate. Gives bonus to Awareness and Initiative skills. Danger sense, notice traps, you are a profesional killer, act fast - hit the body-bag last.",
+        oridinalOrFortressDescription: "Adds to both Awareness and Initiative. This is the basic combat dedicated career; you make your living being the toughest, baddest guy around.",
+    }, {
+        ability: "Jury Rig",
+        stat: "TECH",
+        description: "Gives bonus to EMP when approptiate. Hot-fix or temporary disable something for '1d6 * skill' turns. When breaking, target must not oppose (be alert) towards your meddling.",
+        oridinalOrFortressDescription: "This special ability is added to your Jury Rig skill and one single Tech skill of your choice. Brilliant with all things mechanical in nature, you are more than a handyman, you are what keeps the gear functioning as well as building and creating the equipment necessary for any situation.",
+
+    },];
+
     const roleArr: Role[] = [{
         job: "Cop",
         skill: "Authority",
         defSkill: ["Athletics", "Awareness", "Brawling", "Education", "Handguns", "Interrogation", "Melee Weapons", "Social Awareness", "Street Survival"],
-        description: "Gives bonus to COOL stat when appropriate. Interogate, arrest, search, confiscate, intimidate (and get away with it). You might still want proper documentation, but you are more able to convince people around you that your actions are backed by higher authority.",
-        oridinalOrFortressDescription: "This special ability is added to Interrogate and Intimidate. You uphold the law, you have the authority to arrest lawbreakers, question anything you find suspicious, and use force to protect yourself and others.",
+        description: "More than your gun, your connections or your badge, you can count on the unknowable authority you represent, always able to serve justice, for the benefit of the society or maybe just for yourself.",
+        oridinalOrFortressDescription: "Maximum lawmen on mean 21st century street.",
     }, {
         job: "Corporate",
         skill: "Resources",
         defSkill: ["Awareness", "Education", "Etiquette", "Grooming", "Persuasion", "Search Database", "Social Awareness", "Stock Market", "Style"],
-        description: "Gives bonus to INT when appropriate. Command corporate resources, test how much is corporation willing to risk on your operations. It also determines your rank, from a new Employee to the CEO.",
-        oridinalOrFortressDescription: "This Special Ability adds to Networking and Business Sense. You are a company man, you are an expert at promoting and utilizing the resources your employer or business allows you. You are the Power Broker, the CEO, the VIP.",
+        description: "If money makes the world go around, you are one of those humbe creatures that keeps spinning it ... into whatever direction serves you best of course.",
+        oridinalOrFortressDescription: "Slick business raiders and multimillionares.",
     }, {
         job: "Fixer",
         skill: "Streetdeal",
         defSkill: ["Awareness", "Brawling", "Burglary", "Forgery", "Handguns", "Intimidation", "Melee Weapons", "Persuasion", "Stealing"],
-        description: "Gives bonus to COOL stat when appropriate.",
-        oridinalOrFortressDescription: "This Special Ability adds to both Streetwise and Persuasion/Fast Talk. You can get what people need, and you can get rid of it when they don't want it anymore. You are the go to guy, some do it legally, some don't, but regardless if someone wants something hard to find, they go to a Fixer to get it.",
+        description: "There are people that in pursuit of money and power try to present themselves as law abiding citizens and there are you, who cares not about such frivolous things, getting information, goods and influence the way corporate overlords did not intend for you ... and this is just the way you like it.",
+        oridinalOrFortressDescription: "Deal makers, smugglers, organizers and information brokers.",
     }, {
         job: "Med Tech",
         skill: "Medical Tech",
         defSkill: ["Awareness", "Cryotank", "Education", "First Aid", "Medicine", "Repairman", "Search Database", "Social Awareness", "Zoology"],
-        description: "Gives bonus to TECH stat when appropriate. Anyone can 'try' to help when bodyparts dislocate, but you have a know-how on how to prevent it ... or make it worse. It is a cyber world and your expertiese is not so much on biology as technology that is interacting with it.",
-        oridinalOrFortressDescription: "This special ability is added to First Aid and one other chosen Med Skill. You have devoted your life to healing others; the secrets of flesh and blood are open to you.",
+        description: "If a body is nothing more than an organical machine, you are the one knowledgable in how to keep it together, give it a subtle (or maybe not so subtle) boost or poke it apart, whichever serves you and your interests best.",
+        oridinalOrFortressDescription: "N/A.",
     }, {
         job: "Medias",
         skill: "Credibility",
         defSkill: ["Awareness", "Creativity", "Education", "Etiquette", "Film", "Interview", "Persuasion", "Social Awareness", "Street Survival"],
-        description: "Gives bonus to EMP stat when approptiate. Convince people into believing you, no matter if you are telling the truth. Higher level might make it easyer to convince more people, experts or authority figures to see the world the way you are presenting it.",
-        oridinalOrFortressDescription: "This special ability is representative of your credentials and reputation for honesty and integrity. It is added to the Medias Interview, and Composition. However, it is a tenuous skill that must be maintained through honesty and non-bias. For every serious case of bias, dishonesty, or false presentation of facts you committed made public, your Credibility will drop by a point of Skill. However, with individuals who hold the same political or social bias, your credibility will retain its full value. You find the facts and report them; your audience knows and respects you for your ability to tell them what is going on in the community and the world.",
+        description: "People want to see the world with their own eyes, but lacking resourses to do so, they need you, their eyes, ears, tongue, skin, their reliable truth-source of the world they live in and with so many eager minds listening to you, not being able to check, you are more than able to use or abuse the spotlight given to you, just another man wanting to get the truth out.",
+        oridinalOrFortressDescription: "Newsmen and reporters who go to the wall for the truth.",
     }, {
         job: "Netrunner",
         skill: "Interface",
         defSkill: ["Awareness", "Cyber Tech", "Education", "Electronic Tech", "Hacking", "NET Knowledge", "Programming", "Repairman", "Search Database"],
-        description: "Can use REF or INT for hacking and can replace Programming with Interface when using it. When connected, rolls have an advantage. Do not use a computer, become a computer with all advantages and disadvantages that brings with it.",
-        oridinalOrFortressDescription: "Netrunners may add this to their Programming, and System Knowledge, as they pertain to computers and communications. You have mastered computers and communications, you use them to infiltrate secure information, take over other machines, and cruise the hidden alleys and portals of the vast information highway.",
+        description: "You turned your brains into just another chip of the .NET, maybe just for fun, maybe because you needed a new home, now able to whisper to the electronic abyss and sometimes you could swear you can hear something whispering back.",
+        oridinalOrFortressDescription: "Cybernetic computer hackers.",
     }, {
         job: "Nomad",
         skill: "Family",
         defSkill: ["Athletics", "Awareness", "Brawling", "Driving", "Endurance", "Melee Weapons", "Nature Survival", "Repairman", "Rifles"],
-        description: "Gives bonus to EMP stat when appropriate. Ask for help from your 'family' and you might get it. It also determines your rank, from a New Face to Leader of the Pack.",
-        oridinalOrFortressDescription: "The Family special ability is added to your Networking and Survival. You are a member of an extended family, always on the move. You are one of your people, you live and die for them, and they for you. They are your strength and your weakness; the family and its needs always come first.",
+        description: "Some people see institutions, corporations, countries and what they acknowledge is money and guns and stuff, but you know what really keeps them going ... willingness to work together, which is exactly what you do, not tied to anyone but your community of misfits, roaming places, living from day to day ... and annihilating anyone who would put you or those you relly upon in danger!",
+        oridinalOrFortressDescription: "Road warriors and gypsies who roam the highways.",
     }, {
         job: "Rocker",
         skill: "Fandom",
         defSkill: ["Awareness", "Brawling", "Creativity", "Instrument (Type)", "Perform", "Persuasion", "Seduction", "Street Survival", "Style"],
-        description: "Gives bonus to EMP stat when approptiate. Charm, incite, control up to '200 * skill' fans with your performance. They want to change the world? Point the way!",
-        oridinalOrFortressDescription: "This special ability is added to Oratory and Leadership. However this skill, similar to a Medias Credibility, is tenuous and if the rocker is perceived as betraying his own words or following a different agenda, his special ability will drop accordingly as he loses influence. You are a leader of the people. They listen to you and follow your leadership. You hold sway the hearts and minds of your followers, and attempt to convert those to your way of thinking everywhere you go. You hold influence, and you know how to use it.",
+        description: "Rebel performers who use art, ideas and personal brand to challenge those who would believe themselves to be untouchable in their orbital stations ... but you know that the same world that gave birth to them is able to take it all away in the shape of an outraged mass, tearing it all down, down, down to the earth they came from.",
+        oridinalOrFortressDescription: "Rebel rockers who use music and revolt to fight authority.",
     }, {
         job: "Solo",
         skill: "Combat Sense",
         defSkill: ["Athletics", "Awareness", "Handguns", "Martial Arts (Type)", "Melee Weapons", "Rifles", "Stealth", "Submachineguns", "Weaponsmith (Type)"],
-        description: "Gives bonus to Awareness and Initiative skills. Danger sense, notice traps, you are a profesional killer, act fast - hit the body-bag last.",
-        oridinalOrFortressDescription: "Adds to both Awareness and Initiative. This is the basic combat dedicated career; you make your living being the toughest, baddest guy around.",
+        description: "You are one of those people who grew so accustomed to the violence of this world you became specialized in it.",
+        oridinalOrFortressDescription: "Hired assassins, bodyguards, killers, soldiers.",
     }, {
         job: "Techie",
         skill: "Jury Rig",
         defSkill: ["Awareness", "Cyber Tech", "Education", "Electronic Tech", "Repairman", "Smart Security", "Teaching"],
-        description: "Hot-fix or temporary disable something for '1d6 * skill' turns. When breaking, target must not oppose (be alert) towards your meddling.",
-        oridinalOrFortressDescription: "This special ability is added to your Jury Rig skill and one single Tech skill of your choice. Brilliant with all things mechanical in nature, you are more than a handyman, you are what keeps the gear functioning as well as building and creating the equipment necessary for any situation.",
+        description: "Technology this world is build upon is beyond most people's compehension, but not you, whose life became dedicated in being able to cut the belly of the beast wide open ... or even stitch together what might be seen broken beyond repair.",
+        oridinalOrFortressDescription: "Renegate mechanics and doctors.",
     }];
 
     return {
         statArr,
         skillArr,
+        abilityArr,
         roleArr,
     }
 }

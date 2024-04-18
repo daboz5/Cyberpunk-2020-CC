@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { BasicRole, BasicStats, Role, Skill } from "../types";
+import { StatsForm, RoleForm, Role, Skill } from "../types";
 import useDatabase from "./useDatabase";
 import useCyberStore from "../useCyberStore";
 import useDice from "./useDice";
@@ -15,7 +15,7 @@ export default function useMake() {
 
     const [skills, setSkills] = useState<Skill[]>(skillArr);
     const [role, setRole] = useState<Role | undefined>(undefined);
-    const [formData, setFormData] = useState<BasicRole>({
+    const [formData, setFormData] = useState<RoleForm>({
         handle: "",
         age: 16,
         skills: [],
@@ -25,17 +25,17 @@ export default function useMake() {
         filter: ""
     });
 
-    const [assignType, setAssignType] = useState<0 | 1 | 2>(0);
+    const [assignType, setAssignType] = useState<0 | 1 | 2 | 3>(0);
     const [numsRolled, setNumsRolled] = useState<number[]>([]);
     const [numToAssign, setNumToAssign] = useState<number | undefined>(undefined);
-    const [statsForm, setStatsForm] = useState({
-        body: 0,
-        cool: 0,
-        emp: 0,
-        int: 0,
-        luck: 0,
-        ref: 0,
-        tech: 0,
+    const [statsForm, setStatsForm] = useState<StatsForm>({
+        body: undefined,
+        cool: undefined,
+        emp: undefined,
+        int: undefined,
+        luck: undefined,
+        ref: undefined,
+        tech: undefined,
     });
 
     { /*SCROLLING*/ }
@@ -112,13 +112,20 @@ export default function useMake() {
         setNumsRolled(rollArr.sort((a, b) => a - b));
     };
 
-    const sumStats = (info: BasicStats) => {
-        return (info.body + info.cool + info.emp + info.int + info.luck + info.ref + info.tech)
+    const sumStats = (info: StatsForm) => {
+        const body = info.body ? info.body : 0;
+        const cool = info.cool ? info.cool : 0;
+        const emp = info.emp ? info.emp : 0;
+        const int = info.int ? info.int : 0;
+        const luck = info.luck ? info.luck : 0;
+        const ref = info.ref ? info.ref : 0;
+        const tech = info.tech ? info.tech : 0;
+        return body + cool + emp + int + luck + ref + tech;
     }
 
     const handleStatsFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setStatsForm(prevData => ({ ...prevData, [name]: value ? Number(value) : 0 }));
+        setStatsForm(prevData => ({ ...prevData, [name]: Number(value) }));
     }
 
     { /*HANDLE, AGE AND ROLE INPUT*/ }
@@ -175,11 +182,11 @@ export default function useMake() {
 
     const handleStatsSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (sumStats(statsForm) >= 20) {
+        if (sumStats(statsForm) >= 10) {
             setStatsInfo(statsForm);
             navigate("/make/skills");
         } else {
-            toast.error(`To continue you need to assign at least 20 stat points.`)
+            toast.error(`To continue you need to assign at least 10 stat points.`)
         }
     }
 

@@ -5,14 +5,14 @@ type Stat = {
     stat: StatFull,
     short: StatShort,
     description: string,
-    oridinalOrFortressDescription: string
+    oldDescription: string
 }
 
 type Skill = {
     skill: string,
     stat: StatShort,
     description: string,
-    oridinalOrFortressDescription: string
+    oldDescription: string
 }
 
 type Role = {
@@ -20,20 +20,27 @@ type Role = {
     job: string,
     description: string,
     defSkill: string[],
-    oridinalOrFortressDescription: string
+    oldDescription: string
 }
 
-type BasicStats = {
-    body: number;
-    cool: number;
-    emp: number;
-    int: number;
-    luck: number;
-    ref: number;
-    tech: number;
+type Ability = {
+    ability: string,
+    stat: StatShort,
+    description: string,
+    oldDescription: string
 }
 
-type BasicRole = {
+type StatsForm = {
+    body: number | undefined;
+    cool: number | undefined;
+    emp: number | undefined;
+    int: number | undefined;
+    luck: number | undefined;
+    ref: number | undefined;
+    tech: number | undefined;
+}
+
+type RoleForm = {
     handle: string,
     age: number,
     skills: string[],
@@ -43,10 +50,22 @@ type BasicRole = {
     filter?: string
 }
 
+type StatsStore = {
+    body: number
+    cool: number;
+    emp: number;
+    int: number;
+    luck: number;
+    ref: number;
+    tech: number;
+}
+
 export {
     Stat,
     Skill,
     Role,
-    BasicRole,
-    BasicStats
+    Ability,
+    StatsForm,
+    RoleForm,
+    StatsStore
 }
