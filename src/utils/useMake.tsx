@@ -83,7 +83,7 @@ export default function useMake() {
                 job: "Create a Role",
                 description: "",
                 defSkill: [],
-                oridinalOrFortressDescription: ""
+                oldDescription: ""
             })
             setFormData(prevData => ({
                 ...prevData,
@@ -155,7 +155,7 @@ export default function useMake() {
     const skillFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
         const filteredSkills = skillArr.filter(skill => {
-            const stringedSkill = `${skill.stat} ${skill.skill} ${skill.description} ${skill.oridinalOrFortressDescription} ${skill.skill.toLowerCase()}`
+            const stringedSkill = `${skill.stat} ${skill.skill} ${skill.description} ${skill.oldDescription} ${skill.skill.toLowerCase()}`
             if (stringedSkill.includes(value)) { return skill }
         });
 

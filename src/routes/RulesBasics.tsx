@@ -21,22 +21,22 @@ export default function RulesBasics() {
         setFilterData(value);
 
         const filteredStats = statArr.filter(stat => {
-            const stringedSkill = `${stat.stat} ${stat.short} ${stat.description} ${stat.oridinalOrFortressDescription} ${stat.stat.toLowerCase()}`
+            const stringedSkill = `${stat.stat} ${stat.short} ${stat.description} ${stat.oldDescription} ${stat.stat.toLowerCase()}`
             if (stringedSkill.includes(value)) { return stat }
         });
         setStats(filteredStats);
         const filteredAbilities = abilityArr.filter(ability => {
-            const stringedSkill = `${ability.ability} ${ability.stat} ${ability.description} ${ability.oridinalOrFortressDescription} ${ability.stat.toLowerCase()}`
+            const stringedSkill = `${ability.ability} ${ability.stat} ${ability.description} ${ability.oldDescription} ${ability.stat.toLowerCase()}`
             if (stringedSkill.includes(value)) { return ability }
         });
         setAbilities(filteredAbilities);
         const filteredSkills = skillArr.filter(skill => {
-            const stringedSkill = `${skill.stat} ${skill.skill} ${skill.description} ${skill.oridinalOrFortressDescription} ${skill.skill.toLowerCase()}`
+            const stringedSkill = `${skill.stat} ${skill.skill} ${skill.description} ${skill.oldDescription} ${skill.skill.toLowerCase()}`
             if (stringedSkill.includes(value)) { return skill }
         });
         setSkills(filteredSkills);
         const filteredRoles = roleArr.filter(role => {
-            const stringedSkill = `${role.job} ${role.skill} ${role.description} ${role.oridinalOrFortressDescription} ${role.job.toLowerCase()}`
+            const stringedSkill = `${role.job} ${role.skill} ${role.description} ${role.oldDescription} ${role.job.toLowerCase()}`
             if (stringedSkill.includes(value)) { return role }
         });
         setRoles(filteredRoles);

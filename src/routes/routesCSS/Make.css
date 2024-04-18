@@ -73,6 +73,30 @@
     font-size: 1.5em;
 }
 
+.statInputFieldBox {
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.statInputField {
+    width: 100px;
+}
+
+.skillPointsBox {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skillPointsSpan {
+    gap: 10px;
+    align-items: baseline;
+}
+
+.skillInputField {
+    width: 75px;
+}
+
 /*DROPDOWN MENU*/
 
 .selectBox {
@@ -177,18 +201,6 @@
     border-radius: 8px;
     box-shadow: inset 0 0 5px 1px black;
     transition: 0.3s;
-}
-
-/*STAT PICK*/
-
-.statInputFieldBox {
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-top: 25px;
-}
-
-.statInputField {
-    width: 100px;
 }
 
 /*GUMB ZA NAGEL PREMIK NAVZGOR*/
