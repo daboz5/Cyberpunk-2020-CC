@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useCyberStore from "../useCyberStore"
 import useDatabase from "../utils/useDatabase";
+import useMake from "../utils/useMake";
 
 export default function MakeSkills() {
 
@@ -12,54 +13,22 @@ export default function MakeSkills() {
 
     const { statsInfo, basicInfo } = useCyberStore();
     const { skillArr } = useDatabase();
-    const sumIntRef = statsInfo.int + statsInfo.ref;
+    const { numberInputOnWheelPreventChange } = useMake();
+
+    const startPickupPoints = statsInfo.int + statsInfo.ref;
+    const startCareerArr = basicInfo.skills.map(
+        skill => { return { name: skill, lvl: undefined } }
+    ).concat({ name: basicInfo.roleSkill, lvl: undefined });
+    const startPickupArr = skillArr.map(
+        skill => { return { name: skill.skill, lvl: undefined } }
+    );
 
     const [careerPoints, setCareerPoints] = useState(40);
-    const [pickupPoints, setPickupPoints] = useState(sumIntRef);
+    const [pickupPoints, setPickupPoints] = useState(startPickupPoints);
     const [skillForm, setSkillForm] = useState<skillFormType>({
-        careerSkills: basicInfo.skills.map(
-            skill => { return { name: skill, lvl: undefined } }
-        ).concat({ name: basicInfo.roleSkill, lvl: undefined }),
-        pickupSkills: skillArr.map(skill => { return { name: skill.skill, lvl: undefined } })
+        careerSkills: startCareerArr,
+        pickupSkills: startPickupArr
     });
-
-    const handleCareerPoints = (name: string, value: number) => {
-        const careerSkills = skillForm.careerSkills;
-        let sum = 0;
-        careerSkills.forEach(skill => {
-            let skillLvl = 0;
-            if (skill.name !== name) {
-                skillLvl = skill.lvl ? skill.lvl : 0;
-            }
-            else {
-                skill.lvl = value;
-                skillLvl = value;
-            }
-            sum = sum + skillLvl;
-        })
-        skillForm.careerSkills = careerSkills;
-        setCareerPoints(40 - sum);
-        setSkillForm(skillForm);
-    };
-
-    const handlePickupPoints = (name: string, value: number) => {
-        const pickupSkills = skillForm.pickupSkills;
-        let sum = 0;
-        pickupSkills.forEach(skill => {
-            let skillLvl = 0;
-            if (skill.name !== name) {
-                skillLvl = skill.lvl ? skill.lvl : 0;
-            }
-            else {
-                skill.lvl = value;
-                skillLvl = value;
-            }
-            sum = sum + skillLvl;
-        })
-        skillForm.pickupSkills = pickupSkills;
-        setPickupPoints(sumIntRef - sum);
-        setSkillForm(skillForm);
-    };
 
     const handleSkillFormChange = (
         e: React.ChangeEvent<HTMLInputElement>,
@@ -67,17 +36,35 @@ export default function MakeSkills() {
     ) => {
         const { name, value } = e.target;
         const numValue = Number(value);
+        const careerSkills = skillForm.careerSkills;
+        const pickupSkills = skillForm.pickupSkills;
+        let sum = 0;
+
+        const calcSkill = (skill: formSkill) => {
+            let skillLvl = 0;
+            if (skill.name !== name) { skillLvl = skill.lvl ? skill.lvl : 0 }
+            else {
+                skill.lvl = numValue;
+                skillLvl = numValue;
+            }
+            return sum + skillLvl;
+        }
 
         if (type === "career") {
-            handleCareerPoints(name, numValue)
+            careerSkills.forEach(skill => { sum = calcSkill(skill) });
+            skillForm.pickupSkills = startPickupArr;
+            setCareerPoints(40 - sum);
+            setPickupPoints(startPickupPoints);
         }
         else if (type === "pickup") {
-            handlePickupPoints(name, numValue)
+            pickupSkills.forEach(skill => { sum = calcSkill(skill) });
+            setPickupPoints(startPickupPoints - sum);
         }
+
+        setSkillForm(skillForm);
     };
 
-    const handleSkillsSubmit = () => {
-    };
+    const handleSkillsSubmit = () => { };
 
     const skillEl = (name: string, type: "career" | "pickup") => {
         return (
@@ -85,19 +72,19 @@ export default function MakeSkills() {
                 className="flex skillPointsSpan"
                 key={name + "Key"}>
                 <span className="formInputTitle">
-                    <b className="red">{name}</b> :
+                    <b>{name}</b> :
                 </span>
                 <input
                     id={name + "SkillId"}
                     name={name}
                     type={"number"}
-                    className={"formInputField skillInputField"}
+                    className={"formInputField skillInputField red"}
                     placeholder="0-10"
                     autoComplete={"off"}
                     min={0}
                     max={10}
                     onChange={(e) => handleSkillFormChange(e, type)}
-                    required={type === "career" ? true : false}>
+                    onWheel={numberInputOnWheelPreventChange}>
                 </input>
             </span>
         )
@@ -116,8 +103,7 @@ export default function MakeSkills() {
             onSubmit={handleSkillsSubmit}>
 
             <span className={"formInputTitle"}>
-                First, assign 40 career points.<br />
-                They are colored <b className="red">red</b>.
+                First, assign 40 career points.
             </span>
 
             <span className={"formInputTitle bigFormTitle"}>

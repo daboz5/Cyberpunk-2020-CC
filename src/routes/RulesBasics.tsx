@@ -1,45 +1,99 @@
 import { useState } from "react";
-import { Ability, Role, Skill, Stat } from "../types";
 import useDatabase from "../utils/useDatabase"
 
 export default function RulesBasics() {
 
     const { statArr, skillArr, roleArr, abilityArr } = useDatabase();
 
-    const [stats, setStats] = useState(statArr);
-    const [abilities, setAbilities] = useState(abilityArr);
-    const [skills, setSkills] = useState(skillArr);
-    const [roles, setRoles] = useState(roleArr);
-    const [examineStat, setExamineStat] = useState<Stat | undefined>(undefined);
-    const [examineAbility, setExamineAbility] = useState<Ability | undefined>(undefined);
-    const [examineSkill, setExamineSkill] = useState<Skill | undefined>(undefined);
-    const [examineRole, setExamineRole] = useState<Role | undefined>(undefined);
+    type BasicRulesContent = {
+        type: "stat" | "ability" | "skill" | "role";
+        title: string;
+        subtitle: string;
+        content: string;
+        oldContent: string;
+    }
+
+    const statContent: BasicRulesContent[] = statArr.map(
+        stat => {
+            return {
+                type: "stat",
+                title: stat.stat,
+                subtitle: stat.short,
+                content: stat.description,
+                oldContent: stat.oldDescription
+            }
+        }
+    )
+    const abilityContent: BasicRulesContent[] = abilityArr.map(
+        ability => {
+            return {
+                type: "ability",
+                title: ability.ability,
+                subtitle: ability.stat,
+                content: ability.description,
+                oldContent: ability.oldDescription
+            }
+        }
+    );
+    const skillContent: BasicRulesContent[] = skillArr.map(
+        skill => {
+            return {
+                type: "skill",
+                title: skill.skill,
+                subtitle: skill.stat,
+                content: skill.description,
+                oldContent: skill.oldDescription
+            }
+        }
+    );
+    const roleContent: BasicRulesContent[] = roleArr.map(
+        role => {
+            return {
+                type: "role",
+                title: role.job,
+                subtitle: role.skill,
+                content: role.description,
+                oldContent: role.oldDescription
+            }
+        }
+    );
+
+    const contentArr = statContent
+        .concat(abilityContent)
+        .concat(skillContent)
+        .concat(roleContent)
+        .sort((a, b) => {
+            const first = a.title.toLocaleUpperCase();
+            const second = b.title.toLocaleUpperCase();
+            return (
+                first < second ? -1 :
+                    first > second ? 1 :
+                        0
+            )
+        });
+
+    const [content, setContent] = useState(contentArr);
+    const [examine, setExamine] = useState<BasicRulesContent | undefined>(undefined);
     const [filterData, setFilterData] = useState("");
 
     const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
         setFilterData(value);
+        const filteredContent = contentArr.filter(content => {
+            const stringed = `${content.title} ${content.subtitle} ${content.content} ${content.title.toLowerCase()}`
+            if (stringed.includes(value)) { return content }
+        });
+        setContent(filteredContent);
+    }
 
-        const filteredStats = statArr.filter(stat => {
-            const stringedSkill = `${stat.stat} ${stat.short} ${stat.description} ${stat.oldDescription} ${stat.stat.toLowerCase()}`
-            if (stringedSkill.includes(value)) { return stat }
-        });
-        setStats(filteredStats);
-        const filteredAbilities = abilityArr.filter(ability => {
-            const stringedSkill = `${ability.ability} ${ability.stat} ${ability.description} ${ability.oldDescription} ${ability.stat.toLowerCase()}`
-            if (stringedSkill.includes(value)) { return ability }
-        });
-        setAbilities(filteredAbilities);
-        const filteredSkills = skillArr.filter(skill => {
-            const stringedSkill = `${skill.stat} ${skill.skill} ${skill.description} ${skill.oldDescription} ${skill.skill.toLowerCase()}`
-            if (stringedSkill.includes(value)) { return skill }
-        });
-        setSkills(filteredSkills);
-        const filteredRoles = roleArr.filter(role => {
-            const stringedSkill = `${role.job} ${role.skill} ${role.description} ${role.oldDescription} ${role.job.toLowerCase()}`
-            if (stringedSkill.includes(value)) { return role }
-        });
-        setRoles(filteredRoles);
+    const filterTypeCheck = (type: "stat" | "ability" | "skill" | "role") => {
+        if (content.filter(content => content.type !== type).length > 0) {
+            setContent(
+                type === "stat" ? statContent :
+                    type === "ability" ? abilityContent :
+                        type === "skill" ? skillContent :
+                            roleContent)
+        } else { setContent(contentArr) }
     }
 
     return (
@@ -49,35 +103,16 @@ export default function RulesBasics() {
                 id="basicsContentBox"
                 className="colFlex">
                 <p id="basicsContentTitle">
-                    {examineStat?.stat}{examineAbility?.ability}{examineSkill?.skill}{examineRole?.job}
-                    {!examineStat && !examineAbility && !examineSkill && !examineRole && "Pick something."}
+                    {examine?.title ? examine.title : "Pick something."}
                 </p>
-                {examineSkill &&
+                {examine &&
                     <p
                         id="basicsContentSubtitle"
-                        className={`skillStat${examineSkill.stat}`}>
-                        <b>- {examineSkill.stat} -</b>
-                    </p>}
-                {examineAbility &&
-                    <p
-                        id="basicsContentSubtitle"
-                        className={`skillStat${examineAbility.ability}`}>
-                        <b>- {examineAbility.stat} -</b>
-                    </p>}
-                {examineRole &&
-                    <p
-                        id="basicsContentSubtitle"
-                        className={`skillStat`}>
-                        <b>- {examineRole.job} -</b>
-                    </p>}
-                {examineStat &&
-                    <p
-                        id="basicsContentSubtitle"
-                        className={`skillStat${examineStat.short}`}>
-                        <b>- {examineStat.short} -</b>
+                        className={`skillStat${examine.subtitle}`}>
+                        <b>- {examine.subtitle} -</b>
                     </p>}
                 <p id="basicsContent">
-                    {examineStat?.description}{examineAbility?.description}{examineSkill?.description}{examineRole?.description}
+                    {examine?.content}
                 </p>
             </span>
 
@@ -96,156 +131,48 @@ export default function RulesBasics() {
             <span className="basicFilterBtns flex alignFlex">
                 <button
                     className="basicStatBtn"
-                    onClick={() => {
-                        if (skills.length > 0 || abilities.length > 0 || roles.length > 0) {
-                            setStats(statArr)
-                            setAbilities([])
-                            setSkills([])
-                            setRoles([])
-                        } else {
-                            setStats(statArr)
-                            setAbilities(abilityArr)
-                            setSkills(skillArr)
-                            setRoles(roleArr)
-                        }
-                    }}>
+                    onClick={() => filterTypeCheck("stat")}>
                     Only Stats
                 </button>
                 <button
                     className="basicAbilityBtn"
-                    onClick={() => {
-                        if (roles.length > 0 || skills.length > 0 || stats.length > 0) {
-                            setStats([])
-                            setAbilities(abilityArr)
-                            setSkills([])
-                            setRoles([])
-                        } else {
-                            setStats(statArr)
-                            setAbilities(abilityArr)
-                            setSkills(skillArr)
-                            setRoles(roleArr)
-                        }
-                    }}>
+                    onClick={() => filterTypeCheck("ability")}>
                     Only Abilities
                 </button>
                 <button
                     className="basicSkillBtn"
-                    onClick={() => {
-                        if (roles.length > 0 || abilities.length > 0 || stats.length > 0) {
-                            setStats([])
-                            setAbilities([])
-                            setSkills(skillArr)
-                            setRoles([])
-                        } else {
-                            setStats(statArr)
-                            setAbilities(abilityArr)
-                            setSkills(skillArr)
-                            setRoles(roleArr)
-                        }
-                    }}>
+                    onClick={() => filterTypeCheck("skill")}>
                     Only Skills
                 </button>
                 <button
                     className="basicRoleBtn"
-                    onClick={() => {
-                        if (skills.length > 0 || abilities.length > 0 || stats.length > 0) {
-                            setStats([])
-                            setAbilities([])
-                            setSkills([])
-                            setRoles(roleArr)
-                        } else {
-                            setStats(statArr)
-                            setAbilities(abilityArr)
-                            setSkills(skillArr)
-                            setRoles(roleArr)
-                        }
-                    }}>
+                    onClick={() => filterTypeCheck("role")}>
                     Only Roles
                 </button>
             </span>
 
             {/* PICK CONTENT BUTTONS */}
             <div className="flex basicsBtnBox">
-                {stats.map(
-                    (stat) => {
-                        return (
-                            <button
-                                className="basicStatBtn"
-                                onClick={() => {
-                                    if (examineStat && examineStat.stat === stat.stat) {
-                                        setExamineStat(undefined)
-                                    } else {
-                                        setExamineStat(stat)
-                                        setExamineAbility(undefined)
-                                        setExamineSkill(undefined)
-                                        setExamineRole(undefined)
-                                    }
-                                }}
-                                key={stat.stat + "Key"}>
-                                {stat.stat}
-                            </button>
-                        )
-                    })}
-                {abilities.map(
-                    (ability) => {
-                        return (
-                            <button
-                                className="basicAbilityBtn"
-                                onClick={() => {
-                                    if (examineAbility && examineAbility.ability === ability.ability) {
-                                        setExamineAbility(undefined)
-                                    } else {
-                                        setExamineStat(undefined)
-                                        setExamineAbility(ability)
-                                        setExamineSkill(undefined)
-                                        setExamineRole(undefined)
-                                    }
-                                }}
-                                key={ability.ability + "Key"}>
-                                {ability.ability}
-                            </button>
-                        )
-                    })}
-                {skills.map(
-                    (skill) => {
-                        return (
-                            <button
-                                className="basicSkillBtn"
-                                onClick={() => {
-                                    if (examineSkill && examineSkill.skill === skill.skill) {
-                                        setExamineSkill(undefined)
-                                    } else {
-                                        setExamineStat(undefined)
-                                        setExamineAbility(undefined)
-                                        setExamineSkill(skill)
-                                        setExamineRole(undefined)
-                                    }
-                                }}
-                                key={skill.skill + "Key"}>
-                                {skill.skill}
-                            </button>
-                        )
-                    })}
-                {roles.map(
-                    (role) => {
-                        return (
-                            <button
-                                className="basicRoleBtn"
-                                onClick={() => {
-                                    if (examineRole && examineRole.job === role.job) {
-                                        setExamineRole(undefined)
-                                    } else {
-                                        setExamineStat(undefined)
-                                        setExamineAbility(undefined)
-                                        setExamineSkill(undefined)
-                                        setExamineRole(role)
-                                    }
-                                }}
-                                key={role.job + "Key"}>
-                                {role.job}
-                            </button>
-                        )
-                    })}
+                {content.map(content => {
+                    return (
+                        <button
+                            className={
+                                content.type === "stat" ? "basicStatBtn" :
+                                    content.type === "ability" ? "basicAbilityBtn" :
+                                        content.type === "skill" ? "basicSkillBtn" :
+                                            content.type === "role" ? "basicRoleBtn" :
+                                                ""}
+                            onClick={() => {
+                                if (examine && examine.title === content.title) {
+                                    setExamine(undefined)
+                                }
+                                else { setExamine(content) }
+                            }}
+                            key={content.title + "Key"}>
+                            {content.title}
+                        </button>
+                    )
+                })}
             </div>
         </>
     )
