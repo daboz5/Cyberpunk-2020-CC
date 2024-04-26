@@ -36,7 +36,7 @@ type Rule = {
     type: string,
     imgs: string[],
     hashes: string[],
-    content: string,
+    content: JSX.Element,
     oldContent: string
 }
 

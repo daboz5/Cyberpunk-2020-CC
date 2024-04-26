@@ -647,148 +647,12 @@ export default function useDatabase() {
     }];
 
     const fightArr: Rule[] = [{
-        title: "Round",
-        subtitle: "Order",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Action sequences are segmented into rounds, each of them lasting cca 3 s. Each round is made from so many Turns as there are participants.",
-        oldContent: "Combat in FNFF is divided up into rounds, each representing cca 3 seconds.",
-    }, {
-        title: "Turn order",
-        subtitle: "Order",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Each Round participant with a highest initiative starts first and the one with the lowest last. Initiative is calculated by '1d10 + REF + boosts' formula.",
-        oldContent: "The order of the round is based on an initiative roll of 1d10 plus the players REF stat, with the highest rolls moving first to lowest rolls moving last. Reflex boosts are added to this roll where applicable."
-    }, {
-        title: "Wait",
-        subtitle: "Order",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "You can decide to act later in Round. If someone else already started their Turn when you decide to start your Turn, you have to wait for them to finish their Turn before you can start yours.",
-        oldContent: "N/A"
-    }, {
-        title: "Turn",
-        subtitle: "Order",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Turn is cca 3 s long part of the Round in which someone is able to act. In each Turn you have 2 actions and a movement up to your Movement Speed.",
-        oldContent: "N/A"
-    }, {
-        title: "Rush",
-        subtitle: "Order",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Rush your Turn and get +3 to your Initiative and -3 to your Action Modifier.",
-        oldContent: "N/A"
-    }, {
-        title: "Action",
-        subtitle: "Action",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "First action in Turn is free while second comes with -3 Action Modifier if roll is required. There are many types of actions.",
-        oldContent: "N/A"
-    }, {
-        title: "Run",
-        subtitle: "Action",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Move up to 3x your Movement Speed (can only be used once, includes your free Movement Speed).",
-        oldContent: "N/A"
-    }, {
-        title: "Attack Action",
-        subtitle: "Action",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Attack (up to weapon's max Rate of Fire) or make a Melee Attack.",
-        oldContent: "N/A"
-    }, {
-        title: "Dodge",
-        subtitle: "Action",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Make yourself harder to hit and give your attackers -2 Action Modifier.",
-        oldContent: "N/A"
-    }, {
-        title: "Block or Parry",
-        subtitle: "Action",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "It has to be your first Action. Stop damage from a melee attacks with your weapon or arm. Attack will hit and it will cause damage (can be used with a protective object). If blocked with a weapon, roll 1d10 instead and if you roll 10, it breaks.",
-        oldContent: "N/A"
-    }, {
-        title: "Escape",
-        subtitle: "Action",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Escape a Grapple, a Hold or a Trap.",
-        oldContent: "N/A"
-    }, {
-        title: "Aim",
-        subtitle: "Action",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "For 3 Rounds (including this one), gain +1 to your Attack Modifier towards the target of your Aim. To keep the Attack Modifier: you can not move, have a steady position, a chance to track your target.",
-        oldContent: "N/A"
-    }, {
-        title: "Reload",
-        subtitle: "Action",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Reload if you have a spare munition case.",
-        oldContent: "N/A"
-    }, {
-        title: "Change Weapons",
-        subtitle: "Action",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Change your weapons. This does not include changing with how many weapons you decide to fire at the same time.",
-        oldContent: "N/A"
-    }, {
-        title: "Mount or Connect",
-        subtitle: "Action",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Mount or dismount a vehicle, animal, safely connect or disconnect with a wire to a computer etc.",
-        oldContent: "N/A"
-    }, {
-        title: "Repair or Aid",
-        subtitle: "Action",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Try to repair something or give Medical Aid to someone.",
-        oldContent: "N/A"
-    }, {
-        title: "Perform a Task",
-        subtitle: "Action",
-        type: "fight",
-        imgs: [],
-        hashes: [],
-        content: "Perform a non-combat task. If task would take you more than 3 s to finish, continue doing it into the next Round.",
-        oldContent: "N/A"
-    }, {
         title: "Weapon range",
         subtitle: "Attack",
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Every weapon has a range that can be modified given circumstances.\n\nHere is a list of 'long ranges' (most relevant):\nMelee weapon 1 m\nThrowing weapon 10m x BODY (-10 m/kg if over 1 kg)\nHandgun and Shotgun 50 m\nSubmachinegun 150 m\nRifle 400 m\n\nHere is a list of how this translated into a hit DC:\nPoint Blank (1 m or less) DC 10\nClose (1/4 of Long) DC 15\nMedium (1/2 of Long) DC 20\nLong DC 25\nExtreme (2x of Long) DC 30",
+        content: <>{`Every weapon has a range that can be modified given circumstances.`}<br /><br />{`Here is a list of 'long ranges' (most relevant):`}<br />{`Melee weapon 1 m`}<br />{`Throwing weapon 10m x BODY (-10 m/kg if over 1 kg)`}<br />{`Handgun and Shotgun 50 m`}<br />{`Submachinegun 150 m`}<br />{`Rifle 400 m`}<br /><br />{`Here is a list of how this translated into a hit DC:`}<br />{`Point Blank (1 m or less) DC 10`}<br />{`Close (1/4 of Long) DC 15`}<br />{`Medium (1/2 of Long) DC 20`}<br />{`Long DC 25`}<br />{`Extreme (2x of Long) DC 30`}</>,
         oldContent: "N/A"
     }, {
         title: "Immobile Modifier",
@@ -796,7 +660,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "+4 to Hit",
+        content: <>{`+4 to Hit`}</>,
         oldContent: "N/A"
     }, {
         title: "Dodging Modifier",
@@ -804,7 +668,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "-2 to Hit",
+        content: <>{`-2 to Hit`}</>,
         oldContent: "N/A"
     }, {
         title: "Moving Target Modifier",
@@ -812,7 +676,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Moving target's REF > 6 -> -1\nMoving target's REF > 8 -> -2\nMoving target's REF > 10 -> -3\nMoving target's REF > 12 -> -4\nMoving target's REF > 14 -> -5\nEtc. ...",
+        content: <>{`Moving target's REF > 6 -> -1`}<br />{`Moving target's REF > 8 -> -2`}<br />{`Moving target's REF > 10 -> -3`}<br />{`Moving target's REF > 12 -> -4`}<br />{`Moving target's REF > 14 -> -5`}<br />{`Etc. ...`}</>,
         oldContent: "N/A"
     }, {
         title: "Rush Modifier",
@@ -820,7 +684,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "-3 to Hit",
+        content: <>{`-3 to Hit`}</>,
         oldContent: "N/A"
     }, {
         title: "Ambush Modifier",
@@ -828,7 +692,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "+5 to Hit.",
+        content: <>{`+5 to Hit.`}</>,
         oldContent: "N/A"
     }, {
         title: "Aim Body Part Modifier",
@@ -836,7 +700,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "-4 to Hit",
+        content: <>{`-4 to Hit`}</>,
         oldContent: "N/A"
     }, {
         title: "Indirect Modifier",
@@ -844,7 +708,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "-5 to Hit",
+        content: <>{`-5 to Hit`}</>,
         oldContent: "N/A"
     }, {
         title: "Blinded or Obscured Modifier",
@@ -852,7 +716,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "-3 to Hit, can be lower or higher based on the severity",
+        content: <>{`-3 to Hit, can be lower or higher based on the severity`}</>,
         oldContent: "N/A"
     }, {
         title: "Outlined Modifier",
@@ -860,7 +724,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "+2 to Hit",
+        content: <>{`+2 to Hit`}</>,
         oldContent: "N/A"
     }, {
         title: "Two Weapon Fighting Modifier",
@@ -868,7 +732,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "-3 to Hit to both weapons",
+        content: <>{`-3 to Hit to both weapons`}</>,
         oldContent: "N/A"
     }, {
         title: "Fire Running Modifier",
@@ -876,7 +740,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "-2 to Hit, only works when Run is active that turn",
+        content: <>{`-2 to Hit, only works when Run is active that turn`}</>,
         oldContent: "N/A"
     }, {
         title: "Unusual Targeting Modifier",
@@ -884,7 +748,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "-2 to Hit",
+        content: <>{`-2 to Hit`}</>,
         oldContent: "N/A"
     }, {
         title: "Mounted Weapon Modifier",
@@ -892,7 +756,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "+2 to Hit",
+        content: <>{`+2 to Hit`}</>,
         oldContent: "N/A"
     }, {
         title: "Vehicle Mounted Modifier",
@@ -900,7 +764,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "-4 to Hit, -2 if combined with (Turret) Mounted Weapon",
+        content: <>{`-4 to Hit, -2 if combined with (Turret) Mounted Weapon`}</>,
         oldContent: "N/A"
     }, {
         title: "Large Target Modifier",
@@ -908,7 +772,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "+4 to Hit, 2x your size or more",
+        content: <>{`+4 to Hit, 2x your size or more`}</>,
         oldContent: "N/A"
     }, {
         title: "Small Target Modifier",
@@ -916,7 +780,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "-4 to Hit, 1/2 your size or less",
+        content: <>{`-4 to Hit, 1/2 your size or less`}</>,
         oldContent: "N/A"
     }, {
         title: "Tiny Target Modifier",
@@ -924,7 +788,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "-6 to Hit, 1/4 your size or less",
+        content: <>{`-6 to Hit, 1/4 your size or less`}</>,
         oldContent: "N/A"
     }, {
         title: "Aiming Modifier",
@@ -932,7 +796,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "+1 to Hit",
+        content: <>{`+1 to Hit`}</>,
         oldContent: "N/A"
     }, {
         title: "Upgraded Sight Modifier",
@@ -940,7 +804,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Laser Sight: +1 to Hit\nTargeting Scope: +1 to Hit\nTelescopic Sight: +1 to Medium and Long range, +2 to Extreme range\nSmart Googles: +2 to Hit",
+        content: <>{`Laser Sight: +1 to Hit`}<br />{`Targeting Scope: +1 to Hit`}<br />{`Telescopic Sight: +1 to Medium and Long range, +2 to Extreme range`}<br />{`Smart Googles: +2 to Hit`}</>,
         oldContent: "N/A"
     }, {
         title: "Three Round Burst Modifier",
@@ -948,7 +812,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "+3 to Hit on Close na Medium range (autohit on Point Blank if not a Fumble)",
+        content: <>{`+3 to Hit on Close na Medium range (autohit on Point Blank if not a Fumble)`}</>,
         oldContent: "N/A"
     }, {
         title: "Full Auto Fire Modifier",
@@ -956,7 +820,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "+1 to Hit for every 10 rounds on Close or less\n-1 to Hit for every 10 rounds on Medium or more",
+        content: <>{`+1 to Hit for every 10 rounds on Close or less`}<br />{`-1 to Hit for every 10 rounds on Medium or more`}</>,
         oldContent: "N/A"
     }, {
         title: "Pistol (PISTOL)",
@@ -964,7 +828,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Use with Pistol skill. Single shot or semiautomatic weapon which may be accurately fired with one hand.",
+        content: <>{`Use with Pistol skill. Single shot or semiautomatic weapon which may be accurately fired with one hand.`}</>,
         oldContent: "N/A"
     }, {
         title: "Submachinnegun (SMG)",
@@ -972,7 +836,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Use with Submachinegun skill. Weapon which may fire either automatically or semi-automatically, using only pistol ammunition.",
+        content: <>{`Use with Submachinegun skill. Weapon which may fire either automatically or semi-automatically, using only pistol ammunition.`}</>,
         oldContent: "N/A"
     }, {
         title: "Shotgun (SHOTGUN)",
@@ -980,7 +844,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Use with Shotgun skill. Weapon which fires pellets or other small particles instead of a solid projectile.",
+        content: <>{`Use with Shotgun skill. Weapon which fires pellets or other small particles instead of a solid projectile.`}</>,
         oldContent: "N/A"
     }, {
         title: "Rifle (RIFLE)",
@@ -988,7 +852,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Use with Rifle Skill. Weapon that needs to be handled with both hands and specializes in up to 400 m range fire.",
+        content: <>{`Use with Rifle Skill. Weapon that needs to be handled with both hands and specializes in up to 400 m range fire.`}</>,
         oldContent: "N/A"
     }, {
         title: "Sniper Rifle (SNIPER)",
@@ -996,7 +860,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Use with Sniper skill or 'Rifle skill / 2' rounded down. Single shot or semiautomatic weapon which needs to be handled with both hands and specializes in over 400 m range fire. Sniper has a different range DCs than other weapons: Point Blanc DC 10, Close DC 30, Medium DC 15, Long DC 20, Extreme DC 25.",
+        content: <>{`Use with Sniper skill or 'Rifle skill / 2' rounded down. Single shot or semiautomatic weapon which needs to be handled with both hands and specializes in over 400 m range fire. Sniper has a different range DCs than other weapons: Point Blanc DC 10, Close DC 30, Medium DC 15, Long DC 20, Extreme DC 25.`}</>,
         oldContent: "N/A"
     }, {
         title: "Heavy Weapon (HEAVY)",
@@ -1004,7 +868,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Might be used with Heavy weapon skill or maybe with more specialized skill. Weapon that usually needs to be placed on the ground or handled with great care to be used properly.",
+        content: <>{`Might be used with Heavy weapon skill or maybe with more specialized skill. Weapon that usually needs to be placed on the ground or handled with great care to be used properly.`}</>,
         oldContent: "N/A"
     }, {
         title: "Melee Weapon (MELEE)",
@@ -1012,7 +876,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Any weapon that needs to be held in hand or both hands and works only in Point Blank range (except if thrown) to be used properly.",
+        content: <>{`Any weapon that needs to be held in hand or both hands and works only in Point Blank range (except if thrown) to be used properly.`}</>,
         oldContent: "N/A"
     }, {
         title: "Other Weapon (OTHER)",
@@ -1020,7 +884,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Any other type of a weapon. You might need to learn a special skill in order to use such a weapon.",
+        content: <>{`Any other type of a weapon. You might need to learn a special skill in order to use such a weapon.`}</>,
         oldContent: "N/A"
     }, {
         title: "Weapon Code",
@@ -1028,7 +892,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "- NAME -\n- TYPE -\n- ACCURACY (ACC) -\n- CONCEALABILITY (CON) -\n- AVAILABILITY (AV) -\n- DAMAGE & AMMUNITION (DMG & AMMO) -\n- NUMBER OF SHOTS (NOS) -\n- RATE OF FIRE (ROF) -\n- RELIABILITY (REL) -\n- COST -",
+        content: <>{`- NAME -`}<br />{`- TYPE -`}<br />{`- ACCURACY (ACC) -`}<br />{`- CONCEALABILITY (CON) -`}<br />{`- AVAILABILITY (AV) -`}<br />{`- DAMAGE & AMMUNITION (DMG & AMMO) -`}<br />{`- NUMBER OF SHOTS (NOS) -`}<br />{`- RATE OF FIRE (ROF) -`}<br />{`- RELIABILITY (REL) -`}<br />{`- COST -`}</>,
         oldContent: "N/A"
     }, {
         title: "Accuracy (ACC)",
@@ -1036,7 +900,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Accuracy of fire that is dependent on the quality of a weapon or its other properties.",
+        content: <>{`Accuracy of fire that is dependent on the quality of a weapon or its other properties.`}</>,
         oldContent: "N/A"
     }, {
         title: "Concealability",
@@ -1044,7 +908,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "The ease with which weapon can be hidden on your person from being noticed or found. When you are being searched or when searching someone else, roll Hide skill vs. Awareness skill (or other appropriate skill) and add -5 to Hide for every Concealability level over its Concealability level. For weapon to be concealed, an attempt has to be made to conceal it. If attempt is performed poorly or with great care advantage or disadvantage might also apply.",
+        content: <>{`The ease with which weapon can be hidden on your person from being noticed or found. When you are being searched or when searching someone else, roll Hide skill vs. Awareness skill (or other appropriate skill) and add -5 to Hide for every Concealability level over its Concealability level. For weapon to be concealed, an attempt has to be made to conceal it. If attempt is performed poorly or with great care advantage or disadvantage might also apply.`}</>,
         oldContent: "N/A"
     }, {
         title: "Availability",
@@ -1052,7 +916,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "How easy or hard it is to find the thing you are looking for.\nCommon - Easy to find. - COM\nUncommon - Hard to find, probably at specilized stores. - UNCO\nRare - Lucky find, black market, limited stock, military-grade, might be illegal. - RARE\nSpecial - One of a kind, special military issue, self-made masterpiece, if not probably very illegal, valuable or at least very experimental. - SPEC",
+        content: <>{`How easy or hard it is to find the thing you are looking for.`}<br />{`Common - Easy to find. - COM`}<br />{`Uncommon - Hard to find, probably at specilized stores. - UNCO`}<br />{`Rare - Lucky find, black market, limited stock, military-grade, might be illegal. - RARE`}<br />{`Special - One of a kind, special military issue, self-made masterpiece, if not probably very illegal, valuable or at least very experimental. - SPEC`}</>,
         oldContent: "N/A"
     }, {
         title: "Damage & Ammunition",
@@ -1060,7 +924,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "How much damage weapon causes per hit and and what ammunition it uses (if any) to continue to fire.",
+        content: <>{`How much damage weapon causes per hit and and what ammunition it uses (if any) to continue to fire.`}</>,
         oldContent: "N/A"
     }, {
         title: "Number of Shots (NOS)",
@@ -1068,7 +932,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "How many shots are can be held in a standard clip, magazine or quiver for the weapon type before they run out.",
+        content: <>{`How many shots are can be held in a standard clip, magazine or quiver for the weapon type before they run out.`}</>,
         oldContent: "N/A"
     }, {
         title: "Rate of Fire (ROF)",
@@ -1076,7 +940,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "How many shots the weapon can fire at its maximum per Round (you may not double ROF by using multiple Actions).",
+        content: <>{`How many shots the weapon can fire at its maximum per Round (you may not double ROF by using multiple Actions).`}</>,
         oldContent: "N/A"
     }, {
         title: "Reliability",
@@ -1084,7 +948,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "How reliable or unreliable the weapon is.\nVery Reliable - VER\nReliable - REL\nUnreliable - UNR",
+        content: <>{`How reliable or unreliable the weapon is.`}<br />{`Very Reliable - VER`}<br />{`Reliable - REL`}<br />{`Unreliable - UNR`}</>,
         oldContent: "N/A"
     }, {
         title: "Weapon Cost (Cost)",
@@ -1092,7 +956,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "How much does it cost. Cost for most weapons can be guessed from comparison with similar weapons, but might be influenced with a local economy, seller's greed, favoritism or strategy, rarity, illegality, buyer's desire etc..",
+        content: <>{`How much does it cost. Cost for most weapons can be guessed from comparison with similar weapons, but might be influenced with a local economy, seller's greed, favoritism or strategy, rarity, illegality, buyer's desire etc..`}</>,
         oldContent: "N/A"
     }, {
         title: "Armor Code",
@@ -1100,7 +964,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "- NAME -\n- TYPE OF PROTECTION (TOP) -\n- AVAILABILITY (AV) -\n- COVER -\n- STOPPING POWER (SP) -\n- ENCUMBERANCE (EN) -\n- COST -",
+        content: <>{`- NAME -`}<br />{`- TYPE OF PROTECTION (TOP) -`}<br />{`- AVAILABILITY (AV) -`}<br />{`- COVER -`}<br />{`- STOPPING POWER (SP) -`}<br />{`- ENCUMBERANCE (EN) -`}<br />{`- COST -`}</>,
         oldContent: "N/A"
     }, {
         title: "Type of Protection (TOP)",
@@ -1108,7 +972,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Armor might be vulnerable or extra resistent if not immune to certain types of damage, most common being the vulnerability to cuts (%). When not obvious, such vulnerability is best to be defined in advance. If not, it is pressumed it is using a standard armor protection.",
+        content: <>{`Armor might be vulnerable or extra resistent if not immune to certain types of damage, most common being the vulnerability to cuts (%). When not obvious, such vulnerability is best to be defined in advance. If not, it is pressumed it is using a standard armor protection.`}</>,
         oldContent: "N/A"
     }, {
         title: "Availability (AV)",
@@ -1116,7 +980,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "How easy or hard it is to find the thing you are looking for.\nCommon - Easy to find. - COM\nUncommon - Hard to find, probably at specilized stores. - UNCO\nRare - Lucky find, black market, limited stock, military-grade, might be illegal. - RARE\nSpecial - One of a kind, special military issue, self-made masterpiece, if not probably very illegal, valuable or at least very experimental. - SPEC",
+        content: <>{`How easy or hard it is to find the thing you are looking for.`}<br />{`Common - Easy to find. - COM`}<br />{`Uncommon - Hard to find, probably at specilized stores. - UNCO`}<br />{`Rare - Lucky find, black market, limited stock, military-grade, might be illegal. - RARE`}<br />{`Special - One of a kind, special military issue, self-made masterpiece, if not probably very illegal, valuable or at least very experimental. - SPEC`}</>,
         oldContent: "N/A"
     }, {
         title: "Armor Cover",
@@ -1124,7 +988,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Which parts of the body it covers. Main parts are: 1 Torso, 2 Arms, 2 Legs and 1 Head. If there are more or less than predicted limbs or body plan is different, GM decides what rules would apply in the event of a combat. Under some circomstances special rules might apply, like if someone is using a helmet and it has a knife placed on their throat, COVER and SP of a helmet will not apply.",
+        content: <>{`Which parts of the body it covers. Main parts are: 1 Torso, 2 Arms, 2 Legs and 1 Head. If there are more or less than predicted limbs or body plan is different, GM decides what rules would apply in the event of a combat. Under some circomstances special rules might apply, like if someone is using a helmet and it has a knife placed on their throat, COVER and SP of a helmet will not apply.`}</>,
         oldContent: "N/A"
     }, {
         title: "Stopping Power (SP)",
@@ -1132,7 +996,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "The ability of an armor to stop the projectile or in some other way reflect or prevent the damage. When calculating damage, subtract SP from the per-hit-damage. If SP is larger than the damage, damage is not applied. If SP is the same as damage, damage is not applied, but SP drops by 1. If SP is lower than the damage, SP drops by one and difference is applied to the next armor layer or body part until damage drops to 0 or body part is damaged.",
+        content: <>{`The ability of an armor to stop the projectile or in some other way reflect or prevent the damage. When calculating damage, subtract SP from the per-hit-damage. If SP is larger than the damage, damage is not applied. If SP is the same as damage, damage is not applied, but SP drops by 1. If SP is lower than the damage, SP drops by one and difference is applied to the next armor layer or body part until damage drops to 0 or body part is damaged.`}</>,
         oldContent: "N/A"
     }, {
         title: "Encumberence (ENV)",
@@ -1140,7 +1004,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "It determines if equiping the armor part lowers your REF Stat while armor is equiped.",
+        content: <>{`It determines if equiping the armor part lowers your REF Stat while armor is equiped.`}</>,
         oldContent: "N/A"
     }, {
         title: "Armor Cost (Cost)",
@@ -1148,7 +1012,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "How much does it cost. Cost for most armors can be guessed from a comparison with similar types of armor, but might be influenced with a local economy, seller's greed, favoritism or strategy, rarity, illegality, buyer's desire etc.. The exception are armors that are not used as such (their value might lie in their look, brand etc.) but can provide protection when worn.",
+        content: <>{`How much does it cost. Cost for most armors can be guessed from a comparison with similar types of armor, but might be influenced with a local economy, seller's greed, favoritism or strategy, rarity, illegality, buyer's desire etc.. The exception are armors that are not used as such (their value might lie in their look, brand etc.) but can provide protection when worn.`}</>,
         oldContent: "N/A"
     }, {
         title: "Area Effect Table",
@@ -1156,7 +1020,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Granade - 5 m\nMotolov - 2 m/l\nFlamethrower - 2m\nCyberlimb flamethrower - 1 m\nMine - 2 m\nClaymore - 6 m (line)\nC-6 - 5 m/kg\nRPG - 4 m\nMissile - 6 m\nShotgun (Close, Medium, Long & Extreme) - 1, 2, 3 m\nMicromissile - 2 m",
+        content: <>{`Granade - 5 m`}<br />{`Motolov - 2 m/l`}<br />{`Flamethrower - 2m`}<br />{`Cyberlimb flamethrower - 1 m`}<br />{`Mine - 2 m`}<br />{`Claymore - 6 m (line)`}<br />{`C-6 - 5 m/kg`}<br />{`RPG - 4 m`}<br />{`Missile - 6 m`}<br />{`Shotgun (Close, Medium, Long & Extreme) - 1, 2, 3 m`}<br />{`Micromissile - 2 m`}</>,
         oldContent: "N/A"
     }, {
         title: "Throw Landing Table",
@@ -1164,7 +1028,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "When you miss, roll d10. It lands / explodes in that direction d10 m away.\n10\n7 - 8 - 9\n5 - TARGET - 6\n2 - 3 - 4\n1",
+        content: <>{`When you miss, roll d10. It lands / explodes in that direction d10 m away.`}<br />{`10`}<br />{`7 - 8 - 9`}<br />{`5 - TARGET - 6`}<br />{`2 - 3 - 4`}<br />{`1`}</>,
         oldContent: "N/A"
     }, {
         title: "Harmful Substances",
@@ -1172,7 +1036,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "If substance is not harmful, effect persists till exposure ends unless stated otherwise. If substance is harmful, Dmg next turn is the same if body is wounded (like by acid or lava), but halved (down) if body was not wounded (viral, bio-agent, gas) until exposure to concentration ends if not stated otherwise.\nHallucinogen - Confusion - -4 INT\nNausea - Illness - -4 REF\nTeargas - Tears & Breathing problems & Red Eyes - -2 REF\nSleep Drugs - Sleep (or drowsiness, -2 to Stats) - NONE\nBiotoxin I - Dying - 4d6 Dmg\nBiotoxin II - Dying - 8d6 Dmg\nNerve Gas - Dying - 8d10 Dmg",
+        content: <>{`If substance is not harmful, effect persists till exposure ends unless stated otherwise. If substance is harmful, Dmg next turn is the same if body is wounded (like by acid or lava), but halved (down) if body was not wounded (viral, bio-agent, gas) until exposure to concentration ends if not stated otherwise.`}<br />{`Hallucinogen - Confusion - -4 INT`}<br />{`Nausea - Illness - -4 REF`}<br />{`Teargas - Tears & Breathing problems & Red Eyes - -2 REF`}<br />{`Sleep Drugs - Sleep (or drowsiness, -2 to Stats) - NONE`}<br />{`Biotoxin I - Dying - 4d6 Dmg`}<br />{`Biotoxin II - Dying - 8d6 Dmg`}<br />{`Nerve Gas - Dying - 8d10 Dmg`}</>,
         oldContent: "N/A"
     }, {
         title: "Microwave Effects",
@@ -1180,7 +1044,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Microwaves might cause cyberware to malfunction. When unproperly protected cyberware is exposed, roll for effect type for each character.\n1 - Cyberoptic shorts 1d6 turns.\n2 - Neural pulse causes interface plugs, reflex boosts etc. to bug out, reducing REF by 1d6/2 (up) until repaired or replaced.\n3 - Cyberaudio shorts for 1d6 turns.\n4 - Cyberlimbs malfunctions for 1d6 turns.\n5 - Neural breakdown triggers epileptic fit for 1d6/3 (up) turns.\n5 - No effect.",
+        content: <>{`Microwaves might cause cyberware to malfunction. When unproperly protected cyberware is exposed, roll for effect type for each character.`}<br />{`1 - Cyberoptic shorts 1d6 turns.`}<br />{`2 - Neural pulse causes interface plugs, reflex boosts etc. to bug out, reducing REF by 1d6/2 (up) until repaired or replaced.`}<br />{`3 - Cyberaudio shorts for 1d6 turns.`}<br />{`4 - Cyberlimbs malfunctions for 1d6 turns.`}<br />{`5 - Neural breakdown triggers epileptic fit for 1d6/3 (up) turns.`}<br />{`5 - No effect.`}</>,
         oldContent: "N/A"
     }, {
         title: "Body Type Damage",
@@ -1188,7 +1052,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "When attacking with your body or with a reasonable Melee weapon, add Damage on Hit to your attack based on your STR.\n0 -> -2 Dmg\n1 -> -1 Dmg\n2 -> 0 Dmg\n3 -> +1 Dmg\n4 -> +2 Dmg\n5 -> +4 Dmg\n6 -> +6 Dmg\n7 -> +8 Dmg",
+        content: <>{`When attacking with your body or with a reasonable Melee weapon, add Damage on Hit to your attack based on your STR.`}<br />{`0 -> -2 Dmg`}<br />{`1 -> -1 Dmg`}<br />{`2 -> 0 Dmg`}<br />{`3 -> +1 Dmg`}<br />{`4 -> +2 Dmg`}<br />{`5 -> +4 Dmg`}<br />{`6 -> +6 Dmg`}<br />{`7 -> +8 Dmg`}</>,
         oldContent: "N/A"
     }, {
         title: "Body Type Toughness (BTT)",
@@ -1196,7 +1060,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Reduces the ammount of recaived Damage to the body part, but never to less than -1 Dmg.\nSTR 0  - 0\nSTR 1  - -1\nSTR 2  - -2\nSTR 3  - -3\nSTR 4  - -4\nSTR > 4  - -5",
+        content: <>{`Reduces the ammount of recaived Damage to the body part, but never to less than -1 Dmg.`}<br />{`STR 0  - 0`}<br />{`STR 1  - -1`}<br />{`STR 2  - -2`}<br />{`STR 3  - -3`}<br />{`STR 4  - -4`}<br />{`STR > 4  - -5`}</>,
         oldContent: "N/A"
     }, {
         title: "Direct vs Indirect Attack",
@@ -1204,7 +1068,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "When you are facing a target and there is an unobstructed weapon-travel-path between you, you can attack, but you can also attack in some cases if path is obstrcted. If path is obstructed but you are not targeting the obstruction, you might want bullets to ricochet from hard surfaces or try to stab someone that is hiding from your view. When that happens, add -5 to Hit modifier to the attack. You can check if surface is too soft by calculating SP of the surface. If SP is same or lower than the Dmg, Dmg is fully absorbed by the wall, if not, most of the Dmg (for game purposes all of it) is reflected towards the new target.",
+        content: <>{`When you are facing a target and there is an unobstructed weapon-travel-path between you, you can attack, but you can also attack in some cases if path is obstrcted. If path is obstructed but you are not targeting the obstruction, you might want bullets to ricochet from hard surfaces or try to stab someone that is hiding from your view. When that happens, add -5 to Hit modifier to the attack. You can check if surface is too soft by calculating SP of the surface. If SP is same or lower than the Dmg, Dmg is fully absorbed by the wall, if not, most of the Dmg (for game purposes all of it) is reflected towards the new target.`}</>,
         oldContent: "N/A"
     }, {
         title: "Hit Location",
@@ -1212,7 +1076,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "When someone or something is hit, you might try to determine Hit Location. When that happens, assign numbers from 1 to 10 to body parts that can be hit. If you need more than 10, assign 10 more and also roll d6 (1-3 for first 10, 4-6 for second, if you need 30 locations, just use 1-2, 3-4, 5-6, if you need even more do the same but with d10). Body part is obstructed by an obstruction (like a low wall or another body part), that part works as a cover and is hit first. Damage gets trough by normal SP rules or if it caused at least half of body-parts Health damage and that is possible (bullet pierces body part or sword pierced instead of sliced). If body part is pierced, apply half of the total piercing Dmg to it and half to the Hit Location.",
+        content: <>{`When someone or something is hit, you might try to determine Hit Location. When that happens, assign numbers from 1 to 10 to body parts that can be hit. If you need more than 10, assign 10 more and also roll d6 (1-3 for first 10, 4-6 for second, if you need 30 locations, just use 1-2, 3-4, 5-6, if you need even more do the same but with d10). Body part is obstructed by an obstruction (like a low wall or another body part), that part works as a cover and is hit first. Damage gets trough by normal SP rules or if it caused at least half of body-parts Health damage and that is possible (bullet pierces body part or sword pierced instead of sliced). If body part is pierced, apply half of the total piercing Dmg to it and half to the Hit Location.`}</>,
         oldContent: "N/A"
     }, {
         title: "Called Location",
@@ -1220,7 +1084,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Instead of attacking in general direction of the target, you might try and target a specific body part. When you do, add -4 to Hit modifier.",
+        content: <>{`Instead of attacking in general direction of the target, you might try and target a specific body part. When you do, add -4 to Hit modifier.`}</>,
         oldContent: "N/A"
     }, {
         title: "Armor Layering",
@@ -1228,7 +1092,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Armor can have up to 3 layers or it drops REF to 0 (prevents proper movement) (obstacles do not count as a layer). For each layer after the first one you, get 1 ENV (Skinweave is a layer, but does not cause ENV gain). Only one of the layers may be a Hard Armor or REF drops to 0. If layering covers only one part of the body or more than one seperately layered body parts, use ENV rules for the one with most layers or when using more than 3 layers and is not a torso just disable it if EN limit was not yet reached.",
+        content: <>{`Armor can have up to 3 layers or it drops REF to 0 (prevents proper movement) (obstacles do not count as a layer). For each layer after the first one you, get 1 ENV (Skinweave is a layer, but does not cause ENV gain). Only one of the layers may be a Hard Armor or REF drops to 0. If layering covers only one part of the body or more than one seperately layered body parts, use ENV rules for the one with most layers or when using more than 3 layers and is not a torso just disable it if EN limit was not yet reached.`}</>,
         oldContent: "N/A"
     }, {
         title: "Soft Armor",
@@ -1236,7 +1100,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Soft Armor is something that is worn on a body and provides protective value (SP) to it by its surface area yet it can bend with relative ease. Examples of Soft Armor are: Armor jackets, Police patrol armor, Kevlar vest, SkinTight Padding.",
+        content: <>{`Soft Armor is something that is worn on a body and provides protective value (SP) to it by its surface area yet it can bend with relative ease. Examples of Soft Armor are: Armor jackets, Police patrol armor, Kevlar vest, SkinTight Padding.`}</>,
         oldContent: "N/A"
     }, {
         title: "Hard Armor",
@@ -1244,7 +1108,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Hard Armor is something that is worn on a body and provides protective value (SP) to it by its surface area, but it cannot bend with relative ease. Examples of Hard Armor are: Helmets, Metal Gear, Police Riot Armor, Door Gunner's vest, Flak Armor parts, M-78 Militech Revised heavy vest, Body Armor, C-Ballistic Light Mesh.",
+        content: <>{`Hard Armor is something that is worn on a body and provides protective value (SP) to it by its surface area, but it cannot bend with relative ease. Examples of Hard Armor are: Helmets, Metal Gear, Police Riot Armor, Door Gunner's vest, Flak Armor parts, M-78 Militech Revised heavy vest, Body Armor, C-Ballistic Light Mesh.`}</>,
         oldContent: "N/A"
     }, {
         title: "Destroyed Armor & Body",
@@ -1252,7 +1116,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "If Armor or Body Parts were destroyed and you are still alive, they still count as worn yet broken if not reasonable otherwise (they were burned or blasted away).",
+        content: <>{`If Armor or Body Parts were destroyed and you are still alive, they still count as worn yet broken if not reasonable otherwise (they were burned or blasted away).`}</>,
         oldContent: "N/A"
     }, {
         title: "Armor Piercing (AP)",
@@ -1260,7 +1124,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "They deal 2x Dmg to SP of an armor, mechanical parts or an obstacle, but 1/2 to organics parts, like Body Parts (will pierce the target, so the other half of the Dmg might hit whatever is behind the target). Similarly, spears, swords and daggers might he used in piercing motion to try and puncture through instead of slicing.",
+        content: <>{`They deal 2x Dmg to SP of an armor, mechanical parts or an obstacle, but 1/2 to organics parts, like Body Parts (will pierce the target, so the other half of the Dmg might hit whatever is behind the target). Similarly, spears, swords and daggers might he used in piercing motion to try and puncture through instead of slicing.`}</>,
         oldContent: "N/A"
     }, {
         title: "Cover",
@@ -1268,7 +1132,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Cover is not part of the Armor, but it acts as such. Be aware, if you were shooting from cover, parts of the body you exposed while attacking might be hit. You might have 'ducked back behind a cover', but Turns occur in the same time period, so you were hit while you were shooting or moved hide back, not after it.",
+        content: <>{`Cover is not part of the Armor, but it acts as such. Be aware, if you were shooting from cover, parts of the body you exposed while attacking might be hit. You might have 'ducked back behind a cover', but Turns occur in the same time period, so you were hit while you were shooting or moved hide back, not after it.`}</>,
         oldContent: "N/A"
     }, {
         title: "Cover Examples",
@@ -1276,7 +1140,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "5 SP - Sheetrock Wall, Wooden Door\n10 SP - Concrete Block Wall, Car Body or Door\n15 SP - Heavy Wooden Door\n20 SP - Steel Door\n 25 SP - Mailbox, Curb, Brick Wall, Vending Machine\n30 SP - Stone Wall, Large Tree\n35 SP - Water Hydrant, Concrete Utility Pole, Engine\n40 SP - Armored Car, AV-4\n50 SP - Reinforced Containment Door",
+        content: <>{`5 SP - Sheetrock Wall, Wooden Door`}<br />{`10 SP - Concrete Block Wall, Car Body or Door`}<br />{`15 SP - Heavy Wooden Door`}<br />{`20 SP - Steel Door`}<br />{` 25 SP - Mailbox, Curb, Brick Wall, Vending Machine`}<br />{`30 SP - Stone Wall, Large Tree`}<br />{`35 SP - Water Hydrant, Concrete Utility Pole, Engine`}<br />{`40 SP - Armored Car, AV-4`}<br />{`50 SP - Reinforced Containment Door`}</>,
         oldContent: "N/A"
     }, {
         title: "Ranged Attack",
@@ -1284,7 +1148,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Any attack that is not made in Point Blank range or Melee Attack range. If not, use 'd10 + REF + Weapon Skill' formula. If it is and target is trying to dodge, use Melee Attack to Hit rules, but calculate Dmg for Ranged Attack instead (target might try to influence your aim). If it is and target is not trying to dodge, only roll for Fumble and Hit otherwise.",
+        content: <>{`Any attack that is not made in Point Blank range or Melee Attack range. If not, use 'd10 + REF + Weapon Skill' formula. If it is and target is trying to dodge, use Melee Attack to Hit rules, but calculate Dmg for Ranged Attack instead (target might try to influence your aim). If it is and target is not trying to dodge, only roll for Fumble and Hit otherwise.`}</>,
         oldContent: "N/A"
     }, {
         title: "Automatic Weapon Fumble",
@@ -1292,7 +1156,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Automatic weapons have highest chance to jam. If you roll 1 while trying to Hit, roll d10 again to see if weapon jams. If jammed, you need 1d6 turns to unjam it. Weapon will jam based on its realiability.\nUnreliable - d10 under 9\nReliable - d10 under 6\nVery Reliable - d10 under 4",
+        content: <>{`Automatic weapons have highest chance to jam. If you roll 1 while trying to Hit, roll d10 again to see if weapon jams. If jammed, you need 1d6 turns to unjam it. Weapon will jam based on its realiability.`}<br />{`Unreliable - d10 under 9`}<br />{`Reliable - d10 under 6`}<br />{`Very Reliable - d10 under 4`}</>,
         oldContent: "N/A"
     }, {
         title: "3x Auto",
@@ -1300,7 +1164,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Three round burst is Action available on most automatic weapons and gives you +3 to Hit on Close and Medium range. On Hit, roll d6/2 to see how many rounds actually hit the target.",
+        content: <>{`Three round burst is Action available on most automatic weapons and gives you +3 to Hit on Close and Medium range. On Hit, roll d6/2 to see how many rounds actually hit the target.`}</>,
         oldContent: "N/A"
     }, {
         title: "Full Auto",
@@ -1308,7 +1172,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Used to cover a wide range of targets or make only one dead for sure. You can not Aim or use a scope on Full Auto. On Full Auto at Close range, add +1 on Hit for every 10 rounds fired, but -1 on Hit per 10 rounds on Medium, Long and Extreme ranges. How many bullets you can fire depends on your ROF and how many they are left in your weapon's magazine. If you are attacking more than one target, divide total number of bullets by targets they are aimed at, then roll if they Hit targets for each target seperately. To calculate how many fired bullets hit the target use 'Hit Check - DC' formula. If number is 0, nothing wounds even if it was a Hit.",
+        content: <>{`Used to cover a wide range of targets or make only one dead for sure. You can not Aim or use a scope on Full Auto. On Full Auto at Close range, add +1 on Hit for every 10 rounds fired, but -1 on Hit per 10 rounds on Medium, Long and Extreme ranges. How many bullets you can fire depends on your ROF and how many they are left in your weapon's magazine. If you are attacking more than one target, divide total number of bullets by targets they are aimed at, then roll if they Hit targets for each target seperately. To calculate how many fired bullets hit the target use 'Hit Check - DC' formula. If number is 0, nothing wounds even if it was a Hit.`}</>,
         oldContent: "N/A"
     }, {
         title: "Angle of Attack (AOA)",
@@ -1316,7 +1180,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Sometimes it is hard to express how wide it is space into which you are shooting because further away you move, wider it gets. Angle of attack is a unit of 30° angle (1/3 of 90° and 1/6 of 180°) that is constant as long as you are not moving or your movement is limited while you are shooting and is meant to help with area calculations. If you cover only 15°, it still counts as 1 AOA if not ruled otherwise by GM. If you want you can replace it back with 'meters wide area'.",
+        content: <>{`Sometimes it is hard to express how wide it is space into which you are shooting because further away you move, wider it gets. Angle of attack is a unit of 30° angle (1/3 of 90° and 1/6 of 180°) that is constant as long as you are not moving or your movement is limited while you are shooting and is meant to help with area calculations. If you cover only 15°, it still counts as 1 AOA if not ruled otherwise by GM. If you want you can replace it back with 'meters wide area'.`}</>,
         oldContent: "N/A"
     }, {
         title: "Suppressive Fire",
@@ -1324,7 +1188,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Suppressive Fire creates an area hazardous to pass through. When it is declared, attacker choses its size with AOA from where they are standing up to 6 AOA (180°). Anyone starting in, entering or crossing the fire zone must make a save against being Hit with 'd10 + REF + Athletics' against DC 'bullets fired / number of AOA'. On failed save target takes 1/3 (down) of the bullets fired into any AOA it moved through or 1/2 (down) if it was doing so at Close range or closer. One AOA can not hit with more bullets as they were fired into it.",
+        content: <>{`Suppressive Fire creates an area hazardous to pass through. When it is declared, attacker choses its size with AOA from where they are standing up to 6 AOA (180°). Anyone starting in, entering or crossing the fire zone must make a save against being Hit with 'd10 + REF + Athletics' against DC 'bullets fired / number of AOA'. On failed save target takes 1/3 (down) of the bullets fired into any AOA it moved through or 1/2 (down) if it was doing so at Close range or closer. One AOA can not hit with more bullets as they were fired into it.`}</>,
         oldContent: "N/A"
     }, {
         title: "Shotgun Fire",
@@ -1332,7 +1196,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Shotguns are special in a way that they hit automatically inside of 2 AOA area (only roll to see if it Fumbles or if Ranged Attack Point Blank range rules apply). If target dodged in Point Blank range, it can choose if shotgun was shot left or right direction from its body. In any case check what happened to anyone cought in the area pallets were fired into.\nPoint Blank & Close - 1 m width - Full Damage\nMedium - 2 m width - 3/4 Damage\nLong - 3 m width - 1/2 Damage",
+        content: <>{`Shotguns are special in a way that they hit automatically inside of 2 AOA area (only roll to see if it Fumbles or if Ranged Attack Point Blank range rules apply). If target dodged in Point Blank range, it can choose if shotgun was shot left or right direction from its body. In any case check what happened to anyone cought in the area pallets were fired into.`}<br />{`Point Blank & Close - 1 m width - Full Damage`}<br />{`Medium - 2 m width - 3/4 Damage`}<br />{`Long - 3 m width - 1/2 Damage`}</>,
         oldContent: "N/A"
     }, {
         title: "Granade Fire",
@@ -1340,7 +1204,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Granades can be thrown up to 10x BODY m (-10 m for every kg after first) or they can be launched.",
+        content: <>{`Granades can be thrown up to 10x BODY m (-10 m for every kg after first) or they can be launched.`}</>,
         oldContent: "N/A"
     }, {
         title: "Flamethrowers",
@@ -1348,7 +1212,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Flamethrowers work between 2 chosen points. For a weapon, use Heavy Weapon Skill to Hit, for cyberarm variant, use Handgun Skill to Hit. If it hits, determine how many 30° away from each other were those points or how many meters you moved if you were moving, except if you were aiming at a single target. Divide damage dealt by those meters or 30°",
+        content: <>{`Flamethrowers work between 2 chosen points. For a weapon, use Heavy Weapon Skill to Hit, for cyberarm variant, use Handgun Skill to Hit. If it hits, determine how many 30° away from each other were those points or how many meters you moved if you were moving, except if you were aiming at a single target. Divide damage dealt by those meters or 30°`}</>,
         oldContent: "N/A"
     }, {
         title: "Gas",
@@ -1356,7 +1220,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "If you are attacked with some kind of a gas, make a sSave. If you succeed, take only half of the Dmg or effect if not stated otherwise. Saves need to be repeated as long as you remain exposed by concentration of it, but granades, sprays etc. last for 1 Turn if not stated otherwise.",
+        content: <>{`If you are attacked with some kind of a gas, make a sSave. If you succeed, take only half of the Dmg or effect if not stated otherwise. Saves need to be repeated as long as you remain exposed by concentration of it, but granades, sprays etc. last for 1 Turn if not stated otherwise.`}</>,
         oldContent: "N/A"
     }, {
         title: "Microwaves",
@@ -1364,7 +1228,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Microwave beam deliveres 1d6 burn Dmg. Everything electronic it touches and everything 1 m away from beam's path and not protected from such effects has to roll for a possible Microwave Effect.",
+        content: <>{`Microwave beam deliveres 1d6 burn Dmg. Everything electronic it touches and everything 1 m away from beam's path and not protected from such effects has to roll for a possible Microwave Effect.`}</>,
         oldContent: "N/A"
     }, {
         title: "Mines",
@@ -1372,7 +1236,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "There are 2 main types of mines, standard and antipersonnel. Standard mine has a specific sensor, like you step on it and if you are heavy enough or you enough of you is made out of metal that you are mistaken for a vehicle, it triggers. Antipersonnel mines might instead direct their fire into 2x long 2 AOA cone and work similarly to Shotguns.",
+        content: <>{`There are 2 main types of mines, standard and antipersonnel. Standard mine has a specific sensor, like you step on it and if you are heavy enough or you enough of you is made out of metal that you are mistaken for a vehicle, it triggers. Antipersonnel mines might instead direct their fire into 2x long 2 AOA cone and work similarly to Shotguns.`}</>,
         oldContent: "N/A"
     }, {
         title: "Rockets",
@@ -1380,7 +1244,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Heavy weapons, even if they use AP warhead, SP of armor is halved, but Dmg is not because they relly on their explosive charge.",
+        content: <>{`Heavy weapons, even if they use AP warhead, SP of armor is halved, but Dmg is not because they relly on their explosive charge.`}</>,
         oldContent: "N/A"
     }, {
         title: "Explosives",
@@ -1388,7 +1252,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Explosives have a simple rule. More you use, bigger the blast area. To determine how much of the damage target took, you need number of used explosives and their width. Closer you are, more damage you took (if you use 3 sticks of TNT, each with 3 m wide area, this will create 9 m wide explosion, 4,5 m in each direction if in open space, which means you would take 1 TNT stick of damage for each 1,5 m (4,5 m / 3 sticks) closer you are to the center of the explosion). If explosives are next to the wall ir just under the ceiling, they might collapse it. If that does not happen, energy of the explosion is reflected, so the area it is reflected into would be doubled.",
+        content: <>{`Explosives have a simple rule. More you use, bigger the blast area. To determine how much of the damage target took, you need number of used explosives and their width. Closer you are, more damage you took (if you use 3 sticks of TNT, each with 3 m wide area, this will create 9 m wide explosion, 4,5 m in each direction if in open space, which means you would take 1 TNT stick of damage for each 1,5 m (4,5 m / 3 sticks) closer you are to the center of the explosion). If explosives are next to the wall ir just under the ceiling, they might collapse it. If that does not happen, energy of the explosion is reflected, so the area it is reflected into would be doubled.`}</>,
         oldContent: "N/A"
     }, {
         title: "Melee Attack",
@@ -1396,7 +1260,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Attacks done at Point Blank range that intend to connect weapon (also fists, cyberfists etc.) with the target to cause damage are considered Melee Attacks. To Hit they need 'd10 + REF + Attack Type Skill' against DC 'd10 + REF + Defence Type Skill' formula. Defence Type Skills are Melee Weapons, Athletics, Dodge, Martial Arts.",
+        content: <>{`Attacks done at Point Blank range that intend to connect weapon (also fists, cyberfists etc.) with the target to cause damage are considered Melee Attacks. To Hit they need 'd10 + REF + Attack Type Skill' against DC 'd10 + REF + Defence Type Skill' formula. Defence Type Skills are Melee Weapons, Athletics, Dodge, Martial Arts.`}</>,
         oldContent: "N/A"
     }, {
         title: "Fighting",
@@ -1404,7 +1268,7 @@ export default function useDatabase() {
         type: "fight",
         imgs: [],
         hashes: [],
-        content: "Brawling and Martial Arts have many Actions through which they can be used. Martial Arts on Hit allow you to add your Skill lvl as Damage Modifier (Dmg Mod) and have special Attack Modifiers, based on Martial Arts Type.\nBlock or Parry - Declare it as a first Action. Check rules for Block or Parry.\nChoke - Requires Hold or Grapple. Opponent takes 1d6 Dmg per Turn.\nDisarm - On Hit remove or knock opponent's weapon 1 m away or throw it away with another Action.\nDodge - Declare it as a first Action. -2 Attack Modifier for any attacker.\nGrapple - On Hit, Grapple.\nHold - Requires Grapple. Opponent is immobilited until successful Escape.\nKick - 1d6 + Dmg Mod\nStrike - 1d6/2 + Dmg Mod\nThrow - Requres Grapple. Opponent is knocked to ground, taking 1d6 + Dmg Mod and sSTUN with -2 sSTUNp\nTrip - Knock opponent down, getting -2 Attack Modifier for next attack while you get +2 Attack Modifier for next attack.",
+        content: <>{`Brawling and Martial Arts have many Actions through which they can be used. Martial Arts on Hit allow you to add your Skill lvl as Damage Modifier (Dmg Mod) and have special Attack Modifiers, based on Martial Arts Type.`}<br />{`Block or Parry - Declare it as a first Action. Check rules for Block or Parry.`}<br />{`Choke - Requires Hold or Grapple. Opponent takes 1d6 Dmg per Turn.`}<br />{`Disarm - On Hit remove or knock opponent's weapon 1 m away or throw it away with another Action.`}<br />{`Dodge - Declare it as a first Action. -2 Attack Modifier for any attacker.`}<br />{`Grapple - On Hit, Grapple.`}<br />{`Hold - Requires Grapple. Opponent is immobilited until successful Escape.`}<br />{`Kick - 1d6 + Dmg Mod`}<br />{`Strike - 1d6/2 + Dmg Mod`}<br />{`Throw - Requres Grapple. Opponent is knocked to ground, taking 1d6 + Dmg Mod and sSTUN with -2 sSTUNp`}<br />{`Trip - Knock opponent down, getting -2 Attack Modifier for next attack while you get +2 Attack Modifier for next attack.`}</>,
         oldContent: "N/A"
     },]
 
@@ -1414,7 +1278,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "More injured you are, harder it gets to stay alive. Wounds summarize how bad it is.\nLight Wound - It hurts.\nSerious Wound - -2 REF\nCritical Wound - REF, INT and COOL are 1/2 (round up)\nMortal Wound - REF, INT, COOL are 1/3 (round up)",
+        content: <>{`More injured you are, harder it gets to stay alive. Wounds summarize how bad it is.`}<br />{`Light Wound - It hurts.`}<br />{`Serious Wound - -2 REF`}<br />{`Critical Wound - REF, INT and COOL are 1/2 (round up)`}<br />{`Mortal Wound - REF, INT, COOL are 1/3 (round up)`}</>,
         oldContent: "N/A"
     }, {
         title: "Limb Loss",
@@ -1422,7 +1286,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "Each limb has by default 8 Hp, lose them and you might need a new limb. Remaining Dmg to head (after SP and BTT) is doubled if it was not already raised from 0 to 1 by BTT rules. Loss of a head is mortal and final. If you lost a limb that was an organic part of you, dSAVE with dSAVEp 0 if you do not have a Mortal Wound yet. Limb damage does not carry over to the rest of the body if not reasonable otherwise. Destroyed limb is still a limb and needs to be removed before new one can replace it if not reasonable otherwise.",
+        content: <>{`Each limb has by default 8 Hp, lose them and you might need a new limb. Remaining Dmg to head (after SP and BTT) is doubled if it was not already raised from 0 to 1 by BTT rules. Loss of a head is mortal and final. If you lost a limb that was an organic part of you, dSAVE with dSAVEp 0 if you do not have a Mortal Wound yet. Limb damage does not carry over to the rest of the body if not reasonable otherwise. Destroyed limb is still a limb and needs to be removed before new one can replace it if not reasonable otherwise.`}</>,
         oldContent: "N/A"
     }, {
         title: "Shock Save (sSAVE)",
@@ -1430,7 +1294,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "Failed sSAVE will make you fall unconscious. Formula for sSAVE is: 'd10 equal or less than BODY - sSAVEp'. Roll again next turn until you succeed and wake up.",
+        content: <>{`Failed sSAVE will make you fall unconscious. Formula for sSAVE is: 'd10 equal or less than BODY - sSAVEp'. Roll again next turn until you succeed and wake up.`}</>,
         oldContent: "N/A"
     }, {
         title: "Healthbar (HEALTH)",
@@ -1438,7 +1302,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "Healthbar tracks how much damage you already sustained. It is made out of 10x4 Hp bars. First one covers Light Wounds, second one Serious Wounds, third Critical Wounds and others Mortal Wounds.",
+        content: <>{`Healthbar tracks how much damage you already sustained. It is made out of 10x4 Hp bars. First one covers Light Wounds, second one Serious Wounds, third Critical Wounds and others Mortal Wounds.`}</>,
         oldContent: "N/A"
     }, {
         title: "Death Save (dSAVE)",
@@ -1446,7 +1310,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "Failed dSAVE will kill you. Formula for dSAVE is: 'd10 equal or less than BODY - dSAVEp'. On failed dSAVE you die. On successful dSAVE repeat dSAVE next turn until you are Stabilized.",
+        content: <>{`Failed dSAVE will kill you. Formula for dSAVE is: 'd10 equal or less than BODY - dSAVEp'. On failed dSAVE you die. On successful dSAVE repeat dSAVE next turn until you are Stabilized.`}</>,
         oldContent: "N/A"
     }, {
         title: "Shock Save Penalty (sSAVEp)",
@@ -1454,7 +1318,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "0-4 Hp Loss - 0\n5-8 Hp Loss - -1\n9-12 Hp Loss - -2\n13-16 Hp Loss - -3\n17-20 Hp Loss - -4\n21-24 Hp Loss - -5\n25-28 Hp Loss - -6\n29-32 Hp Loss - -7\n33-36 Hp Loss - -8\n37-40 Hp Loss - -9",
+        content: <>{`0-4 Hp Loss - 0`}<br />{`5-8 Hp Loss - -1`}<br />{`9-12 Hp Loss - -2`}<br />{`13-16 Hp Loss - -3`}<br />{`17-20 Hp Loss - -4`}<br />{`21-24 Hp Loss - -5`}<br />{`25-28 Hp Loss - -6`}<br />{`29-32 Hp Loss - -7`}<br />{`33-36 Hp Loss - -8`}<br />{`37-40 Hp Loss - -9`}</>,
         oldContent: "N/A"
     }, {
         title: "Death Save Penalty (dSAVEp)",
@@ -1462,7 +1326,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "0-8 Hp Loss - -1\n13-16 Hp Loss - -2\n17-20 Hp Loss - -3\n21-24 Hp Loss - -4\n25-28 Hp Loss - -5\n29-32 Hp Loss - -6\n33-36 Hp Loss - -7\n37-40 Hp Loss - -8",
+        content: <>{`0-8 Hp Loss - -1`}<br />{`13-16 Hp Loss - -2`}<br />{`17-20 Hp Loss - -3`}<br />{`21-24 Hp Loss - -4`}<br />{`25-28 Hp Loss - -5`}<br />{`29-32 Hp Loss - -6`}<br />{`33-36 Hp Loss - -7`}<br />{`37-40 Hp Loss - -8`}</>,
         oldContent: "N/A"
     }, {
         title: "Health Points (Hp)",
@@ -1470,7 +1334,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "Everyone has 40 Hp (10x4), even those with missing parts of their body, but not everyone is equally able to survive Hp loss. Damage towards cybernetic limbs does not count as Hp loss if not reasonable otherwise.",
+        content: <>{`Everyone has 40 Hp (10x4), even those with missing parts of their body, but not everyone is equally able to survive Hp loss. Damage towards cybernetic limbs does not count as Hp loss if not reasonable otherwise.`}</>,
         oldContent: "N/A"
     }, {
         title: "Stabilize",
@@ -1478,7 +1342,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "When person is dying, they need to be Stabilized or they will sooner or later die. Formula for Stabilization is 'd10 + TECH + any medical Skill + equipement' while for DC use '(Hp Loss + 10) / 2' (round up).\nStabilization is easier with proper equipement:\nFirst Aid Kit - +1\nTTA or Suspension Tank - +3\nHospital with Surgery Room - +5",
+        content: <>{`When person is dying, they need to be Stabilized or they will sooner or later die. Formula for Stabilization is 'd10 + TECH + any medical Skill + equipement' while for DC use '(Hp Loss + 10) / 2' (round up).`}<br />{`Stabilization is easier with proper equipement:`}<br />{`First Aid Kit - +1`}<br />{`TTA or Suspension Tank - +3`}<br />{`Hospital with Surgery Room - +5`}</>,
         oldContent: "N/A"
     }, {
         title: "Partial Stabilization",
@@ -1486,7 +1350,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "Maybe it is just not your lucky day or maybe you do not know what you are doing when Stabilizing a parient and you fail to Stabilize them, so now they are at risk to die again. When that happens you may elect that Stabilization was a partial success. If you do, patient is Stabilized, but at a cost of being Crippled.",
+        content: <>{`Maybe it is just not your lucky day or maybe you do not know what you are doing when Stabilizing a parient and you fail to Stabilize them, so now they are at risk to die again. When that happens you may elect that Stabilization was a partial success. If you do, patient is Stabilized, but at a cost of being Crippled.`}</>,
         oldContent: "N/A"
     }, {
         title: "Crippled",
@@ -1494,7 +1358,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "When Crippled, roll d10 to see how crippled you became. Crippled body part has to be healed or replaced at a cost of a new one + surgical cost. You may elect your new Body Part to be in an Excelent Condition. With an Excellent Body Part, roll d10, on 7-10 you improve the same Stat that would be lowered if Crippled by temporary 1 (lost if body part is lost again). If you roll Crippled on a Cyberlimb, limb falls to the ground and needs DC 10 Cyber Tech Skill check for it to be placed back. If you roll on a limb that is no longer there, nothing bad happens and you are not Crippled.\n1 - L. Arm - -2 REF\n2 - R. Arm - -2 REF\n3 - L. Leg - -3 REF\n4 - R. Leg - -3 REF\n5 - Heart - -2 BODY & -1 REF\n6 - Lungs - -2 REF & -1 BODY\n7 - Liver - -2 BODY\n 8 - Kidney - -1 BODY (-3 if both)\n9 - Eyes - Blinded & +3 EMP\n10 - Nose - -2 COOL & (Disadvantage / Advantage on smell-related checks)",
+        content: <>{`When Crippled, roll d10 to see how crippled you became. Crippled body part has to be healed or replaced at a cost of a new one + surgical cost. You may elect your new Body Part to be in an Excelent Condition. With an Excellent Body Part, roll d10, on 7-10 you improve the same Stat that would be lowered if Crippled by temporary 1 (lost if body part is lost again). If you roll Crippled on a Cyberlimb, limb falls to the ground and needs DC 10 Cyber Tech Skill check for it to be placed back. If you roll on a limb that is no longer there, nothing bad happens and you are not Crippled.`}<br />{`1 - L. Arm - -2 REF`}<br />{`2 - R. Arm - -2 REF`}<br />{`3 - L. Leg - -3 REF`}<br />{`4 - R. Leg - -3 REF`}<br />{`5 - Heart - -2 BODY & -1 REF`}<br />{`6 - Lungs - -2 REF & -1 BODY`}<br />{`7 - Liver - -2 BODY`}<br />{` 8 - Kidney - -1 BODY (-3 if both)`}<br />{`9 - Eyes - Blinded & +3 EMP`}<br />{`10 - Nose - -2 COOL & (Disadvantage / Advantage on smell-related checks)`}</>,
         oldContent: "N/A"
     }, {
         title: "Body Part Quality",
@@ -1502,7 +1366,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "Some Body Parts are better or worse than others and all will deteriorate if not kept in proper conditions, both on and off the bodies they belong to. Poor Body Parts are lightly damaged, aged or slightly deteriorated, but still functional. Excelent body parts are in perfect condition but also a result of good genes, great surgery or a healthy lifestyle.",
+        content: <>{`Some Body Parts are better or worse than others and all will deteriorate if not kept in proper conditions, both on and off the bodies they belong to. Poor Body Parts are lightly damaged, aged or slightly deteriorated, but still functional. Excelent body parts are in perfect condition but also a result of good genes, great surgery or a healthy lifestyle.`}</>,
         oldContent: "N/A"
     }, {
         title: "Body Type Modifier (STR)",
@@ -1510,7 +1374,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "Evaluates your Body Type for bonuses under relevant situations.\n0 - ->2 BODY\n1 - 3-4 BODY\n2 - 5-7 BODY\n3 - 8-9 BODY\n4 - 10 BODY\n5 - 11-12 BODY\n6 - 13-14 BODY\n7 - 15-> BODY",
+        content: <>{`Evaluates your Body Type for bonuses under relevant situations.`}<br />{`0 - ->2 BODY`}<br />{`1 - 3-4 BODY`}<br />{`2 - 5-7 BODY`}<br />{`3 - 8-9 BODY`}<br />{`4 - 10 BODY`}<br />{`5 - 11-12 BODY`}<br />{`6 - 13-14 BODY`}<br />{`7 - 15-> BODY`}</>,
         oldContent: "N/A"
     }, {
         title: "Natural Healing",
@@ -1518,7 +1382,7 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: "Every organic, if not stated otherwise, heals by 1 Hp per day (apply over long rest if possible). This includes Hp that was lost due to limb loss.",
+        content: <>{`Every organic, if not stated otherwise, heals by 1 Hp per day (apply over long rest if possible). This includes Hp that was lost due to limb loss.`}</>,
         oldContent: "N/A"
     }];
 
@@ -1528,7 +1392,7 @@ export default function useDatabase() {
         type: "learn",
         imgs: [],
         hashes: [],
-        content: "When you roll 1 on d10 first time per Round, you gain a Fumble Point. Collect enough and you may upgrade your Skill (learn from your mistakes). You need 'Skill lvl * 3' Fumble Points to Upgrade (3, 6, 9, 12, 15, 18, 21, 24, 27). If your Skill lvl is 0, you need 1 Fumble Point to Upgrade. Fumble Points do not persist between skill levels.",
+        content: <>{`When you roll 1 on d10 first time per Round, you gain a Fumble Point. Collect enough and you may upgrade your Skill (learn from your mistakes). You need 'Skill lvl * 3' Fumble Points to Upgrade (3, 6, 9, 12, 15, 18, 21, 24, 27). If your Skill lvl is 0, you need 1 Fumble Point to Upgrade. Fumble Points do not persist between skill levels.`}</>,
         oldContent: "N/A"
     }, {
         title: "Study & Practice",
@@ -1536,7 +1400,7 @@ export default function useDatabase() {
         type: "learn",
         imgs: [],
         hashes: [],
-        content: "If you Study or Practice a skill, you might get better at it. You will need 10 days of study or practice to upgrade a skill lvl. You can not upgrade skill to more than level 2 that way.",
+        content: <>{`If you Study or Practice a skill, you might get better at it. You will need 10 days of study or practice to upgrade a skill lvl. You can not upgrade skill to more than level 2 that way.`}</>,
         oldContent: "N/A"
     }, {
         title: "Teaching",
@@ -1544,7 +1408,7 @@ export default function useDatabase() {
         type: "learn",
         imgs: [],
         hashes: [],
-        content: "If you know a skill, you can try and teach it. You can not teach something you do not know. For Teaching you are using your Teaching skill. Teaching takes time and effort. For how much time it takes use '(taught skill lvl * 10) / Teaching skill lvl' days formula. For how much effort you need use DC '(taught skill lvl * 10) / Teaching skill lvl' formula. If Teaching fails, you get after given period frustrated and give up or even lower student's lvl when Fumble occurs. If your Teaching skill is 0, you fail to teach for first 10 days before you get it trough Practice.",
+        content: <>{`If you know a skill, you can try and teach it. You can not teach something you do not know. For Teaching you are using your Teaching skill. Teaching takes time and effort. For how much time it takes use '(taught skill lvl * 10) / Teaching skill lvl' days formula. For how much effort you need use DC '(taught skill lvl * 10) / Teaching skill lvl' formula. If Teaching fails, you get after given period frustrated and give up or even lower student's lvl when Fumble occurs. If your Teaching skill is 0, you fail to teach for first 10 days before you get it trough Practice.`}</>,
         oldContent: "N/A"
     }, {
         title: "Mass Teaching",
@@ -1552,7 +1416,7 @@ export default function useDatabase() {
         type: "learn",
         imgs: [],
         hashes: [],
-        content: "For teaching more than 1 student at a time add +1 to DC for every 5 students. If you fail but it is not critical, as many people as 'roll value - DC value' did not grasp your teaching.",
+        content: <>{`For teaching more than 1 student at a time add +1 to DC for every 5 students. If you fail but it is not critical, as many people as 'roll value - DC value' did not grasp your teaching.`}</>,
         oldContent: "N/A"
     }, {
         title: "Critical Learning",
@@ -1560,7 +1424,7 @@ export default function useDatabase() {
         type: "learn",
         imgs: [],
         hashes: [],
-        content: "When you roll 10 on d10 and roll 10 on d10 again, you may upgrade relevant skill for 1 lvl as a moment of revelation.",
+        content: <>{`When you roll 10 on d10 and roll 10 on d10 again, you may upgrade relevant skill for 1 lvl as a moment of revelation.`}</>,
         oldContent: "N/A"
     }, {
         title: "Career Learning",
@@ -1568,17 +1432,153 @@ export default function useDatabase() {
         type: "learn",
         imgs: [],
         hashes: [],
-        content: "Career skill usually can not be raised or lowered by normal methods. Instead they are usually rewarded or taken away with story relevant events, especially if Role is connected to Player's reputation, status or credibility.",
+        content: <>{`Career skill usually can not be raised or lowered by normal methods. Instead they are usually rewarded or taken away with story relevant events, especially if Role is connected to Player's reputation, status or credibility.`}</>,
         oldContent: "N/A"
     },];
 
     const guideArr: Rule[] = [{
+        title: "Round",
+        subtitle: "Order",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Action sequences are segmented into rounds, each of them lasting cca 3 s. Each round is made from so many Turns as there are participants.`}</>,
+        oldContent: "Combat in FNFF is divided up into rounds, each representing cca 3 seconds.",
+    }, {
+        title: "Turn order",
+        subtitle: "Order",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Each Round participant with a highest initiative starts first and the one with the lowest last. Initiative is calculated by '1d10 + REF + boosts' formula.`}</>,
+        oldContent: "The order of the round is based on an initiative roll of 1d10 plus the players REF stat, with the highest rolls moving first to lowest rolls moving last. Reflex boosts are added to this roll where applicable."
+    }, {
+        title: "Wait",
+        subtitle: "Order",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`You can decide to act later in Round. If someone else already started their Turn when you decide to start your Turn, you have to wait for them to finish their Turn before you can start yours.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Turn",
+        subtitle: "Order",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Turn is cca 3 s long part of the Round in which someone is able to act. In each Turn you have 2 actions and a movement up to your Movement Speed.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Rush",
+        subtitle: "Order",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Rush your Turn and get +3 to your Initiative and -3 to your Action Modifier.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Action",
+        subtitle: "Action",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`First action in Turn is free while second comes with -3 Action Modifier if roll is required. There are many types of actions.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Run",
+        subtitle: "Action",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Move up to 3x your Movement Speed (can only be used once, includes your free Movement Speed).`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Attack Action",
+        subtitle: "Action",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Attack (up to weapon's max Rate of Fire) or make a Melee Attack.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Dodge",
+        subtitle: "Action",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Make yourself harder to hit and give your attackers -2 Action Modifier.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Block or Parry",
+        subtitle: "Action",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`It has to be your first Action. Stop damage from a melee attacks with your weapon or arm. Attack will hit and it will cause damage (can be used with a protective object). If blocked with a weapon, roll 1d10 instead and if you roll 10, it breaks.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Escape",
+        subtitle: "Action",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Escape a Grapple, a Hold or a Trap.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Aim",
+        subtitle: "Action",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`For 3 Rounds (including this one), gain +1 to your Attack Modifier towards the target of your Aim. To keep the Attack Modifier: you can not move, have a steady position, a chance to track your target.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Reload",
+        subtitle: "Action",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Reload if you have a spare munition case.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Change Weapons",
+        subtitle: "Action",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Change your weapons. This does not include changing with how many weapons you decide to fire at the same time.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Mount or Connect",
+        subtitle: "Action",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Mount or dismount a vehicle, animal, safely connect or disconnect with a wire to a computer etc.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Repair or Aid",
+        subtitle: "Action",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Try to repair something or give Medical Aid to someone.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Perform a Task",
+        subtitle: "Action",
+        type: "guide",
+        imgs: [],
+        hashes: [],
+        content: <>{`Perform a non-combat task. If task would take you more than 3 s to finish, continue doing it into the next Round.`}</>,
+        oldContent: "N/A"
+    }, {
         title: "Skill Level (lvl)",
         subtitle: "Modifier",
         type: "guide",
         imgs: [],
         hashes: [],
-        content: "Each skill follows common interpretation matrix.\n0 - Clueless\n1 - Basic\n2 - Passable\n3 - Average\n4 - Capable\n5 - Amateur\n6 - Proffesional\n7 - Expert\n8 - Master\n9 - Star\n10 - Legend",
+        content: <>{`Each skill follows common interpretation matrix.`}<br />{`0 - Clueless`}<br />{`1 - Basic`}<br />{`2 - Passable`}<br />{`3 - Average`}<br />{`4 - Capable`}<br />{`5 - Amateur`}<br />{`6 - Proffesional`}<br />{`7 - Expert`}<br />{`8 - Master`}<br />{`9 - Star`}<br />{`10 - Legend`}</>,
         oldContent: "N/A"
     }, {
         title: "Fumble Action",
@@ -1586,7 +1586,7 @@ export default function useDatabase() {
         type: "guide",
         imgs: [],
         hashes: [],
-        content: "When you roll 1 on d10, you fail your Action. Roll d10 again to see the severity of the result. Gain 1 Fumble Point in skill you were using. Can only happen once per Round in the same skill.",
+        content: <>{`When you roll 1 on d10, you fail your Action. Roll d10 again to see the severity of the result. Gain 1 Fumble Point in skill you were using. Can only happen once per Round in the same skill.`}</>,
         oldContent: "N/A"
     }, {
         title: "Critical Action",
@@ -1594,7 +1594,7 @@ export default function useDatabase() {
         type: "guide",
         imgs: [],
         hashes: [],
-        content: "When you roll 10 on d10, you critically succeed your Action. Roll d10 again and add the result to your Roll. If you roll 10 again, you may upgrade the skill you were using for 1 lvl.",
+        content: <>{`When you roll 10 on d10, you critically succeed your Action. Roll d10 again and add the result to your Roll. If you roll 10 again, you may upgrade the skill you were using for 1 lvl.`}</>,
         oldContent: "N/A"
     }, {
         title: "Starting Gear",
@@ -1602,7 +1602,7 @@ export default function useDatabase() {
         type: "guide",
         imgs: [],
         hashes: [],
-        content: "Starting gear that is optional but recommended.\nInflatable bed\nCompressable sleep bag\nSomething to entertain yourself in a downtime\nLaptop, Smartphone, Notebook or something else for taking notes\nSmartphone and monthly service provider\nSome sort of weapon and ammo if required\nArmor\nPersonal belongings (clothes, toothbrush etc.)\nRole tools (Netrunner needs cyber upgrades, cables etc.)",
+        content: <>{`Starting gear that is optional but recommended.`}<br />{`Inflatable bed`}<br />{`Compressable sleep bag`}<br />{`Something to entertain yourself in a downtime`}<br />{`Laptop, Smartphone, Notebook or something else for taking notes`}<br />{`Smartphone and monthly service provider`}<br />{`Some sort of weapon and ammo if required`}<br />{`Armor`}<br />{`Personal belongings (clothes, toothbrush etc.)`}<br />{`Role tools (Netrunner needs cyber upgrades, cables etc.)`}</>,
         oldContent: "N/A"
     }, {
         title: "Starting Money",
@@ -1610,7 +1610,7 @@ export default function useDatabase() {
         type: "guide",
         imgs: [],
         hashes: [],
-        content: "Use '1d6 / 3' rounded up, then multiply by 2000 eurodollars (2000, 4000, 6000).\nIf you want also roll 1d6 and with 5-6 you currently don't have a regular job.",
+        content: <>{`Use '1d6 / 3' rounded up, then multiply by 2000 eurodollars (2000, 4000, 6000).`}<br />{`If you want also roll 1d6 and with 5-6 you currently don't have a regular job.`}</>,
         oldContent: "N/A"
     }, {
         title: "Encumbrance (EN)",
@@ -1618,7 +1618,7 @@ export default function useDatabase() {
         type: "guide",
         imgs: [],
         hashes: [],
-        content: "You can carry up to BODY * 10 kg. If you carry more than that, you need to keep making DC Strength Feat to move (DC 10 + 5 for every 10 kg over the limit, you may not average it over a period of time, given that a Fumble might cause an injury). To keep it simple, organize your inventory into kg groups.\n0.5 kg or less are most items, like smartphone, ammo, shades etc.\n1 kg or less are medium or heavy handguns, sleeping bag, laptop etc.\n3 kg are submachine gun, guitar, assault rifle etc.",
+        content: <>{`You can carry up to BODY * 10 kg. If you carry more than that, you need to keep making DC Strength Feat to move (DC 10 + 5 for every 10 kg over the limit, you may not average it over a period of time, given that a Fumble might cause an injury). To keep it simple, organize your inventory into kg groups.`}<br />{`0.5 kg or less are most items, like smartphone, ammo, shades etc.`}<br />{`1 kg or less are medium or heavy handguns, sleeping bag, laptop etc.`}<br />{`3 kg are submachine gun, guitar, assault rifle etc.`}</>,
         oldContent: "N/A"
     },];
 
@@ -1628,7 +1628,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "If H drops to 0 or less, person enters Cyberpsychosis. If that person is a PC, it becomes NPC. Cyberpsychosis is a mental state of manic behaviour that can express itself in many ways, like uncontrolable food craving, heavy alcohol abuse, persistent suicidality or uncontrolable rage (especially when most upgrades are combat-oriented)). If Cyberpsycho becomes violent and starts rampaging, special Cybersquad unit will be called to apprehend or put down such Cyberpsycho.",
+        content: <>{`If H drops to 0 or less, person enters Cyberpsychosis. If that person is a PC, it becomes NPC. Cyberpsychosis is a mental state of manic behaviour that can express itself in many ways, like uncontrolable food craving, heavy alcohol abuse, persistent suicidality or uncontrolable rage (especially when most upgrades are combat-oriented)). If Cyberpsycho becomes violent and starts rampaging, special Cybersquad unit will be called to apprehend or put down such Cyberpsycho.`}</>,
         oldContent: "N/A"
     }, {
         title: "Humanity (H)",
@@ -1636,7 +1636,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "It represents how removed from a chance to enter Cyberpsychosis you are. You start with 10 H for every 1 lvl of EMP. With every upgrade, your mental stability gets worse as you quietly starting to lose your sence of where you end and the machine begins. Original rule to lower EMP was redacted to make use of cyberware less punishing, more attaractive and more insidious.",
+        content: <>{`It represents how removed from a chance to enter Cyberpsychosis you are. You start with 10 H for every 1 lvl of EMP. With every upgrade, your mental stability gets worse as you quietly starting to lose your sence of where you end and the machine begins. Original rule to lower EMP was redacted to make use of cyberware less punishing, more attaractive and more insidious.`}</>,
         oldContent: "N/A"
     }, {
         title: "Cyber Registration",
@@ -1644,7 +1644,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Every cyber upgrade purchased in official store is registered so that police department can more easily track potencial Cyberpsychos. For those that are likely on edge police might stop them and offer them a choice between harraspent and registration. If registration is made, you are assigned a cyberpsychologist until, a tracker is implanted into your cyberwear and police will be less trigger-happy when feeling threatened by you. Some departments might be extra causious and also implant an explosive or otherwise neutralising device, just in case.",
+        content: <>{`Every cyber upgrade purchased in official store is registered so that police department can more easily track potencial Cyberpsychos. For those that are likely on edge police might stop them and offer them a choice between harraspent and registration. If registration is made, you are assigned a cyberpsychologist until, a tracker is implanted into your cyberwear and police will be less trigger-happy when feeling threatened by you. Some departments might be extra causious and also implant an explosive or otherwise neutralising device, just in case.`}</>,
         oldContent: "N/A"
     }, {
         title: "Cyberpsychologist",
@@ -1652,7 +1652,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Specialist in how to regain lost Humanity. Cybernetic upgrades are removed and H is restored per day of a therapy. Once cyberware is implanted again, roll for lost Humanity, but this time with disadvantage (take lower loss). Theraphy costs depends on the quality of a treatment, but preliminary assessment before every treatment is 200 €. 1 H/day costs 100 €, 2 H/day 300 €, 3 H/day 1000 €",
+        content: <>{`Specialist in how to regain lost Humanity. Cybernetic upgrades are removed and H is restored per day of a therapy. Once cyberware is implanted again, roll for lost Humanity, but this time with disadvantage (take lower loss). Theraphy costs depends on the quality of a treatment, but preliminary assessment before every treatment is 200 €. 1 H/day costs 100 €, 2 H/day 300 €, 3 H/day 1000 €`}</>,
         oldContent: "N/A"
     }, {
         title: "Psycho Squad",
@@ -1660,7 +1660,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Specialists for hunting, neutralizing or eliminating Cyberpsychos. While they will usually at least try to catch Cyberpsycho alive, they value their lives and limbs way more than a random, violent, rampaging psycho. In the worst case scenario, whoever might want Cyberpsycho alive can still try to resurect the body with the wonders of modern medicine.",
+        content: <>{`Specialists for hunting, neutralizing or eliminating Cyberpsychos. While they will usually at least try to catch Cyberpsycho alive, they value their lives and limbs way more than a random, violent, rampaging psycho. In the worst case scenario, whoever might want Cyberpsycho alive can still try to resurect the body with the wonders of modern medicine.`}</>,
         oldContent: "N/A"
     }, {
         title: "Ripperdoc",
@@ -1668,7 +1668,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Black market practicioner of cyber technology installation, removal or rapair. Their prices depend on how legal their service is (you probably have a reason why not to use an ordinary clinic), but for most cases prices are simmilar. One additional benefit of a Ripperdoc is that you do not need to register your modifications, but in return your next visit to the hospital might include some uncomfortable question.",
+        content: <>{`Black market practicioner of cyber technology installation, removal or rapair. Their prices depend on how legal their service is (you probably have a reason why not to use an ordinary clinic), but for most cases prices are simmilar. One additional benefit of a Ripperdoc is that you do not need to register your modifications, but in return your next visit to the hospital might include some uncomfortable question.`}</>,
         oldContent: "N/A"
     }, {
         title: "Surgery Code",
@@ -1676,7 +1676,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "- SEVERITY -\n- AVAILABILITY -\n- DURATION -\n- WOUND -\n- DIFFICULTY -\n- COST -",
+        content: <>{`- SEVERITY -`}<br />{`- AVAILABILITY -`}<br />{`- DURATION -`}<br />{`- WOUND -`}<br />{`- DIFFICULTY -`}<br />{`- COST -`}</>,
         oldContent: "N/A"
     }, {
         title: "Cyberware Code",
@@ -1684,7 +1684,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "- NAME -\n- TYPE OF SURGERY (SURGERY) -\n- TYPE OF CYBERWARE (TYPE) -\n- DESCRIPTION (DES) -\n- LOSS OF HUMANITY (H LOSS) -\n- COST -",
+        content: <>{`- NAME -`}<br />{`- TYPE OF SURGERY (SURGERY) -`}<br />{`- TYPE OF CYBERWARE (TYPE) -`}<br />{`- DESCRIPTION (DES) -`}<br />{`- LOSS OF HUMANITY (H LOSS) -`}<br />{`- COST -`}</>,
         oldContent: "N/A"
     }, {
         title: "Negligible Surgery (S:0)",
@@ -1692,7 +1692,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "- Negligible -\n- Mall clinic, drop-in bodyshop etc. -\n- 1 h -\n- 1 Dmg -\n- DC 10 -\n- 0 € (included into cost of cyberware) -",
+        content: <>{`- Negligible -`}<br />{`- Mall clinic, drop-in bodyshop etc. -`}<br />{`- 1 h -`}<br />{`- 1 Dmg -`}<br />{`- DC 10 -`}<br />{`- 0 € (included into cost of cyberware) -`}</>,
         oldContent: "N/A"
     }, {
         title: "Minor Surgery (S:1)",
@@ -1700,7 +1700,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "- Minor -\n- Medical center or ripperdoc clinic -\n- 2 h -\n- 1d6+1 Dmg -\n- DC 15 -\n- 500 € -",
+        content: <>{`- Minor -`}<br />{`- Medical center or ripperdoc clinic -`}<br />{`- 2 h -`}<br />{`- 1d6+1 Dmg -`}<br />{`- DC 15 -`}<br />{`- 500 € -`}</>,
         oldContent: "N/A"
     }, {
         title: "Major Surgery (S:2)",
@@ -1708,7 +1708,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "- Major -\n- Hospital with surgery center or major ripperdoc operation -\n- 4 h -\n- 2d6+1 Dmg -\n- DC 20 -\n- 1500 € -",
+        content: <>{`- Major -`}<br />{`- Hospital with surgery center or major ripperdoc operation -`}<br />{`- 4 h -`}<br />{`- 2d6+1 Dmg -`}<br />{`- DC 20 -`}<br />{`- 1500 € -`}</>,
         oldContent: "N/A"
     }, {
         title: "Critical Surgery (S:3)",
@@ -1716,7 +1716,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "- Critical -\n- Hospital with surgery center or major ripperdoc operation -\n- 6 h -\n- 3d6+1 Dmg -\n- DC 25 -\n- 2500 € -",
+        content: <>{`- Critical -`}<br />{`- Hospital with surgery center or major ripperdoc operation -`}<br />{`- 6 h -`}<br />{`- 3d6+1 Dmg -`}<br />{`- DC 25 -`}<br />{`- 2500 € -`}</>,
         oldContent: "N/A"
     }, {
         title: "Cyberejection",
@@ -1724,7 +1724,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "For an operation to fail (when not Fumbled) it means your body rejects new Cyberware by not healing properly. In such case Cyberware needs to be removed. Surgery can be attempted again, like with a use of a different immunosuppressor. When fumbled, surgery can destroy body parts, damage your look or even kill you (but given that you are already in hospital, you are unlikely to be dead for long as long as they did not fry your brains).",
+        content: <>{`For an operation to fail (when not Fumbled) it means your body rejects new Cyberware by not healing properly. In such case Cyberware needs to be removed. Surgery can be attempted again, like with a use of a different immunosuppressor. When fumbled, surgery can destroy body parts, damage your look or even kill you (but given that you are already in hospital, you are unlikely to be dead for long as long as they did not fry your brains).`}</>,
         oldContent: "N/A"
     }, {
         title: "Chipware",
@@ -1732,7 +1732,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "To use a Chip, you need an interface (socket) on your body into which Chip is inserted. Inserting or removing Chip takes 2 Actions or 1 Turn. Max number of Chips you might use is your INT stat value. You can gain max lvl 3 of any skill trough the use of a normal chip. Normal Chip costs 200 € per lvl (martial arts 400 €). To get even more from a Chip, you would need a Chip custom made for you. Custom made Chip costs 400 € per lvl and might be hard to get (martial arts 800 €). Lvl 3 skill costs 3x lvl 1 chip even if you already have lvl 2 in that skill (cost is the value of the Chip, not Chip's value to you in particular). When Chip is removed, you lose any level gained trough its use. It takes 1 day of Chip use for every lvl of the Chip over your natural value. When using Chips, you may not gain Fumble Points or Critival Learning in Chipped skills.",
+        content: <>{`To use a Chip, you need an interface (socket) on your body into which Chip is inserted. Inserting or removing Chip takes 2 Actions or 1 Turn. Max number of Chips you might use is your INT stat value. You can gain max lvl 3 of any skill trough the use of a normal chip. Normal Chip costs 200 € per lvl (martial arts 400 €). To get even more from a Chip, you would need a Chip custom made for you. Custom made Chip costs 400 € per lvl and might be hard to get (martial arts 800 €). Lvl 3 skill costs 3x lvl 1 chip even if you already have lvl 2 in that skill (cost is the value of the Chip, not Chip's value to you in particular). When Chip is removed, you lose any level gained trough its use. It takes 1 day of Chip use for every lvl of the Chip over your natural value. When using Chips, you may not gain Fumble Points or Critival Learning in Chipped skills.`}</>,
         oldContent: "N/A"
     }, {
         title: "Smartware (LINK)",
@@ -1740,7 +1740,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Smartware uses LINK to entabilish connection between device and the user. LINK needs to be installed. There are 4 major types of LINK.\nNET LINK - Allows direct connection to NET, a must for Netrunners.\nVehicle LINK - Allows direct connection to any one smart vehicle.\nSmartgun LINK - Allows direct connection to any one smartgun.\nHEAVY LINK - Allows direct connection to any one machine or tool, often work requirement for factory workers.",
+        content: <>{`Smartware uses LINK to entabilish connection between device and the user. LINK needs to be installed. There are 4 major types of LINK.`}<br />{`NET LINK - Allows direct connection to NET, a must for Netrunners.`}<br />{`Vehicle LINK - Allows direct connection to any one smart vehicle.`}<br />{`Smartgun LINK - Allows direct connection to any one smartgun.`}<br />{`HEAVY LINK - Allows direct connection to any one machine or tool, often work requirement for factory workers.`}</>,
         oldContent: "N/A"
     }, {
         title: "Cyberlimb Crush",
@@ -1748,7 +1748,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Only cyberarms. Crushing grip deals 2d6 Dmg. Cyberarm does not get tired or needs to feel pain. Cyberlimb can with ease crush might metal, wood and plastic. That said, it can not grow or learn, so without upgrades this is its limit.",
+        content: <>{`Only cyberarms. Crushing grip deals 2d6 Dmg. Cyberarm does not get tired or needs to feel pain. Cyberlimb can with ease crush might metal, wood and plastic. That said, it can not grow or learn, so without upgrades this is its limit.`}</>,
         oldContent: "N/A"
     }, {
         title: "Cyberlimb Pain",
@@ -1756,7 +1756,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Any cyberlimb. Pain can be turned on and off with a mental switch (1 Action). As cyberlimb never grows tired, it might allow to hang from high places, reach into fire, suffer gunshot without health loss (no Saving Roll) etc. Limb can be damaged and limb manipulation roll might be appropriate, but cyberlimbs are known for their exceptional endurance compared to their organic counterparts.",
+        content: <>{`Any cyberlimb. Pain can be turned on and off with a mental switch (1 Action). As cyberlimb never grows tired, it might allow to hang from high places, reach into fire, suffer gunshot without health loss (no Saving Roll) etc. Limb can be damaged and limb manipulation roll might be appropriate, but cyberlimbs are known for their exceptional endurance compared to their organic counterparts.`}</>,
         oldContent: "N/A"
     }, {
         title: "Cyberlimb Health",
@@ -1764,7 +1764,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Any cyberlimb. Standard cyberlimb can take 20 kinetic Dmg before breaking and 30 Dmg before it becomes damaged beyond repair.",
+        content: <>{`Any cyberlimb. Standard cyberlimb can take 20 kinetic Dmg before breaking and 30 Dmg before it becomes damaged beyond repair.`}</>,
         oldContent: "N/A"
     }, {
         title: "Cyberlimb Damage",
@@ -1772,7 +1772,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Any cyberimb. Standard cyberarm punch deals 1d6 Dmg and standard cyberleg kick deals 2d6 Dmg.",
+        content: <>{`Any cyberimb. Standard cyberarm punch deals 1d6 Dmg and standard cyberleg kick deals 2d6 Dmg.`}</>,
         oldContent: "N/A"
     }, {
         title: "Cyberlimb Leaping",
@@ -1780,7 +1780,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Only cyberlegs. Standard cyberlimb can leap up to 6 m and make a running jump up to 8 m.",
+        content: <>{`Only cyberlegs. Standard cyberlimb can leap up to 6 m and make a running jump up to 8 m.`}</>,
         oldContent: "N/A"
     }, {
         title: "Cyberlimb Options",
@@ -1788,7 +1788,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Any cyberlimb. Standard cyberlimb can support up to 4 Options (cyberarm comes with a free hand and cyberleg with a free foot Option).",
+        content: <>{`Any cyberlimb. Standard cyberlimb can support up to 4 Options (cyberarm comes with a free hand and cyberleg with a free foot Option).`}</>,
         oldContent: "N/A"
     }, {
         title: "ExoFrame",
@@ -1796,7 +1796,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Linear frame, exoskeleton or ExoFrame. Metal body-armor-like suit that is grafted onto a body, systems neurolinked to muscles and bones. You can not swin in them and you get -1 ENV (-1 REF). ExoFrame can lift up to 50x STR they provide.",
+        content: <>{`Linear frame, exoskeleton or ExoFrame. Metal body-armor-like suit that is grafted onto a body, systems neurolinked to muscles and bones. You can not swin in them and you get -1 ENV (-1 REF). ExoFrame can lift up to 50x STR they provide.`}</>,
         oldContent: "N/A"
     }, {
         title: "Dirty 10.000",
@@ -1804,7 +1804,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "If you run out of cash in Character Creation and you want to have more Cyber in your Punk, you might ask for Dirty 10.000 € cyberbudget that you can spend on cybernetic implants (the rest is wasted if GM does not rules otherwise).",
+        content: <>{`If you run out of cash in Character Creation and you want to have more Cyber in your Punk, you might ask for Dirty 10.000 € cyberbudget that you can spend on cybernetic implants (the rest is wasted if GM does not rules otherwise).`}</>,
         oldContent: "N/A"
     }, {
         title: "Dirty War",
@@ -1812,7 +1812,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Join the covert military. Become a fighter in the Cyberwars, serving your country's armed forces with distinction and honor as part of its secret Elite Mechanized Combat Forces (Cybergrunts, to you). See pain, torture and death close up, as you participate in any one of a hundred covert 'police actions' worldwide, protecting 'national interests'. O course the Cybergrunts don't exist. Of course your country doesn't send teams of heavily armed covert agents into other countries to kill and forment revolt. Of course they're not going to let you quit when you want to.",
+        content: <>{`Join the covert military. Become a fighter in the Cyberwars, serving your country's armed forces with distinction and honor as part of its secret Elite Mechanized Combat Forces (Cybergrunts, to you). See pain, torture and death close up, as you participate in any one of a hundred covert 'police actions' worldwide, protecting 'national interests'. O course the Cybergrunts don't exist. Of course your country doesn't send teams of heavily armed covert agents into other countries to kill and forment revolt. Of course they're not going to let you quit when you want to.`}</>,
         oldContent: "N/A"
     }, {
         title: "Dirty Street",
@@ -1820,7 +1820,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Join the mafia. The word on the Street is that the Mob is alive and hiring. Swear alliegiance to one of the big time organized crime Familites and you'll never lack for cybertech. The only catch is, you have to do 'work' for them. Bill collecting. Assassinations. Murders. Mob wars. The Familites of 2020 have a long and honorable tradition that goes back into the early twentieth century: nobody ever quits the Mob. Ever.",
+        content: <>{`Join the mafia. The word on the Street is that the Mob is alive and hiring. Swear alliegiance to one of the big time organized crime Familites and you'll never lack for cybertech. The only catch is, you have to do 'work' for them. Bill collecting. Assassinations. Murders. Mob wars. The Familites of 2020 have a long and honorable tradition that goes back into the early twentieth century: nobody ever quits the Mob. Ever.`}</>,
         oldContent: "N/A"
     }, {
         title: "Dirty Corps",
@@ -1828,7 +1828,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Join the corporation. See the world. While you are at it, they'll bankroll you for ten thousand dollars in newtech. But remember, with all business deals, there's a price. In this case, you have to work for the corporation. The jobs you get to do are all the fun, suicidal ones on which they don't want to waste their good people: executive kidnappings, black operations and espionage missions. If you're really lucky, you'll even get to be a grunt in a Corporate war, where you get to defend the Corporation's interests in some backwater hellhole with a population of natives you're suppressing. Big Business is fun.",
+        content: <>{`Join the corporation. See the world. While you are at it, they'll bankroll you for ten thousand dollars in newtech. But remember, with all business deals, there's a price. In this case, you have to work for the corporation. The jobs you get to do are all the fun, suicidal ones on which they don't want to waste their good people: executive kidnappings, black operations and espionage missions. If you're really lucky, you'll even get to be a grunt in a Corporate war, where you get to defend the Corporation's interests in some backwater hellhole with a population of natives you're suppressing. Big Business is fun.`}</>,
         oldContent: "N/A"
     }, {
         title: "Dirty Mission",
@@ -1836,7 +1836,7 @@ export default function useDatabase() {
         type: "upgrade",
         imgs: [],
         hashes: [],
-        content: "Do a mission with a questionable outcome. Those dear to you are now hostages. They KNOW you and now you are blackmailed. Your cyberware has a code that might torture, maime or kill you if you step out of the line. Monitoring device is implanted somewhere on you. Implanted chip, that will make you kill someone or anyone in your close proximity. Safeguard chip will make sure you do no harm to them or you will feel pain or even death.",
+        content: <>{`Do a mission with a questionable outcome. Those dear to you are now hostages. They KNOW you and now you are blackmailed. Your cyberware has a code that might torture, maime or kill you if you step out of the line. Monitoring device is implanted somewhere on you. Implanted chip, that will make you kill someone or anyone in your close proximity. Safeguard chip will make sure you do no harm to them or you will feel pain or even death.`}</>,
         oldContent: "N/A"
     },]
 
@@ -1846,7 +1846,7 @@ export default function useDatabase() {
         type: "move",
         imgs: [],
         hashes: [],
-        content: "You may Jump up to 'REF / 3' m away or up to 'REF / 4' m up. You may also Leap if you Run at least 3 m for REF meters. Add 1 m to everything, if you fall on ground or grab the edge. If you jump but you used all of your Move or it will be depleated during your Jump or Leap, you may use Action to extend your Move for the length of the Jump or Leap. If you fall or grabbed the edge, you may use Action to stand up or 2 Actions to pull yourself up.",
+        content: <>{`You may Jump up to 'REF / 3' m away or up to 'REF / 4' m up. You may also Leap if you Run at least 3 m for REF meters. Add 1 m to everything, if you fall on ground or grab the edge. If you jump but you used all of your Move or it will be depleated during your Jump or Leap, you may use Action to extend your Move for the length of the Jump or Leap. If you fall or grabbed the edge, you may use Action to stand up or 2 Actions to pull yourself up.`}</>,
         oldContent: "N/A"
     }, {
         title: "Move & Jog & Run",
@@ -1854,7 +1854,7 @@ export default function useDatabase() {
         type: "move",
         imgs: [],
         hashes: [],
-        content: "You can move each turn for REF meters. You may use Action to Jog at 2x your Move continiously that Turn or Run at 3x your Move for up to 3 consecutive Turns that Turn.",
+        content: <>{`You can move each turn for REF meters. You may use Action to Jog at 2x your Move continiously that Turn or Run at 3x your Move for up to 3 consecutive Turns that Turn.`}</>,
         oldContent: "N/A"
     }, {
         title: "Vehicle Control",
@@ -1862,7 +1862,7 @@ export default function useDatabase() {
         type: "move",
         imgs: [],
         hashes: [],
-        content: "You control vehicle with 'd10 + REF + Vehicle Skill + Modifiers' formula. Only one Vehicle Control roll per Turn is allowed. Some examples of DCs are:\nDC 10 - take off, rotate\n DC 15 - swerve, landing, hover\nDC 20 - tight turn, controled skid, recover from a stall, emergency stop, pull out of dive\nDC 25 - bootlegger turn, recover from spin",
+        content: <>{`You control vehicle with 'd10 + REF + Vehicle Skill + Modifiers' formula. Only one Vehicle Control roll per Turn is allowed. Some examples of DCs are:`}<br />{`DC 10 - take off, rotate`}<br />{` DC 15 - swerve, landing, hover`}<br />{`DC 20 - tight turn, controled skid, recover from a stall, emergency stop, pull out of dive`}<br />{`DC 25 - bootlegger turn, recover from spin`}</>,
         oldContent: "N/A"
     }, {
         title: "Vehicle Speed & Damage Modifiers",
@@ -1870,7 +1870,7 @@ export default function useDatabase() {
         type: "move",
         imgs: [],
         hashes: [],
-        content: "2x Safe Speed -> -2 Mod\n3x Safe Speed -> -4 Mod\n4x Safe Speed -> -6 Mod\n3/4 Full (up) to 1/2 Full (down) VHp -> -1 Mod\n1/2 Full (up) to 1/4 Full (down) VHp -> -2 Mod\n1/4 Full (up) to 1 VHp -> -4 Mod",
+        content: <>{`2x Safe Speed -> -2 Mod`}<br />{`3x Safe Speed -> -4 Mod`}<br />{`4x Safe Speed -> -6 Mod`}<br />{`3/4 Full (up) to 1/2 Full (down) VHp -> -1 Mod`}<br />{`1/2 Full (up) to 1/4 Full (down) VHp -> -2 Mod`}<br />{`1/4 Full (up) to 1 VHp -> -4 Mod`}</>,
         oldContent: "N/A"
     }, {
         title: "Control Loss Table",
@@ -1878,7 +1878,7 @@ export default function useDatabase() {
         type: "move",
         imgs: [],
         hashes: [],
-        content: "On lost control over a vehicle apply based on DC.\nup to DC 15 -> Skid or slew.\nover DC 15  -> Major skid, land vehicle slides 'd10 x 3' m sideway, aircraft stalls, loses 'd10 x 15' m of altitude.\nover DC 20 -> Land vehicle rolls after sliding 'd10 x 3' m sideways, takes 5d6 Dmg, aircraft goes into spin or dive, lose 'd10 x 30' m of altitude.",
+        content: <>{`On lost control over a vehicle apply based on DC.`}<br />{`up to DC 15 -> Skid or slew.`}<br />{`over DC 15  -> Major skid, land vehicle slides 'd10 x 3' m sideway, aircraft stalls, loses 'd10 x 15' m of altitude.`}<br />{`over DC 20 -> Land vehicle rolls after sliding 'd10 x 3' m sideways, takes 5d6 Dmg, aircraft goes into spin or dive, lose 'd10 x 30' m of altitude.`}</>,
         oldContent: "N/A"
     }, {
         title: "Vehicle Damage",
@@ -1886,7 +1886,7 @@ export default function useDatabase() {
         type: "move",
         imgs: [],
         hashes: [],
-        content: "Vehicle uses SP and Vehicle Health Points (VHp). If armored, SP works as any armor. When VHp drops to 0, roll on Vehicle Lost table.",
+        content: <>{`Vehicle uses SP and Vehicle Health Points (VHp). If armored, SP works as any armor. When VHp drops to 0, roll on Vehicle Lost table.`}</>,
         oldContent: "N/A"
     }, {
         title: "Vehicle Lost",
@@ -1894,7 +1894,7 @@ export default function useDatabase() {
         type: "move",
         imgs: [],
         hashes: [],
-        content: "Roll 1d6 for\n1-2 -> Vehicle is inoperable, but potentially recoverable.\n2-4 -> Vehicle is unrecoverable, but in one piece.\n5-6 -> Vehicle's fuel ignites or goes critical in 1d10 Turns, DM decides on Dmg based on Dmg from Explosives. If vehicle does not have explodable fuel or parts, it is just wrecked beyond repair.",
+        content: <>{`Roll 1d6 for`}<br />{`1-2 -> Vehicle is inoperable, but potentially recoverable.`}<br />{`2-4 -> Vehicle is unrecoverable, but in one piece.`}<br />{`5-6 -> Vehicle's fuel ignites or goes critical in 1d10 Turns, DM decides on Dmg based on Dmg from Explosives. If vehicle does not have explodable fuel or parts, it is just wrecked beyond repair.`}</>,
         oldContent: "N/A"
     }, {
         title: "Crashing & Ramming",
@@ -1902,18 +1902,18 @@ export default function useDatabase() {
         type: "move",
         imgs: [],
         hashes: [],
-        content: "Use '(km/h / 20) (down)' formula to calculate Dmg. Both sides take same amount of Dmg if vehicle is stopped and had no collision gear. If vehicle was not stopped, it loses only as much as object that couldn't stop the vehicle. If vehicle has ramming gear and is ramming, it takes 1/2 (down) of its collision Dmg. If occupants are properly seated and protected, they get 1/4 of VHp Dmg, if not, 1/2 Dmg.",
+        content: <>{`Use '(km/h / 20) (down)' formula to calculate Dmg. Both sides take same amount of Dmg if vehicle is stopped and had no collision gear. If vehicle was not stopped, it loses only as much as object that couldn't stop the vehicle. If vehicle has ramming gear and is ramming, it takes 1/2 (down) of its collision Dmg. If occupants are properly seated and protected, they get 1/4 of VHp Dmg, if not, 1/2 Dmg.`}</>,
         oldContent: "N/A"
     }];
 
     {/*TEMPLATE*/ }
-    const emptyArr: Rule[] = [{
+    const emptyArr = [{
         title: "",
         subtitle: "",
         type: "",
         imgs: [],
         hashes: [],
-        content: "",
+        content: <>{``}</>,
         oldContent: "N/A"
     },]
     emptyArr
