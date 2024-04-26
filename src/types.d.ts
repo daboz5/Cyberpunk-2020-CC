@@ -30,6 +30,16 @@ type Ability = {
     oldDescription: string
 }
 
+type Rule = {
+    title: string,
+    subtitle: string,
+    type: string,
+    imgs: string[],
+    hashes: string[],
+    content: string,
+    oldContent: string
+}
+
 type StatsForm = {
     body: number | undefined;
     cool: number | undefined;
@@ -62,9 +72,10 @@ type StatsStore = {
 
 export {
     Stat,
+    Ability,
     Skill,
     Role,
-    Ability,
+    Rule,
     StatsForm,
     RoleForm,
     StatsStore

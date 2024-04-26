@@ -31,7 +31,7 @@ export default function Rules() {
                     <>
                         <Link
                             className="flex growFlex"
-                            to="/rules/basics">
+                            to="/rules/start">
                             <button
                                 className="navRulesBtn "
                                 onClick={() => setOpen(!open)}>
@@ -40,11 +40,20 @@ export default function Rules() {
                         </Link>
                         <Link
                             className="flex growFlex"
-                            to="/rules/advanced">
+                            to="/rules/act">
                             <button
                                 className="navRulesBtn "
                                 onClick={() => setOpen(!open)}>
-                                {boldRed("Fight")}&nbsp;&&nbsp;{boldRed("Heal")}&nbsp;&&nbsp;{boldRed("Learn")}
+                                {boldRed("Move")}&nbsp;&&nbsp;{boldRed("Fight")}&nbsp;&&nbsp;{boldRed("Heal")}
+                            </button>
+                        </Link>
+                        <Link
+                            className="flex growFlex"
+                            to="/rules/live">
+                            <button
+                                className="navRulesBtn "
+                                onClick={() => setOpen(!open)}>
+                                {boldRed("Learn")}&nbsp;&&nbsp;{boldRed("Guide")}&nbsp;&&nbsp;{boldRed("Upgrade")}
                             </button>
                         </Link>
                         <Link
@@ -53,7 +62,7 @@ export default function Rules() {
                             <button
                                 className="navRulesBtn "
                                 onClick={() => setOpen(!open)}>
-                                {boldRed("Items")}&nbsp;&&nbsp;{boldRed("Upgrades")}&nbsp;&&nbsp;{boldRed("Drugs")}
+                                {boldRed("Items")}&nbsp;&&nbsp;{boldRed("Cyberware")}&nbsp;&&nbsp;{boldRed("Drugs")}
                             </button>
                         </Link>
                         <Link

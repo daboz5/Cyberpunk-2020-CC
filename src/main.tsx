@@ -13,8 +13,9 @@ import MakeSkills from "./routes/MakeSkills.tsx";
 import Play from "./routes/Play.tsx";
 
 import Rules from "./routes/Rules.tsx";
-import RulesBasics from "./routes/RulesBasics.tsx";
-import RulesAdvanced from "./routes/RulesAdvanced.tsx";
+import RulesStart from "./routes/RulesStart.tsx";
+import RulesAct from "./routes/RulesAct.tsx";
+import RulesLive from "./routes/RulesLive.tsx";
 import RulesStore from "./routes/RulesStore.tsx";
 import RulesWorld from "./routes/RulesWorld.tsx";
 
@@ -46,11 +47,14 @@ const router = createBrowserRouter([{
     path: pathConstants.RULES.DEF,
     element: <Rules />,
     children: [{
-      path: pathConstants.RULES.BASICS,
-      element: <RulesBasics />,
+      path: pathConstants.RULES.START,
+      element: <RulesStart />,
     }, {
-      path: pathConstants.RULES.ADVANCED,
-      element: <RulesAdvanced />,
+      path: pathConstants.RULES.ACT,
+      element: <RulesAct />,
+    }, {
+      path: pathConstants.RULES.LIVE,
+      element: <RulesLive />,
     }, {
       path: pathConstants.RULES.STORE,
       element: <RulesStore />,

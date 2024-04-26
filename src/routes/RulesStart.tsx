@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useDatabase from "../utils/useDatabase"
 
-export default function RulesBasics() {
+export default function RulesStart() {
 
     const { statArr, skillArr, roleArr, abilityArr } = useDatabase();
 
@@ -100,18 +100,16 @@ export default function RulesBasics() {
         <>
             {/* SHOW CONTENT */}
             <span
-                id="basicsContentBox"
-                className="colFlex">
-                <p id="basicsContentTitle">
+                className="colFlex contentBox">
+                <p className="contentTitle">
                     {examine?.title ? examine.title : "Pick something."}
                 </p>
                 {examine &&
                     <p
-                        id="basicsContentSubtitle"
-                        className={`skillStat${examine.subtitle}`}>
+                        className={`contentSubtitle skillStat${examine.subtitle}`}>
                         <b>- {examine.subtitle} -</b>
                     </p>}
-                <p id="basicsContent">
+                <p className="content">
                     {examine?.content}
                 </p>
             </span>
@@ -120,8 +118,7 @@ export default function RulesBasics() {
             <input
                 name="basicInputFilter"
                 type={"text"}
-                id="basicInputFilter"
-                className={"formInputField roleSkillFilter"}
+                className={"formInputField roleSkillFilter contentInputFilter"}
                 placeholder={"Filter: Acting / art / EMP"}
                 autoComplete={"off"}
                 onChange={handleFilter}

@@ -19,29 +19,29 @@
 
 /*EXPLANATION*/
 
-#basicsContentBox {
+.contentBox {
     padding: 1rem 1.3rem 1.6rem;
 }
 
-#basicsContentTitle {
+.contentTitle {
     font-size: 1.6rem;
     font-weight: 700;
     margin: 0;
 }
 
-#basicsContentSubtitle {
+.contentSubtitle {
     font-size: 1.3rem;
     margin: 0.5rem auto 0;
 }
 
-#basicsContent {
+.content {
     font-size: 1.3em;
     margin: 0.7rem auto 0;
 }
 
 /*FILTERS*/
 
-#basicInputFilter {
+.contentInputFilter {
     font-size: 1.3rem;
 }
 

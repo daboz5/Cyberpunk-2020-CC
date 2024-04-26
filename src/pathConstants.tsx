@@ -11,8 +11,9 @@ const pathConstants = {
     },
     RULES: {
         DEF: "rules",
-        BASICS: "basics",
-        ADVANCED: "advanced",
+        START: "start",
+        ACT: "act",
+        LIVE: "live",
         STORE: "store",
         WORLD: "world"
     },
