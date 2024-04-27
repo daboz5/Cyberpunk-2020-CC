@@ -1358,7 +1358,15 @@ export default function useDatabase() {
         type: "heal",
         imgs: [],
         hashes: [],
-        content: <>{`When Crippled, roll d10 to see how crippled you became. Crippled body part has to be healed or replaced at a cost of a new one + surgical cost. You may elect your new Body Part to be in an Excelent Condition. With an Excellent Body Part, roll d10, on 7-10 you improve the same Stat that would be lowered if Crippled by temporary 1 (lost if body part is lost again). If you roll Crippled on a Cyberlimb, limb falls to the ground and needs DC 10 Cyber Tech Skill check for it to be placed back. If you roll on a limb that is no longer there, nothing bad happens and you are not Crippled.`}<br />{`1 - L. Arm - -2 REF`}<br />{`2 - R. Arm - -2 REF`}<br />{`3 - L. Leg - -3 REF`}<br />{`4 - R. Leg - -3 REF`}<br />{`5 - Heart - -2 BODY & -1 REF`}<br />{`6 - Lungs - -2 REF & -1 BODY`}<br />{`7 - Liver - -2 BODY`}<br />{` 8 - Kidney - -1 BODY (-3 if both)`}<br />{`9 - Eyes - Blinded & +3 EMP`}<br />{`10 - Nose - -2 COOL & (Disadvantage / Advantage on smell-related checks)`}</>,
+        content: <>{`When Crippled, roll d10 to see how crippled you became. Crippled body part has to be replaced at a cost of a new one + surgical cost. Second time crippled body part is destroyed. You may elect your new Body Part to be in an Excelent Condition. With an Excellent Body Part, roll d10, on 7-10 you improve the same Stat that would be lowered if Crippled by temporary 1 (lost if body part is lost again). If you roll Crippled on a Cyberlimb, limb falls to the ground and needs DC 10 Cyber Tech Skill check for it to be placed back. If you roll on a limb that is no longer there, nothing bad happens and you are not Crippled.`}<br />{`1 - L. Arm - -2 REF`}<br />{`2 - R. Arm - -2 REF`}<br />{`3 - L. Leg - -3 REF`}<br />{`4 - R. Leg - -3 REF`}<br />{`5 - Heart - -2 BODY & -1 REF`}<br />{`6 - Lungs - -2 REF & -1 BODY`}<br />{`7 - Liver - -2 BODY`}<br />{` 8 - Kidney - -1 BODY (-3 if both)`}<br />{`9 - Eyes - Blinded & +3 EMP`}<br />{`10 - Nose - -2 COOL & (Disadvantage / Advantage on smell-related checks)`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Body Part Costs",
+        subtitle: "Health",
+        type: "heal",
+        imgs: [],
+        hashes: [],
+        content: <>{`Prices represent Normal Quality Costs. Poor Quality is 1/2 of that and Excellent Quality is 2x of that. If you are trying to sell instead of that, you can do so at 1/2 of the cost to buy.`}<br />{`Heart, Lungs -> 700 €`}<br />{`-> 600 (900 € for 2 if mismatching) €`}<br />{`Arm -> 500 (750 for 2 if mismatching) €`}<br />{`Eyes, Ears, Nose -> 500 €`}<br />{`Other -> 250 €`}<br />{`Liver, Kidney, Hands, Feet -> 200 €`}</>,
         oldContent: "N/A"
     }, {
         title: "Body Part Quality",
@@ -1436,10 +1444,10 @@ export default function useDatabase() {
         oldContent: "N/A"
     },];
 
-    const guideArr: Rule[] = [{
+    const startArr: Rule[] = [{
         title: "Round",
         subtitle: "Order",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Action sequences are segmented into rounds, each of them lasting cca 3 s. Each round is made from so many Turns as there are participants.`}</>,
@@ -1447,7 +1455,7 @@ export default function useDatabase() {
     }, {
         title: "Turn order",
         subtitle: "Order",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Each Round participant with a highest initiative starts first and the one with the lowest last. Initiative is calculated by '1d10 + REF + boosts' formula.`}</>,
@@ -1455,7 +1463,7 @@ export default function useDatabase() {
     }, {
         title: "Wait",
         subtitle: "Order",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`You can decide to act later in Round. If someone else already started their Turn when you decide to start your Turn, you have to wait for them to finish their Turn before you can start yours.`}</>,
@@ -1463,15 +1471,15 @@ export default function useDatabase() {
     }, {
         title: "Turn",
         subtitle: "Order",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
-        content: <>{`Turn is cca 3 s long part of the Round in which someone is able to act. In each Turn you have 2 actions and a movement up to your Movement Speed.`}</>,
+        content: <>{`Turn is cca 3 s long part of the Round in which someone is able to act. In each Turn you have 2 actions and a movement up to your SPEED.`}</>,
         oldContent: "N/A"
     }, {
         title: "Rush",
         subtitle: "Order",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Rush your Turn and get +3 to your Initiative and -3 to your Action Modifier.`}</>,
@@ -1479,7 +1487,7 @@ export default function useDatabase() {
     }, {
         title: "Action",
         subtitle: "Action",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`First action in Turn is free while second comes with -3 Action Modifier if roll is required. There are many types of actions.`}</>,
@@ -1487,15 +1495,15 @@ export default function useDatabase() {
     }, {
         title: "Run",
         subtitle: "Action",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
-        content: <>{`Move up to 3x your Movement Speed (can only be used once, includes your free Movement Speed).`}</>,
+        content: <>{`Move up to 3x your SPEED (can only be used once, includes your free SPEED).`}</>,
         oldContent: "N/A"
     }, {
         title: "Attack Action",
         subtitle: "Action",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Attack (up to weapon's max Rate of Fire) or make a Melee Attack.`}</>,
@@ -1503,7 +1511,7 @@ export default function useDatabase() {
     }, {
         title: "Dodge",
         subtitle: "Action",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Make yourself harder to hit and give your attackers -2 Action Modifier.`}</>,
@@ -1511,7 +1519,7 @@ export default function useDatabase() {
     }, {
         title: "Block or Parry",
         subtitle: "Action",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`It has to be your first Action. Stop damage from a melee attacks with your weapon or arm. Attack will hit and it will cause damage (can be used with a protective object). If blocked with a weapon, roll 1d10 instead and if you roll 10, it breaks.`}</>,
@@ -1519,7 +1527,7 @@ export default function useDatabase() {
     }, {
         title: "Escape",
         subtitle: "Action",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Escape a Grapple, a Hold or a Trap.`}</>,
@@ -1527,15 +1535,23 @@ export default function useDatabase() {
     }, {
         title: "Aim",
         subtitle: "Action",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`For 3 Rounds (including this one), gain +1 to your Attack Modifier towards the target of your Aim. To keep the Attack Modifier: you can not move, have a steady position, a chance to track your target.`}</>,
         oldContent: "N/A"
     }, {
+        title: "Ambush",
+        subtitle: "Action",
+        type: "start",
+        imgs: [],
+        hashes: [],
+        content: <>{`When ambushing, you get +5 on Ambushed opponent that Turn. You may ambush under two scenarios:`}<br />{`The opponent is unaware or you or your intent to attack. When you he comes into Ambush location or when Ambush is declared, opponent makes 'd10 + INT + Awareness' against your DC 'd10 + INT + Stealth' check. If Fumble, whoever fumbled less succeeds, if result is the same, defender succeeds. If Awareness roll is not reasonable (opponent is sleeping, unconscious etc.), you succeed automatically.`}<br />{`Opponent is at the moment focusing on something else than you that is drawing their attention. Again check if he was aware of you if that is reasonable, if not, you automatically succeed.`}</>,
+        oldContent: "N/A"
+    }, {
         title: "Reload",
         subtitle: "Action",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Reload if you have a spare munition case.`}</>,
@@ -1543,7 +1559,7 @@ export default function useDatabase() {
     }, {
         title: "Change Weapons",
         subtitle: "Action",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Change your weapons. This does not include changing with how many weapons you decide to fire at the same time.`}</>,
@@ -1551,7 +1567,7 @@ export default function useDatabase() {
     }, {
         title: "Mount or Connect",
         subtitle: "Action",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Mount or dismount a vehicle, animal, safely connect or disconnect with a wire to a computer etc.`}</>,
@@ -1559,7 +1575,7 @@ export default function useDatabase() {
     }, {
         title: "Repair or Aid",
         subtitle: "Action",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Try to repair something or give Medical Aid to someone.`}</>,
@@ -1567,7 +1583,7 @@ export default function useDatabase() {
     }, {
         title: "Perform a Task",
         subtitle: "Action",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Perform a non-combat task. If task would take you more than 3 s to finish, continue doing it into the next Round.`}</>,
@@ -1575,7 +1591,7 @@ export default function useDatabase() {
     }, {
         title: "Skill Level (lvl)",
         subtitle: "Modifier",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Each skill follows common interpretation matrix.`}<br />{`0 - Clueless`}<br />{`1 - Basic`}<br />{`2 - Passable`}<br />{`3 - Average`}<br />{`4 - Capable`}<br />{`5 - Amateur`}<br />{`6 - Proffesional`}<br />{`7 - Expert`}<br />{`8 - Master`}<br />{`9 - Star`}<br />{`10 - Legend`}</>,
@@ -1583,7 +1599,7 @@ export default function useDatabase() {
     }, {
         title: "Fumble Action",
         subtitle: "Roll",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`When you roll 1 on d10, you fail your Action. Roll d10 again to see the severity of the result. Gain 1 Fumble Point in skill you were using. Can only happen once per Round in the same skill.`}</>,
@@ -1591,7 +1607,7 @@ export default function useDatabase() {
     }, {
         title: "Critical Action",
         subtitle: "Roll",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`When you roll 10 on d10, you critically succeed your Action. Roll d10 again and add the result to your Roll. If you roll 10 again, you may upgrade the skill you were using for 1 lvl.`}</>,
@@ -1599,7 +1615,7 @@ export default function useDatabase() {
     }, {
         title: "Starting Gear",
         subtitle: "Start",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Starting gear that is optional but recommended.`}<br />{`Inflatable bed`}<br />{`Compressable sleep bag`}<br />{`Something to entertain yourself in a downtime`}<br />{`Laptop, Smartphone, Notebook or something else for taking notes`}<br />{`Smartphone and monthly service provider`}<br />{`Some sort of weapon and ammo if required`}<br />{`Armor`}<br />{`Personal belongings (clothes, toothbrush etc.)`}<br />{`Role tools (Netrunner needs cyber upgrades, cables etc.)`}</>,
@@ -1607,7 +1623,7 @@ export default function useDatabase() {
     }, {
         title: "Starting Money",
         subtitle: "Start",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`Use '1d6 / 3' rounded up, then multiply by 2000 eurodollars (2000, 4000, 6000).`}<br />{`If you want also roll 1d6 and with 5-6 you currently don't have a regular job.`}</>,
@@ -1615,7 +1631,7 @@ export default function useDatabase() {
     }, {
         title: "Encumbrance (EN)",
         subtitle: "Gear",
-        type: "guide",
+        type: "start",
         imgs: [],
         hashes: [],
         content: <>{`You can carry up to BODY * 10 kg. If you carry more than that, you need to keep making DC Strength Feat to move (DC 10 + 5 for every 10 kg over the limit, you may not average it over a period of time, given that a Fumble might cause an injury). To keep it simple, organize your inventory into kg groups.`}<br />{`0.5 kg or less are most items, like smartphone, ammo, shades etc.`}<br />{`1 kg or less are medium or heavy handguns, sleeping bag, laptop etc.`}<br />{`3 kg are submachine gun, guitar, assault rifle etc.`}</>,
@@ -1846,7 +1862,7 @@ export default function useDatabase() {
         type: "move",
         imgs: [],
         hashes: [],
-        content: <>{`You may Jump up to 'REF / 3' m away or up to 'REF / 4' m up. You may also Leap if you Run at least 3 m for REF meters. Add 1 m to everything, if you fall on ground or grab the edge. If you jump but you used all of your Move or it will be depleated during your Jump or Leap, you may use Action to extend your Move for the length of the Jump or Leap. If you fall or grabbed the edge, you may use Action to stand up or 2 Actions to pull yourself up.`}</>,
+        content: <>{`You may Jump up to 'REF / 3' m away or up to 'REF / 4' m up. You may also Leap if you Run at least 3 m for REF meters. Add 1 m to everything, if you fall on ground or grab the edge. If you jump but you used all of your Move or it will be depleated during your Jump or Leap, you may use Action to extend your Move for the length of the Jump or Leap.`}</>,
         oldContent: "N/A"
     }, {
         title: "Move & Jog & Run",
@@ -1854,7 +1870,63 @@ export default function useDatabase() {
         type: "move",
         imgs: [],
         hashes: [],
-        content: <>{`You can move each turn for REF meters. You may use Action to Jog at 2x your Move continiously that Turn or Run at 3x your Move for up to 3 consecutive Turns that Turn.`}</>,
+        content: <>{`If reasonable have Movement Speed (SPEED) each turn for REF meters. You may use Action to Jog at 2x your Move continiously that Turn or Run at 3x your Move for up to 3 consecutive Turns that Turn.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Stand Up",
+        subtitle: "Movement",
+        type: "move",
+        imgs: [],
+        hashes: [],
+        content: <>{`Standing up takes SPEED or Action.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Pull Up",
+        subtitle: "Movement",
+        type: "move",
+        imgs: [],
+        hashes: [],
+        content: <>{`Pulling up if you are not encumbered with something heavy and have a good grip takes 2x Action or your 3x SPEED.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Lower Posture",
+        subtitle: "Movement",
+        type: "move",
+        imgs: [],
+        hashes: [],
+        content: <>{`Lowering posture safely to whichever degree takes SPEED or Action.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Jump Down",
+        subtitle: "Movement",
+        type: "move",
+        imgs: [],
+        hashes: [],
+        content: <>{`Jumping down safely takes Action, Athletics Skill check against DC '5 + (m of fall x 5)' (multiplier might be lowered down to 0 on softer surfaces or Zero Gravity, GM decides, if lower than 10, succeed automatically) and does not count as a Movement as long as movement is purely vertical.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Crouch",
+        subtitle: "Movement",
+        type: "move",
+        imgs: [],
+        hashes: [],
+        content: <>{`If you are crouching, move as if on Difficult Terrain, Difficult Terrain does not apply to you.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Crawl",
+        subtitle: "Movement",
+        type: "move",
+        imgs: [],
+        hashes: [],
+        content: <>{`If you are crawling, move as if on Hostile Terrain, Hostile Terrain does not apply to you.`}</>,
+        oldContent: "N/A"
+    }, {
+        title: "Terrain Types",
+        subtitle: "Movement",
+        type: "move",
+        imgs: [],
+        hashes: [],
+        content: <>{`There are 3 general land types of terrain that can be traveled. Normal, Difficult, Hostile. Normal Terrain will not slow you down. Difficult will allow safe movements only at 1/2 SPEED. Hostile terrain will allow safe movement only at 1/3 SPEED. When SPEED is not reduced, use Athletics Skill check against DC 15 on Difficult and DC 25 on Hostile Terrain. GM decides what happenes if you fail, but some examples include: ice breaks under you, you fall, your gear gets damaged or ripped.`}</>,
         oldContent: "N/A"
     }, {
         title: "Vehicle Control",
@@ -1865,7 +1937,7 @@ export default function useDatabase() {
         content: <>{`You control vehicle with 'd10 + REF + Vehicle Skill + Modifiers' formula. Only one Vehicle Control roll per Turn is allowed. Some examples of DCs are:`}<br />{`DC 10 - take off, rotate`}<br />{` DC 15 - swerve, landing, hover`}<br />{`DC 20 - tight turn, controled skid, recover from a stall, emergency stop, pull out of dive`}<br />{`DC 25 - bootlegger turn, recover from spin`}</>,
         oldContent: "N/A"
     }, {
-        title: "Vehicle Speed & Damage Modifiers",
+        title: "Vehicle Speed & Dmg Modifiers",
         subtitle: "Vehicle",
         type: "move",
         imgs: [],
@@ -1927,7 +1999,7 @@ export default function useDatabase() {
         fightArr,
         healArr,
         learnArr,
-        guideArr,
+        startArr,
         upgradeArr
     }
 }

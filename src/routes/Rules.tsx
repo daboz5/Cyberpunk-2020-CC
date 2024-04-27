@@ -42,18 +42,10 @@ export default function Rules() {
                             className="flex growFlex"
                             to="/rules/act">
                             <button
-                                className="navRulesBtn "
+                                className="navRulesBtn colFlex"
                                 onClick={() => setOpen(!open)}>
-                                {boldRed("Move")}&nbsp;&&nbsp;{boldRed("Fight")}&nbsp;&&nbsp;{boldRed("Heal")}
-                            </button>
-                        </Link>
-                        <Link
-                            className="flex growFlex"
-                            to="/rules/live">
-                            <button
-                                className="navRulesBtn "
-                                onClick={() => setOpen(!open)}>
-                                {boldRed("Learn")}&nbsp;&&nbsp;{boldRed("Guide")}&nbsp;&&nbsp;{boldRed("Upgrade")}
+                                <span>{boldRed("Start")}&nbsp;&&nbsp;{boldRed("Move")}&nbsp;&&nbsp;{boldRed("Fight")}</span>
+                                <span>{boldRed("Heal")}&nbsp;&&nbsp;{boldRed("Learn")}&nbsp;&&nbsp;{boldRed("Upgrade")}</span>
                             </button>
                         </Link>
                         <Link

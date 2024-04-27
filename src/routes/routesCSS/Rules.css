@@ -1,3 +1,34 @@
+:root {
+    --btn1-main-color: rgb(12, 100, 0);
+    --btn1-border-color: rgb(8, 65, 0);
+    --btn1-shadow-color: rgb(7, 59, 0);
+    --btn1-hover-border-color: rgb(23, 196, 0);
+    --btn2-main-color: rgb(175, 12, 0);
+    --btn2-border-color: rgb(121, 28, 0);
+    --btn2-shadow-color: rgb(105, 25, 0);
+    --btn2-hover-border-color: rgb(255, 0, 0);
+    --btn3-main-color: rgb(221, 88, 0);
+    --btn3-border-color: rgb(197, 72, 0);
+    --btn3-shadow-color: rgb(202, 75, 1);
+    --btn3-hover-border-color: rgb(255, 187, 0);
+    --btn4-main-color: rgb(0, 1, 78);
+    --btn4-border-color: rgb(0, 2, 61);
+    --btn4-shadow-color: rgb(0, 1, 51);
+    --btn4-hover-border-color: rgb(0, 102, 255);
+    --btn5-main-color: rgb(227, 212, 0);
+    --btn5-border-color: rgb(197, 184, 0);
+    --btn5-shadow-color: rgb(202, 189, 0);
+    --btn5-hover-border-color: rgb(255, 249, 69);
+    --btn6-main-color: rgb(0, 86, 185);
+    --btn6-border-color: rgb(0, 68, 146);
+    --btn6-shadow-color: rgb(0, 63, 135);
+    --btn6-hover-border-color: rgb(0, 112, 240);
+    --btn7-main-color: rgb(141, 0, 207);
+    --btn7-border-color: rgb(104, 0, 151);
+    --btn7-shadow-color: rgb(97, 0, 141);
+    --btn7-hover-border-color: rgb(168, 0, 246);
+}
+
 /*NAV*/
 
 #navRulesBtnBox {
@@ -41,9 +72,24 @@
 
 /*FILTERS*/
 
+.basicFilterBtns {
+    gap: 16px;
+    padding: 0.5rem 0 0.5rem;
+}
+
+.filterBtnsBox {
+    margin: 1rem;
+}
+
 .contentInputFilter {
     font-size: 1.3rem;
 }
+
+.explainFilter {
+    font-size: 1.3rem;
+}
+
+/*BUTTONS*/
 
 .basicsBtnBox {
     margin-top: 1rem;
@@ -52,16 +98,13 @@
     justify-content: center;
 }
 
-.basicFilterBtns {
-    gap: 15px;
-    padding: 1rem 0 0.5rem;
-}
-
-/*BUTTONS*/
-.basicStatBtn,
-.basicAbilityBtn,
-.basicSkillBtn,
-.basicRoleBtn {
+.infoBtn1,
+.infoBtn2,
+.infoBtn3,
+.infoBtn4,
+.infoBtn5,
+.infoBtn6,
+.infoBtn7 {
     font-size: 1.1rem;
     font-weight: 700;
     color: rgb(230, 230, 230);
@@ -70,42 +113,74 @@
     text-shadow: 0 0 2px black;
 }
 
-.basicStatBtn {
-    border-color: rgb(8, 65, 0);
-    box-shadow: inset 0 0 15px 5px rgb(7, 59, 0);
-    background-color: rgb(12, 100, 0);
+.infoBtn1 {
+    border-color: var(--btn1-border-color);
+    box-shadow: inset 0 0 15px 5px var(--btn1-shadow-color);
+    background-color: var(--btn1-main-color);
 }
 
-.basicStatBtn:hover {
-    border-color: rgb(23, 196, 0);
+.infoBtn1:hover {
+    border-color: var(--btn1-hover-border-color);
 }
 
-.basicAbilityBtn {
-    border-color: rgb(121, 28, 0);
-    box-shadow: inset 0 0 15px 5px rgb(105, 25, 0);
-    background-color: rgb(175, 12, 0);
+.infoBtn2 {
+    border-color: var(--btn2-border-color);
+    box-shadow: inset 0 0 15px 5px var(--btn2-shadow-color);
+    background-color: var(--btn2-main-color);
 }
 
-.basicAbilityBtn:hover {
-    border-color: rgb(255, 0, 0)
+.infoBtn2:hover {
+    border-color: var(--btn2-hover-border-color);
 }
 
-.basicSkillBtn {
-    border-color: rgb(197, 72, 0);
-    box-shadow: inset 0 0 15px 5px rgb(202, 75, 1);
-    background-color: rgb(221, 88, 0);
+.infoBtn3 {
+    border-color: var(--btn3-border-color);
+    box-shadow: inset 0 0 15px 5px var(--btn3-shadow-color);
+    background-color: var(--btn3-main-color);
 }
 
-.basicSkillBtn:hover {
-    border-color: rgb(219, 204, 0)
+.infoBtn3:hover {
+    border-color: var(--btn3-hover-border-color);
 }
 
-.basicRoleBtn {
-    border-color: rgb(0, 2, 61);
-    box-shadow: inset 0 0 15px 5px rgb(0, 1, 51);
-    background-color: rgb(0, 1, 78);
+.infoBtn4 {
+    border-color: var(--btn4-border-color);
+    box-shadow: inset 0 0 15px 5px var(--btn4-shadow-color);
+    background-color: var(--btn4-main-color);
 }
 
-.basicRoleBtn:hover {
-    border-color: rgb(0, 102, 255);
+.infoBtn4:hover {
+    border-color: var(--btn4-hover-border-color);
+}
+
+.infoBtn5 {
+    color: rgb(34, 34, 34);
+    text-shadow: 0 0 1px rgb(198, 198, 198);
+    border-color: var(--btn5-border-color);
+    box-shadow: inset 0 0 15px 5px var(--btn5-shadow-color);
+    background-color: var(--btn5-main-color);
+}
+
+.infoBtn5:hover {
+    border-color: var(--btn5-hover-border-color);
+}
+
+.infoBtn6 {
+    border-color: var(--btn6-border-color);
+    box-shadow: inset 0 0 15px 5px var(--btn6-shadow-color);
+    background-color: var(--btn6-main-color);
+}
+
+.infoBtn6:hover {
+    border-color: var(--btn6-hover-border-color);
+}
+
+.infoBtn7 {
+    border-color: var(--btn7-border-color);
+    box-shadow: inset 0 0 15px 5px var(--btn7-shadow-color);
+    background-color: var(--btn7-main-color);
+}
+
+.infoBtn7:hover {
+    border-color: var(--btn7-hover-border-color);
 }

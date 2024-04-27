@@ -4,15 +4,23 @@ import { Rule } from "../types";
 
 export default function RulesAct() {
 
+    type FilterType = "start" | "move" | "fight" | "heal" | "learn" | "upgrade" | "all"
+
     const {
         moveArr,
         fightArr,
-        healArr
+        healArr,
+        learnArr,
+        startArr,
+        upgradeArr
     } = useDatabase();
 
-    const contentArr = moveArr
+    const contentArr = startArr
+        .concat(moveArr)
         .concat(fightArr)
         .concat(healArr)
+        .concat(learnArr)
+        .concat(upgradeArr)
         .sort((a, b) => {
             const first = a.title;
             const second = b.title;
@@ -37,21 +45,76 @@ export default function RulesAct() {
         setContent(filteredContent);
     }
 
-    const filterTypeCheck = (type: "move" | "fight" | "heal" | "all") => {
-        setContent(
+    const filterTypeCheck = (type: FilterType) => {
+        const pickArr = type === "start" ? startArr :
             type === "move" ? moveArr :
                 type === "fight" ? fightArr :
                     type === "heal" ? healArr :
-                        contentArr)
+                        type === "learn" ? learnArr :
+                            type === "upgrade" ? upgradeArr :
+                                contentArr
+        const sortedArr = pickArr.sort((a, b) => {
+            const first = a.title;
+            const second = b.title;
+            return (
+                first < second ? -1 :
+                    first > second ? 1 :
+                        0
+            )
+        });
+        setContent(sortedArr);
+    }
+
+    const createInfoBtn = (
+        name: string, filter: FilterType, color: number
+    ) => {
+        return (
+            <button
+                className={`infoBtn${color}`}
+                onClick={() => filterTypeCheck(filter)}>
+                {name}
+            </button>
+        )
     }
 
     return (
         <>
+            {/*FILTER BY TYPE BTNS*/}
+            <span className="colFlex alignFlex filterBtnsBox">
+                <span className="flex basicFilterBtns">
+                    {createInfoBtn("All Content", "all", 4)}
+                </span>
+                <span className="flex basicFilterBtns">
+                    {createInfoBtn("Only Start", "start", 5)}
+                    {createInfoBtn("Only Move", "move", 3)}
+                    {createInfoBtn("Only Fight", "fight", 2)}
+                </span>
+                <span className="flex basicFilterBtns">
+                    {createInfoBtn("Only Heal", "heal", 1)}
+                    {createInfoBtn("Only Learn", "learn", 6)}
+                    {createInfoBtn("Only Upgrade", "upgrade", 7)}
+                </span>
+            </span>
+
+            {/* FILTER CONTENT */}
+            <input
+                name="basicInputFilter"
+                type={"text"}
+                className={"formInputField roleSkillFilter contentInputFilter"}
+                placeholder={"Filter: Info on ..."}
+                autoComplete={"off"}
+                onChange={handleFilter}
+                value={filterData}
+                maxLength={20}>
+            </input>
+            <p className="explainFilter">
+                Title, subtitle and content will be checked for match.
+            </p>
             {/* SHOW CONTENT */}
             <span
                 className="colFlex contentBox">
                 <p className="contentTitle">
-                    {examine?.title ? examine.title : "Pick something."}
+                    {examine?.title ? examine.title : "Pick something"}
                 </p>
                 {examine &&
                     <p
@@ -63,50 +126,19 @@ export default function RulesAct() {
                 </p>
             </span>
 
-            {/* FILTER CONTENT */}
-            <input
-                name="basicInputFilter"
-                type={"text"}
-                className={"formInputField roleSkillFilter contentInputFilter"}
-                placeholder={"Filter: Move / Fight / Heal"}
-                autoComplete={"off"}
-                onChange={handleFilter}
-                value={filterData}
-                maxLength={20}>
-            </input>
-            <span className="basicFilterBtns flex alignFlex">
-                <button
-                    className="basicStatBtn"
-                    onClick={() => filterTypeCheck("move")}>
-                    Only Move
-                </button>
-                <button
-                    className="basicAbilityBtn"
-                    onClick={() => filterTypeCheck("fight")}>
-                    Only Fight
-                </button>
-                <button
-                    className="basicSkillBtn"
-                    onClick={() => filterTypeCheck("heal")}>
-                    Only Heal
-                </button>
-                <button
-                    className="basicRoleBtn"
-                    onClick={() => filterTypeCheck("all")}>
-                    All Content
-                </button>
-            </span>
-
             {/* PICK CONTENT BUTTONS */}
             <div className="flex basicsBtnBox">
                 {content.map(content => {
                     return (
                         <button
                             className={
-                                content.type === "move" ? "basicStatBtn" :
-                                    content.type === "fight" ? "basicAbilityBtn" :
-                                        content.type === "heal" ? "basicSkillBtn" :
-                                            ""}
+                                content.type === "start" ? "infoBtn5" :
+                                    content.type === "move" ? "infoBtn3" :
+                                        content.type === "fight" ? "infoBtn2" :
+                                            content.type === "heal" ? "infoBtn1" :
+                                                content.type === "learn" ? "infoBtn6" :
+                                                    content.type === "upgrade" ? "infoBtn7" :
+                                                        ""}
                             onClick={() => {
                                 if (examine && examine.title === content.title) {
                                     setExamine(undefined)
