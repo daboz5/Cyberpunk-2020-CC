@@ -5,8 +5,10 @@ export default function RulesStart() {
 
     const { statArr, skillArr, roleArr, abilityArr } = useDatabase();
 
+    type FilterType = "role" | "ability" | "stat" | "skill" | "all"
+
     type BasicRulesContent = {
-        type: "stat" | "ability" | "skill" | "role";
+        type: FilterType;
         title: string;
         subtitle: string;
         content: string;
@@ -86,18 +88,68 @@ export default function RulesStart() {
         setContent(filteredContent);
     }
 
-    const filterTypeCheck = (type: "stat" | "ability" | "skill" | "role") => {
-        if (content.filter(content => content.type !== type).length > 0) {
-            setContent(
+    const filterTypeCheck = (type: FilterType) => {
+        const pickArr = type === "role" ? roleContent :
+            type === "ability" ? abilityContent :
                 type === "stat" ? statContent :
-                    type === "ability" ? abilityContent :
-                        type === "skill" ? skillContent :
-                            roleContent)
-        } else { setContent(contentArr) }
+                    type === "skill" ? skillContent :
+                        contentArr
+        const sortedArr = pickArr.sort((a, b) => {
+            const first = a.title;
+            const second = b.title;
+            return (
+                first < second ? -1 :
+                    first > second ? 1 :
+                        0
+            )
+        });
+        setContent(sortedArr);
+    }
+
+    const createInfoBtn = (
+        name: string, filter: FilterType, color: number
+    ) => {
+        return (
+            <button
+                className={`infoBtn${color}`}
+                onClick={() => filterTypeCheck(filter)}>
+                {name}
+            </button>
+        )
     }
 
     return (
         <>
+            {/*FILTER BY TYPE BTNS*/}
+            <span className="colFlex alignFlex filterBtnsBox">
+                <span className="flex basicFilterBtns">
+                    {createInfoBtn("All Content", "all", 6)}
+                </span>
+                <span className="flex basicFilterBtns">
+                    {createInfoBtn("Only Roles", "role", 7)}
+                    {createInfoBtn("Only Abilities", "ability", 1)}
+                </span>
+                <span className="flex basicFilterBtns">
+                    {createInfoBtn("Only Stats", "stat", 2)}
+                    {createInfoBtn("Only Skills", "skill", 3)}
+                </span>
+            </span>
+
+            {/* FILTER CONTENT */}
+            <input
+                name="basicInputFilter"
+                type={"text"}
+                className={"formInputField roleSkillFilter contentInputFilter"}
+                placeholder={"Filter: Acting / art / EMP"}
+                autoComplete={"off"}
+                onChange={handleFilter}
+                value={filterData}
+                maxLength={20}>
+            </input>
+            <p className="explainFilter">
+                Title, subtitle and content will be checked for match.
+            </p>
+
             {/* SHOW CONTENT */}
             <span
                 className="colFlex contentBox">
@@ -114,50 +166,16 @@ export default function RulesStart() {
                 </p>
             </span>
 
-            {/* FILTER CONTENT */}
-            <input
-                name="basicInputFilter"
-                type={"text"}
-                className={"formInputField roleSkillFilter contentInputFilter"}
-                placeholder={"Filter: Acting / art / EMP"}
-                autoComplete={"off"}
-                onChange={handleFilter}
-                value={filterData}
-                maxLength={20}>
-            </input>
-            <span className="basicFilterBtns flex alignFlex">
-                <button
-                    className="basicStatBtn"
-                    onClick={() => filterTypeCheck("stat")}>
-                    Only Stats
-                </button>
-                <button
-                    className="basicAbilityBtn"
-                    onClick={() => filterTypeCheck("ability")}>
-                    Only Abilities
-                </button>
-                <button
-                    className="basicSkillBtn"
-                    onClick={() => filterTypeCheck("skill")}>
-                    Only Skills
-                </button>
-                <button
-                    className="basicRoleBtn"
-                    onClick={() => filterTypeCheck("role")}>
-                    Only Roles
-                </button>
-            </span>
-
             {/* PICK CONTENT BUTTONS */}
             <div className="flex basicsBtnBox">
                 {content.map(content => {
                     return (
                         <button
                             className={
-                                content.type === "stat" ? "basicStatBtn" :
-                                    content.type === "ability" ? "basicAbilityBtn" :
-                                        content.type === "skill" ? "basicSkillBtn" :
-                                            content.type === "role" ? "basicRoleBtn" :
+                                content.type === "role" ? "infoBtn7" :
+                                    content.type === "ability" ? "infoBtn1" :
+                                        content.type === "stat" ? "infoBtn2" :
+                                            content.type === "skill" ? "infoBtn3" :
                                                 ""}
                             onClick={() => {
                                 if (examine && examine.title === content.title) {

@@ -110,6 +110,7 @@ export default function RulesAct() {
             <p className="explainFilter">
                 Title, subtitle and content will be checked for match.
             </p>
+
             {/* SHOW CONTENT */}
             <span
                 className="colFlex contentBox">
