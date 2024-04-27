@@ -82,16 +82,16 @@ export default function RulesAct() {
             {/*FILTER BY TYPE BTNS*/}
             <span className="colFlex alignFlex filterBtnsBox">
                 <span className="flex basicFilterBtns">
-                    {createInfoBtn("All Content", "all", 4)}
+                    {createInfoBtn("All Content", "all", 6)}
                 </span>
                 <span className="flex basicFilterBtns">
-                    {createInfoBtn("Only Start", "start", 5)}
-                    {createInfoBtn("Only Move", "move", 3)}
-                    {createInfoBtn("Only Fight", "fight", 2)}
+                    {createInfoBtn("Only Start", "start", 3)}
+                    {createInfoBtn("Only Move", "move", 2)}
+                    {createInfoBtn("Only Fight", "fight", 1)}
                 </span>
                 <span className="flex basicFilterBtns">
-                    {createInfoBtn("Only Heal", "heal", 1)}
-                    {createInfoBtn("Only Learn", "learn", 6)}
+                    {createInfoBtn("Only Heal", "heal", 4)}
+                    {createInfoBtn("Only Learn", "learn", 5)}
                     {createInfoBtn("Only Upgrade", "upgrade", 7)}
                 </span>
             </span>
@@ -133,11 +133,11 @@ export default function RulesAct() {
                     return (
                         <button
                             className={
-                                content.type === "start" ? "infoBtn5" :
-                                    content.type === "move" ? "infoBtn3" :
-                                        content.type === "fight" ? "infoBtn2" :
-                                            content.type === "heal" ? "infoBtn1" :
-                                                content.type === "learn" ? "infoBtn6" :
+                                content.type === "start" ? "infoBtn3" :
+                                    content.type === "move" ? "infoBtn2" :
+                                        content.type === "fight" ? "infoBtn1" :
+                                            content.type === "heal" ? "infoBtn4" :
+                                                content.type === "learn" ? "infoBtn5" :
                                                     content.type === "upgrade" ? "infoBtn7" :
                                                         ""}
                             onClick={() => {

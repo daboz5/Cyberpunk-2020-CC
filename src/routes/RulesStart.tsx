@@ -126,12 +126,12 @@ export default function RulesStart() {
                     {createInfoBtn("All Content", "all", 6)}
                 </span>
                 <span className="flex basicFilterBtns">
-                    {createInfoBtn("Only Roles", "role", 7)}
-                    {createInfoBtn("Only Abilities", "ability", 1)}
+                    {createInfoBtn("Only Roles", "role", 5)}
+                    {createInfoBtn("Only Abilities", "ability", 4)}
                 </span>
                 <span className="flex basicFilterBtns">
-                    {createInfoBtn("Only Stats", "stat", 2)}
-                    {createInfoBtn("Only Skills", "skill", 3)}
+                    {createInfoBtn("Only Stats", "stat", 1)}
+                    {createInfoBtn("Only Skills", "skill", 2)}
                 </span>
             </span>
 
@@ -172,10 +172,10 @@ export default function RulesStart() {
                     return (
                         <button
                             className={
-                                content.type === "role" ? "infoBtn7" :
-                                    content.type === "ability" ? "infoBtn1" :
-                                        content.type === "stat" ? "infoBtn2" :
-                                            content.type === "skill" ? "infoBtn3" :
+                                content.type === "role" ? "infoBtn5" :
+                                    content.type === "ability" ? "infoBtn4" :
+                                        content.type === "stat" ? "infoBtn1" :
+                                            content.type === "skill" ? "infoBtn2" :
                                                 ""}
                             onClick={() => {
                                 if (examine && examine.title === content.title) {
